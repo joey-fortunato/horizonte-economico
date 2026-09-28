@@ -12,9 +12,6 @@ import { register } from '@/routes';
 /* @end-chisel-registration */
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
-/* @chisel-passkeys */
-import PasskeyVerify from '@/components/passkey-verify';
-/* @end-chisel-passkeys */
 
 type Props = {
     status?: string;
@@ -25,10 +22,6 @@ export default function Login({ status, canResetPassword }: Props) {
     return (
         <>
             <Head title="Iniciar sessão" />
-
-            {/* @chisel-passkeys */}
-            <PasskeyVerify />
-            {/* @end-chisel-passkeys */}
 
             <Form
                 {...store.form()}
@@ -111,23 +104,6 @@ export default function Login({ status, canResetPassword }: Props) {
                     </>
                 )}
             </Form>
-
-            {/* Aviso de segurança (área restrita) */}
-            <div className="mt-6 flex items-start gap-3 border-l-2 border-[#d4ad67] bg-[#faf3e2] p-4 text-[12.5px] leading-relaxed text-[#7a5a1e]">
-                <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#9a7017"
-                    strokeWidth="1.8"
-                    className="mt-0.5 shrink-0"
-                >
-                    <path d="M12 2 4 6v6c0 5 4 8 8 10 4-2 8-5 8-10V6z" />
-                </svg>
-                Área protegida. As tentativas de acesso são registadas e
-                limitadas por segurança.
-            </div>
 
             {status && (
                 <div className="mb-4 text-center text-sm font-medium text-green-600">
