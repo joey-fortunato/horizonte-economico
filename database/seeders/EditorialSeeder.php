@@ -88,7 +88,21 @@ HTML;
             ['Abrir empresa em Angola: custos e prazos reais', 'empresas', 'bruno-kiala', 6, ['Investimento']],
         ];
 
+        // Estados variados para os últimos artigos (para o painel reflectir o fluxo editorial)
+        $statusPlan = [
+            9 => ArticleStatus::Review,
+            10 => ArticleStatus::Scheduled,
+            11 => ArticleStatus::Draft,
+        ];
+
         foreach ($articles as $i => [$title, $catSlug, $authorSlug, $minutes, $tags]) {
+            $status = $statusPlan[$i] ?? ArticleStatus::Published;
+            $publishedAt = match ($status) {
+                ArticleStatus::Published => Carbon::now()->subDays($i)->subHours($i),
+                ArticleStatus::Scheduled => Carbon::now()->addDay()->setTime(18, 0),
+                default => null,
+            };
+
             $article = Article::updateOrCreate(
                 ['slug' => Str::slug($title)],
                 [
@@ -97,8 +111,8 @@ HTML;
                     'category_id' => $categories[$catSlug] ?? null,
                     'excerpt' => 'Uma leitura clara e contextualizada sobre '.Str::lower($title).', com o rigor do Horizonte Económico.',
                     'body' => $body,
-                    'status' => ArticleStatus::Published->value,
-                    'published_at' => Carbon::now()->subDays($i)->subHours($i),
+                    'status' => $status->value,
+                    'published_at' => $publishedAt,
                     'reading_minutes' => $minutes,
                     'views_count' => random_int(1200, 13000),
                     'seo_title' => $title,

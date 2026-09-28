@@ -1,5 +1,4 @@
 import { Link } from '@inertiajs/react';
-import AppLogoIcon from '@/components/app-logo-icon';
 import { home } from '@/routes';
 import type { AuthLayoutProps } from '@/types';
 
@@ -69,7 +68,11 @@ export default function AuthSplitLayout({
                         href={home()}
                         className="relative z-20 flex items-center justify-center lg:hidden"
                     >
-                        <AppLogoIcon variant="cor" className="h-12 w-12" />
+                        <img
+                            src="/brand/he-horizontal-cor.svg"
+                            alt="Horizonte Económico"
+                            className="h-8 w-auto"
+                        />
                     </Link>
                     <div className="flex flex-col items-start gap-2 text-left sm:items-center sm:text-center">
                         <h1 className="font-serif text-2xl font-semibold">

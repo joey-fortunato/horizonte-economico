@@ -1,20 +1,18 @@
-import { usePage } from '@inertiajs/react';
-
-import AppLogoIcon from '@/components/app-logo-icon';
-
 export default function AppLogo() {
-    const { name } = usePage().props;
-
     return (
         <>
-            <div className="flex aspect-square size-8 items-center justify-center">
-                <AppLogoIcon variant="negativo" className="size-8" />
-            </div>
-            <div className="ml-1 grid flex-1 text-left">
-                <span className="font-serif truncate text-base leading-tight font-bold">
-                    {name}
-                </span>
-            </div>
+            {/* Logótipo completo (expandido) */}
+            <img
+                src="/brand/he-horizontal-negativo.svg"
+                alt="Horizonte Económico"
+                className="h-7 w-auto group-data-[collapsible=icon]:hidden"
+            />
+            {/* Símbolo (sidebar recolhida) */}
+            <img
+                src="/brand/he-simbolo-negativo.svg"
+                alt="Horizonte Económico"
+                className="hidden size-7 group-data-[collapsible=icon]:block"
+            />
         </>
     );
 }

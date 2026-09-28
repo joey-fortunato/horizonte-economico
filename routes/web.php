@@ -27,7 +27,7 @@ Route::get('/{page}', function (string $page) {
 
 // Backoffice editorial (acesso restrito por perfil)
 Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__.'/settings.php';
