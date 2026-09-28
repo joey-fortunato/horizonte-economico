@@ -1,0 +1,23 @@
+HORIZONTE ECONÓMICO — PACOTE DE MARCA v1.0 (Setembro 2026)
+
+01-logotipo/   Versões oficiais em SVG (vectorial, texto em contornos) e PNG transparente.
+               he-horizontal  · logótipo principal (cabeçalho do website, documentos)
+               he-vertical    · capas, formatos quadrados
+               he-wordmark    · só tipografia
+               he-reduzida    · abaixo de 200 px / 50 mm de largura
+               he-simbolo     · símbolo isolado
+               Variantes: cor · negativo (sobre verde) · preto · branco · verde (monocromia)
+
+02-icones/     favicon.ico (16/32/48), favicon.svg, apple-touch-icon-180, android-chrome-192/512,
+               maskable-512, icone-app-1024 (+ .svg), avatar-redes-sociais-800,
+               imagem-partilha-1200x630, site.webmanifest, cabecalho-html.txt (código a colar no <head>)
+
+03-cores/      cores.css · cores.json · paleta.png
+               Verde profundo #123B30 · Branco #FFFFFF · Dourado suave #D4AD67 · Cinzento-esverdeado #E9EEE9
+
+04-tipografia/ Newsreader + Inter (Google Fonts, licença SIL OFL)
+
+05-guia/       Guia de Marca (abrir no navegador; Imprimir → Guardar como PDF, A4 horizontal)
+
+Regras essenciais: não deformar, não recolorir, não rodar, sem sombras,
+respeitar a área de protecção (x = altura do símbolo ÷ 3) e as dimensões mínimas.

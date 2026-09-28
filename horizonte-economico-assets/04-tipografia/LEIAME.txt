@@ -1,0 +1,12 @@
+TIPOGRAFIA — HORIZONTE ECONÓMICO
+
+Newsreader (títulos, wordmark, texto editorial)
+  Wordmark: 600 · Títulos: 400–500 · Entradas: itálico 400 · Corpo: 400
+  https://fonts.google.com/specimen/Newsreader
+
+Inter (navegação, legendas, tabelas, dados)
+  400–600 · algarismos tabulares para cotações
+  https://fonts.google.com/specimen/Inter
+
+Ambas sob licença SIL Open Font License — uso livre em web, impressão e aplicações.
+Os ficheiros SVG do logótipo têm o texto convertido em contornos e não dependem destas fontes.

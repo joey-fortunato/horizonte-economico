@@ -41,7 +41,9 @@
 
     {{-- Masthead compacto de linha única: wordmark + nav + acções --}}
     <div class="u-wrap flex h-[60px] items-stretch gap-8">
-        <a href="{{ url('/') }}" class="u-serif flex shrink-0 items-center text-[24px] font-bold tracking-[-0.01em] text-white">Horizonte Económico</a>
+        <a href="{{ url('/') }}" class="flex shrink-0 items-center" aria-label="Horizonte Económico — página inicial">
+            <img src="{{ asset('brand/he-horizontal-negativo.svg') }}" alt="Horizonte Económico" class="h-[30px] w-auto">
+        </a>
 
         <nav class="flex items-stretch gap-6 overflow-hidden">
             @foreach ($sections as $slug => $s)

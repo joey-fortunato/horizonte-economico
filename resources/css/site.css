@@ -11,7 +11,7 @@
 
     /* Sistema editorial "broadsheet" — Horizonte Económico */
     --color-paper: #ffffff;
-    --color-panel: #f1f3ef;
+    --color-panel: #e9eee9; /* cinzento-esverdeado oficial */
     --color-ink: #14201c;
     --color-ink-2: #3c463f;
     --color-ink-3: #6b746c;
@@ -20,8 +20,8 @@
     --color-green: #123b30;
     --color-green-2: #2c5446;
     --color-green-link: #0f4c3c;
-    --color-gold: #9a7017;
-    --color-gold-soft: #e9c46a;
+    --color-gold: #9a7017; /* dourado escuro p/ texto sobre branco (AA) */
+    --color-gold-soft: #d4ad67; /* dourado suave oficial (acentos sobre verde) */
 }
 
 @layer base {

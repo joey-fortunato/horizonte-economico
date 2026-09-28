@@ -1,7 +1,7 @@
 <footer class="mt-16 bg-green text-[#b7c9c0]">
     <div class="u-wrap grid grid-cols-[1.7fr_1fr_1fr_1fr] gap-11 pt-13 pb-8" style="padding-top:52px;">
         <div>
-            <div class="u-serif text-[22px] font-bold text-white">Horizonte Económico</div>
+            <img src="{{ asset('brand/he-horizontal-negativo.svg') }}" alt="Horizonte Económico" class="h-8 w-auto mb-1">
             <p class="mt-3 max-w-[320px] text-[13.5px] leading-[1.75] text-[#8fb0a4]">
                 Informação e análise económica para decisões mais informadas. Compreender a economia para viver melhor.
             </p>
