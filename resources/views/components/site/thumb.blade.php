@@ -1,9 +1,17 @@
 @props([
     'ratio' => '16/9', // aspect-ratio: adequa a dimensão ao contexto da secção
+    'media' => null,   // App\Models\Media (opcional)
     'src' => null,
     'alt' => '',
     'caption' => null,
 ])
+
+@php
+    if ($media) {
+        $src = $media->url();
+        $alt = $alt !== '' ? $alt : ($media->alt_text ?? '');
+    }
+@endphp
 
 <figure {{ $attributes->merge(['class' => 'm-0']) }}>
     <div class="u-photo relative w-full overflow-hidden" style="aspect-ratio: {{ $ratio }};">

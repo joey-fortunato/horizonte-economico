@@ -1,16 +1,23 @@
 @props([
+    'category' => null, // App\Models\Category (opcional)
     'slug' => null,
     'label' => null,
+    'color' => null,
     'variant' => 'default', // default | lead | large
     'href' => null,
 ])
 
 @php
-    $section = $slug ? config('sections.'.$slug) : null;
-    $label = $label ?? ($section['label'] ?? \Illuminate\Support\Str::headline((string) $slug));
-    $color = $section['color'] ?? '#0b5c47';
+    // Precedência: model > props explícitas > config (fallback por slug)
+    if ($category) {
+        $slug = $category->slug;
+        $label = $category->name;
+        $color = $category->color;
+    }
+    $cfg = $slug ? config('sections.'.$slug) : null;
+    $label = $label ?? ($cfg['label'] ?? \Illuminate\Support\Str::headline((string) $slug));
+    $color = $color ?? ($cfg['color'] ?? '#0b5c47');
     $url = $href ?? ($slug ? url('categoria/'.$slug) : null);
-    // dimensões por variante
     $dot = $variant === 'lead' || $variant === 'large' ? 11 : 9;
     $text = $variant === 'lead' ? 'text-[13px]' : ($variant === 'large' ? 'text-[12.5px]' : 'text-[12px]');
     $tag = $url ? 'a' : 'span';

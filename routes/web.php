@@ -1,25 +1,18 @@
 <?php
 
+use App\Http\Controllers\Site\ArticleController;
+use App\Http\Controllers\Site\AuthorController;
+use App\Http\Controllers\Site\CategoryController;
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\SearchController;
 use Illuminate\Support\Facades\Route;
 
 // Site editorial público (Blade, SSR)
-Route::view('/', 'site.home')->name('home');
-
-// No artigo o header não é fixo — apenas a barra de ferramentas de leitura fica sticky
-Route::view('/artigo/{slug}', 'site.artigo', [
-    'activeSection' => 'politica-economica',
-    'stickyHeader' => false,
-])->name('artigo');
-
-Route::get('/categoria/{slug}', function (string $slug) {
-    abort_unless(config()->has('sections.'.$slug), 404);
-
-    return view('site.categoria', ['slug' => $slug, 'activeSection' => $slug]);
-})->name('categoria');
-
-Route::get('/pesquisa', fn () => view('site.pesquisa', ['q' => request('q', '')]))->name('pesquisa');
-
-Route::get('/autor/{slug}', fn (string $slug) => view('site.autor', ['slug' => $slug]))->name('autor');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/artigo/{slug}', [ArticleController::class, 'show'])->name('artigo');
+Route::get('/categoria/{slug}', [CategoryController::class, 'show'])->name('categoria');
+Route::get('/pesquisa', [SearchController::class, 'index'])->name('pesquisa');
+Route::get('/autor/{slug}', [AuthorController::class, 'show'])->name('autor');
 
 Route::view('/sobre', 'site.sobre')->name('sobre');
 Route::view('/contactos', 'site.contactos')->name('contactos');

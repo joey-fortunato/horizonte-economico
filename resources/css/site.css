@@ -98,4 +98,42 @@
         font-family: var(--font-serif);
         @apply m-0 text-[23px] font-semibold;
     }
+
+    /* Prosa do artigo (corpo HTML vindo da base de dados) */
+    .u-prose {
+        font-family: var(--font-serif);
+    }
+    .u-prose p {
+        @apply mb-6 text-[20px] leading-[1.72];
+        color: #232d27;
+    }
+    .u-prose h2 {
+        font-family: var(--font-serif);
+        @apply mt-10 mb-3 text-[28px] font-semibold leading-[1.2];
+        color: var(--color-ink);
+    }
+    .u-prose blockquote {
+        @apply my-8 border-l-[3px] pl-6;
+        border-color: var(--color-gold);
+    }
+    .u-prose blockquote p {
+        @apply text-[27px] leading-[1.32] font-medium;
+        color: var(--color-ink);
+    }
+    .u-prose ul {
+        @apply mb-6 list-disc pl-[22px] text-[20px] leading-[1.7];
+        color: #232d27;
+    }
+    .u-prose li {
+        @apply mb-2;
+    }
+    .u-prose a {
+        color: var(--color-green-link);
+        @apply font-semibold;
+    }
+    .u-prose > p:first-of-type::first-letter {
+        @apply float-left mt-2 mr-3 text-[74px] font-semibold;
+        line-height: 0.72;
+        color: var(--color-ink);
+    }
 }
