@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+    :root{--bg:#ecefe9;--fg:#14201c;--muted:#5f6b64;--border:#e2e4de;--card:#fff;--brand:#123b30;--brand-weak:#e7ece9;--gold:#9a7017;--gold-weak:#f6edda;--ink:#123b30;--radius:8px;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--fg);}
+    .serif{font-family:'Newsreader',Georgia,serif;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
+    .btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:11px 18px;font-weight:600;font-size:14px;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
+    .btn-ghost{background:var(--card);color:var(--fg);border:1px solid var(--border);}
+    .nav{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:9px;font-size:14px;font-weight:500;color:#cfe0d8;cursor:pointer;}
+    .nav.on{background:rgba(255,255,255,.12);color:#fff;font-weight:600;}
+    .meta{font-size:12.5px;color:var(--muted);}
+    .pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;}
+    .tab{font-size:13.5px;font-weight:600;padding:9px 4px;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;}
+    .tab.on{color:var(--brand);border-color:var(--brand);}
+    .th{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+    .ico-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;color:#5f6b64;cursor:pointer;}
+  </style>
+</helmet>
+<div style="width:1440px;min-height:1024px;display:flex;background:var(--bg);">
+
+  <!-- Sidebar -->
+  <div style="width:250px;background:var(--ink);flex-shrink:0;padding:22px 16px;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;gap:10px;padding:0 8px 22px;"><span style="display:inline-flex;width:36px;height:36px;border-radius:10px;background:var(--brand);align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 17l5-5 4 3 6-7"/><path d="M3 21h18"/></svg></span><div style="line-height:1.1;"><div class="serif" style="color:#fff;font-size:16px;font-weight:700;">Horizonte</div><div style="font-size:10px;color:#7f938a;letter-spacing:.1em;text-transform:uppercase;">Backoffice</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <div class="nav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Painel</div>
+      <div class="nav on"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Artigos</div>
+      <div class="nav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 7h18M3 12h18M3 17h12"/></svg>Categorias</div>
+      <div class="nav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>Media</div>
+      <div class="nav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Utilizadores</div>
+      <div class="nav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Estatísticas</div>
+    </div>
+    <div style="margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px 8px;border-top:1px solid #2a3833;"><div style="width:34px;height:34px;border-radius:999px;background:var(--brand);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">JM</div><div style="line-height:1.2;"><div style="color:#fff;font-size:13px;font-weight:600;">João Muanza</div><div style="font-size:11px;color:#7f938a;">Administrador</div></div></div>
+  </div>
+
+  <!-- Main -->
+  <div style="flex:1;display:flex;flex-direction:column;">
+    <div style="background:var(--card);border-bottom:1px solid var(--border);padding:16px 30px;display:flex;align-items:center;gap:16px;">
+      <div><div class="serif" style="font-size:22px;font-weight:700;">Artigos</div><div class="meta">885 artigos no total</div></div>
+      <button class="btn" style="margin-left:auto;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Novo artigo</button>
+    </div>
+
+    <div style="padding:24px 30px;">
+      <!-- tabs -->
+      <div style="display:flex;gap:22px;border-bottom:1px solid var(--border);margin-bottom:18px;">
+        <span class="tab on">Todos <span style="color:var(--muted);font-weight:500;">885</span></span>
+        <span class="tab">Publicados <span style="font-weight:500;">842</span></span>
+        <span class="tab">Rascunhos <span style="font-weight:500;">37</span></span>
+        <span class="tab">Agendados <span style="font-weight:500;">6</span></span>
+        <span class="tab">Em revisão <span style="font-weight:500;">9</span></span>
+        <span class="tab">Arquivados <span style="font-weight:500;">14</span></span>
+      </div>
+
+      <!-- toolbar -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px 14px;width:300px;color:var(--muted);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span style="font-size:13.5px;">Pesquisar por título…</span></div>
+        <span class="btn-ghost btn" style="padding:10px 14px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.5V19l4 2v-8.5z"/></svg>Categoria ▾</span>
+        <span class="btn-ghost btn" style="padding:10px 14px;">Autor ▾</span>
+        <span class="meta" style="margin-left:auto;">Ordenar: <b style="color:var(--fg);">Mais recentes</b></span>
+      </div>
+
+      <!-- table -->
+      <div class="card" style="overflow:hidden;">
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:13px 20px;border-bottom:1px solid var(--border);align-items:center;" class="th"><span></span><span>Título</span><span>Categoria</span><span>Autor</span><span>Estado</span><span>Data</span><span></span></div>
+
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:14px;"><span style="width:16px;height:16px;border:1px solid var(--border);border-radius:4px;"></span><div style="display:flex;gap:12px;align-items:center;"><div style="width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e9efe9,#dbe6df);flex-shrink:0;"></div><span style="font-weight:600;line-height:1.3;">OGE 2027: onde vai o dinheiro do Estado</span></div><span class="meta">Política económica</span><span class="meta">João Muanza</span><span><span class="pill" style="background:var(--brand-weak);color:var(--brand);">Publicado</span></span><span class="meta">28 Set</span><div style="display:flex;gap:6px;"><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></span></div></div>
+
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:14px;"><span style="width:16px;height:16px;border:1px solid var(--border);border-radius:4px;"></span><div style="display:flex;gap:12px;align-items:center;"><div style="width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e9efe9,#dbe6df);flex-shrink:0;"></div><span style="font-weight:600;line-height:1.3;">Kwanza recupera face ao dólar após leilão</span></div><span class="meta">Mercados</span><span class="meta">Ana Cardoso</span><span><span class="pill" style="background:var(--gold-weak);color:var(--gold);">Agendado</span></span><span class="meta">Hoje 18:00</span><div style="display:flex;gap:6px;"><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></span></div></div>
+
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:14px;"><span style="width:16px;height:16px;border:1px solid var(--border);border-radius:4px;"></span><div style="display:flex;gap:12px;align-items:center;"><div style="width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e9efe9,#dbe6df);flex-shrink:0;"></div><span style="font-weight:600;line-height:1.3;">Como montar um fundo de emergência</span></div><span class="meta">Finanças pessoais</span><span class="meta">Marta Songo</span><span><span class="pill" style="background:#eef1ee;color:#5f6b64;">Rascunho</span></span><span class="meta">Ontem</span><div style="display:flex;gap:6px;"><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></span></div></div>
+
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:14px;"><span style="width:16px;height:16px;border:1px solid var(--border);border-radius:4px;"></span><div style="display:flex;gap:12px;align-items:center;"><div style="width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e9efe9,#dbe6df);flex-shrink:0;"></div><span style="font-weight:600;line-height:1.3;">Novas regras de crédito ao consumo</span></div><span class="meta">Banca &amp; seguros</span><span class="meta">Pedro Lemos</span><span><span class="pill" style="background:#fbeaea;color:#b23b3b;">Em revisão</span></span><span class="meta">Ontem</span><div style="display:flex;gap:6px;"><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></span></div></div>
+
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:14px;"><span style="width:16px;height:16px;border:1px solid var(--border);border-radius:4px;"></span><div style="display:flex;gap:12px;align-items:center;"><div style="width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e9efe9,#dbe6df);flex-shrink:0;"></div><span style="font-weight:600;line-height:1.3;">Juros compostos explicados</span></div><span class="meta">Literacia financeira</span><span class="meta">Marta Songo</span><span><span class="pill" style="background:var(--brand-weak);color:var(--brand);">Publicado</span></span><span class="meta">21 Set</span><div style="display:flex;gap:6px;"><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></span></div></div>
+
+        <div style="display:grid;grid-template-columns:36px 2.6fr 1.1fr 1fr 1fr 0.9fr 96px;padding:14px 20px;align-items:center;font-size:14px;"><span style="width:16px;height:16px;border:1px solid var(--border);border-radius:4px;"></span><div style="display:flex;gap:12px;align-items:center;"><div style="width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e9efe9,#dbe6df);flex-shrink:0;"></div><span style="font-weight:600;line-height:1.3;">Startups angolanas captam ronda recorde</span></div><span class="meta">Empresas</span><span class="meta">Bruno Kiala</span><span><span class="pill" style="background:var(--brand-weak);color:var(--brand);">Publicado</span></span><span class="meta">24 Set</span><div style="display:flex;gap:6px;"><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="ico-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></span></div></div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;"><span class="meta">A mostrar 1–6 de 885</span><div style="display:flex;gap:6px;"><span class="btn-ghost btn" style="padding:8px 13px;">‹</span><span class="btn" style="padding:8px 14px;">1</span><span class="btn-ghost btn" style="padding:8px 13px;">2</span><span class="btn-ghost btn" style="padding:8px 13px;">3</span><span class="btn-ghost btn" style="padding:8px 13px;">›</span></div></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+    :root{
+      --paper:#ffffff;--panel:#f1f3ef;--ink:#14201c;--ink-2:#3c463f;--ink-3:#6b746c;
+      --line:#e4e2da;--line-strong:#c7c4b8;--green:#123b30;--green-2:#2c5446;--green-link:#0f4c3c;--gold:#9a7017;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    .serif{font-family:'Newsreader',Georgia,serif;}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+    .byline{font-size:13px;color:var(--ink-3);font-weight:500;}
+    .hed{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.01em;color:var(--ink);line-height:1.15;}
+    .photo{background:var(--panel);border:1px solid var(--line);display:block;}
+  </style>
+</helmet>
+<div style="width:1440px;min-height:1560px;background:var(--paper);">
+
+  <div style="background:var(--green);color:#eaf1ed;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:62px;">
+      <div class="serif" style="font-size:22px;font-weight:700;color:#fff;">Horizonte Económico</div>
+      <a style="margin-left:auto;font-size:13px;font-weight:600;color:var(--green);background:#e9c46a;padding:8px 15px;">Subscrever</a>
+    </div>
+  </div>
+
+  <!-- statement hero on dark green -->
+  <div style="background:var(--green);color:#fff;border-top:1px solid var(--green-2);">
+    <div class="wrap" style="padding-top:64px;padding-bottom:64px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e9c46a;">Sobre nós</div>
+      <h1 class="serif" style="font-size:50px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:16px auto;max-width:820px;color:#fff;">Compreender a economia para tomar melhores decisões</h1>
+      <p class="serif" style="font-size:19px;line-height:1.6;color:#cfe0d8;max-width:640px;margin:0 auto;">Uma plataforma de informação, análise e literacia económica, focada em Angola. Explicamos os factos e o seu contexto — sem jargão desnecessário.</p>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:52px;">
+    <!-- values: ruled, three columns, no cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+      <div style="padding:28px 28px 28px 0;border-right:1px solid var(--line);"><div class="serif" style="font-size:22px;font-weight:600;">Clareza</div><p class="serif" style="font-size:16px;line-height:1.6;color:var(--ink-2);margin:10px 0 0;">Distinguimos factos, análise e opinião. Escrevemos para ser compreendidos por qualquer leitor.</p></div>
+      <div style="padding:28px;border-right:1px solid var(--line);"><div class="serif" style="font-size:22px;font-weight:600;">Credibilidade</div><p class="serif" style="font-size:16px;line-height:1.6;color:var(--ink-2);margin:10px 0 0;">Citamos fontes, datamos os artigos e assinalamos correcções sem apagar o histórico editorial.</p></div>
+      <div style="padding:28px 0 28px 28px;"><div class="serif" style="font-size:22px;font-weight:600;">Utilidade</div><p class="serif" style="font-size:16px;line-height:1.6;color:var(--ink-2);margin:10px 0 0;">Ajudamos as pessoas a tomar decisões financeiras mais informadas no dia a dia.</p></div>
+    </div>
+  </div>
+
+  <!-- stats band #F1F3EF -->
+  <div style="background:var(--panel);border-bottom:1px solid var(--line);margin-top:52px;">
+    <div class="wrap" style="padding-top:40px;padding-bottom:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
+      <div><div class="serif" style="font-size:44px;font-weight:700;color:var(--green);">840+</div><div class="byline" style="margin-top:2px;">Artigos publicados</div></div>
+      <div><div class="serif" style="font-size:44px;font-weight:700;color:var(--green);">7</div><div class="byline" style="margin-top:2px;">Categorias editoriais</div></div>
+      <div><div class="serif" style="font-size:44px;font-weight:700;color:var(--green);">12</div><div class="byline" style="margin-top:2px;">Autores e colaboradores</div></div>
+      <div><div class="serif" style="font-size:44px;font-weight:700;color:var(--green);">180 mil</div><div class="byline" style="margin-top:2px;">Leitores por mês</div></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:52px;">
+    <div style="display:flex;align-items:baseline;border-bottom:2px solid var(--green);padding-bottom:10px;margin-bottom:26px;"><h2 class="hed" style="font-size:23px;margin:0;">A equipa editorial</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:60px;">
+      <div><div class="photo" style="height:220px;margin-bottom:14px;"></div><div class="hed" style="font-size:19px;">João Muanza</div><div class="byline" style="margin-top:3px;">Editor de Economia</div></div>
+      <div><div class="photo" style="height:220px;margin-bottom:14px;"></div><div class="hed" style="font-size:19px;">Ana Cardoso</div><div class="byline" style="margin-top:3px;">Mercados</div></div>
+      <div><div class="photo" style="height:220px;margin-bottom:14px;"></div><div class="hed" style="font-size:19px;">Marta Songo</div><div class="byline" style="margin-top:3px;">Finanças pessoais</div></div>
+      <div><div class="photo" style="height:220px;margin-bottom:14px;"></div><div class="hed" style="font-size:19px;">Pedro Lemos</div><div class="byline" style="margin-top:3px;">Banca &amp; seguros</div></div>
+    </div>
+  </div>
+
+  <div style="background:var(--green);color:#8fb0a4;"><div style="max-width:1240px;margin:0 auto;padding:26px 40px;display:flex;justify-content:space-between;font-size:12px;"><span>© 2026 Horizonte Económico</span><span>Sobre · Política editorial · Privacidade · Termos</span></div></div>
+
+</div>
+</x-dc>
+</body>
+</html>

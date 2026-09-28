@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+    :root{
+      --paper:#ffffff;--panel:#f1f3ef;--ink:#14201c;--ink-2:#3c463f;--ink-3:#6b746c;
+      --line:#e4e2da;--line-strong:#c7c4b8;--green:#123b30;--green-2:#2c5446;--green-link:#0f4c3c;--gold:#9a7017;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    .serif{font-family:'Newsreader',Georgia,serif;}
+    .wrap{max-width:1000px;margin:0 auto;padding:0 40px;}
+    .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-link);}
+    .byline{font-size:13px;color:var(--ink-3);font-weight:500;}
+    .hed{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.01em;color:var(--ink);line-height:1.15;}
+    .rule{border:0;border-top:1px solid var(--line);margin:0;}
+    .photo{background:var(--panel);border:1px solid var(--line);display:block;}
+    .chip{font-size:13px;font-weight:600;padding:7px 14px;border:1px solid var(--line-strong);color:var(--ink-2);cursor:pointer;}
+    .chip.on{background:var(--green);color:#fff;border-color:var(--green);}
+    mark{background:#faf0d4;color:var(--ink);padding:0 2px;}
+  </style>
+</helmet>
+<div style="width:1440px;min-height:1360px;background:var(--paper);">
+
+  <div style="background:var(--green);color:#eaf1ed;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:62px;">
+      <div class="serif" style="font-size:22px;font-weight:700;color:#fff;">Horizonte Económico</div>
+      <a style="margin-left:auto;font-size:13px;font-weight:600;color:var(--green);background:#e9c46a;padding:8px 15px;">Subscrever</a>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:44px;">
+    <!-- search field: sober, square, ink border -->
+    <div style="display:flex;align-items:center;gap:14px;border:1.5px solid var(--ink);padding:16px 20px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="serif" style="font-size:22px;">inflação</span>
+      <a style="margin-left:auto;font-size:14px;font-weight:600;color:#fff;background:var(--green);padding:11px 22px;">Pesquisar</a>
+    </div>
+
+    <div class="serif" style="font-size:24px;font-weight:600;margin:26px 0 14px;">48 resultados para <span style="color:var(--green-link);">“inflação”</span></div>
+    <div style="display:flex;gap:9px;flex-wrap:wrap;border-bottom:2px solid var(--green);padding-bottom:18px;margin-bottom:6px;"><span class="chip on">Tudo</span><span class="chip">Economia</span><span class="chip">Finanças pessoais</span><span class="chip">Mercados</span><span class="chip">Literacia</span></div>
+
+    <!-- results: ruled list, no cards -->
+    <div>
+      <div style="display:grid;grid-template-columns:1fr 200px;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);"><div><span class="kicker">Economia</span><h3 class="hed" style="font-size:25px;margin:8px 0 8px;">O que é a <mark>inflação</mark> e porque sobem os preços em Angola</h3><p class="serif" style="font-size:16px;line-height:1.6;color:var(--ink-2);margin:0 0 8px;">A <mark>inflação</mark> mede a subida generalizada dos preços. Explicamos as causas, do câmbio ao custo dos combustíveis, e o efeito no seu bolso.</p><div class="byline">Ana Cardoso · 20 Set 2026 · 6 min</div></div><div class="photo" style="height:120px;align-self:start;"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 200px;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);"><div><span class="kicker">Finanças pessoais</span><h3 class="hed" style="font-size:25px;margin:8px 0 8px;">Como proteger a poupança da <mark>inflação</mark></h3><p class="serif" style="font-size:16px;line-height:1.6;color:var(--ink-2);margin:0 0 8px;">Com a <mark>inflação</mark> a corroer o dinheiro parado, vale conhecer alternativas: depósitos a prazo, OT e outros instrumentos.</p><div class="byline">Marta Songo · 18 Set 2026 · 7 min</div></div><div class="photo" style="height:120px;align-self:start;"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 200px;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);"><div><span class="kicker">Política económica</span><h3 class="hed" style="font-size:25px;margin:8px 0 8px;">BNA mantém taxa directora para conter a <mark>inflação</mark></h3><p class="serif" style="font-size:16px;line-height:1.6;color:var(--ink-2);margin:0 0 8px;">O comité de política monetária optou pela cautela. Percebemos o raciocínio e o que esperar nos próximos meses.</p><div class="byline">João Muanza · 15 Set 2026 · 5 min</div></div><div class="photo" style="height:120px;align-self:start;"></div></div>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:8px;margin:30px 0 40px;"><span class="chip on">1</span><span class="chip">2</span><span class="chip">3</span><span class="chip">Seguinte ›</span></div>
+
+    <!-- empty state on panel band -->
+    <div style="background:var(--panel);border:1px solid var(--line);padding:40px;text-align:center;margin-bottom:56px;">
+      <div class="serif" style="font-size:24px;font-weight:600;">Estado “sem resultados”</div>
+      <p class="serif" style="font-size:16px;color:var(--ink-2);max-width:460px;margin:8px auto 16px;line-height:1.6;">Quando a pesquisa não devolve nada, mostramos uma mensagem clara e sugerimos explorar categorias populares.</p>
+      <div style="display:flex;gap:9px;justify-content:center;"><span class="chip" style="background:#fff;">Economia</span><span class="chip" style="background:#fff;">Mercados</span><span class="chip" style="background:#fff;">Literacia financeira</span></div>
+    </div>
+  </div>
+
+  <div style="background:var(--green);color:#8fb0a4;"><div style="max-width:1240px;margin:0 auto;padding:26px 40px;display:flex;justify-content:space-between;font-size:12px;"><span>© 2026 Horizonte Económico</span><span>Sobre · Política editorial · Privacidade · Termos</span></div></div>
+
+</div>
+</x-dc>
+</body>
+</html>

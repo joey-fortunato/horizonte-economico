@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+    :root{
+      --paper:#ffffff;--panel:#f1f3ef;--ink:#14201c;--ink-2:#3c463f;--ink-3:#6b746c;
+      --line:#e4e2da;--line-strong:#c7c4b8;--green:#123b30;--green-2:#2c5446;--green-link:#0f4c3c;--gold:#9a7017;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    .serif{font-family:'Newsreader',Georgia,serif;}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+    .byline{font-size:13px;color:var(--ink-3);font-weight:500;}
+    .prose h2{font-family:'Newsreader',serif;font-size:26px;font-weight:600;margin:36px 0 12px;}
+    .prose p{font-family:'Newsreader',serif;font-size:18px;line-height:1.72;color:#232d27;margin:0 0 18px;}
+    .prose li{font-family:'Newsreader',serif;font-size:18px;line-height:1.7;color:#232d27;margin-bottom:8px;}
+    .toc a{display:block;font-size:14px;color:var(--ink-2);padding:10px 0 10px 14px;border-left:2px solid var(--line);}
+    .toc a.on{color:var(--green-link);font-weight:600;border-color:var(--green);}
+  </style>
+</helmet>
+<div style="width:1440px;min-height:1520px;background:var(--paper);">
+
+  <div style="background:var(--green);color:#eaf1ed;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:62px;">
+      <div class="serif" style="font-size:22px;font-weight:700;color:#fff;">Horizonte Económico</div>
+      <a style="margin-left:auto;font-size:13px;font-weight:600;color:var(--green);background:#e9c46a;padding:8px 15px;">Subscrever</a>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:40px;">
+    <div class="byline">Início / Institucional</div>
+    <h1 class="serif" style="font-size:44px;font-weight:700;margin:12px 0 6px;">Política editorial</h1>
+    <p class="byline">Última actualização: 15 de Setembro de 2026 · 6 min de leitura</p>
+
+    <div style="display:grid;grid-template-columns:250px 1fr;gap:52px;margin-top:30px;padding-bottom:60px;">
+      <div style="position:sticky;top:20px;align-self:start;">
+        <div class="byline" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:12px;">Nesta página</div>
+        <div class="toc"><a class="on">Princípios editoriais</a><a>Factos, análise e opinião</a><a>Fontes e verificação</a><a>Correcções e actualizações</a><a>Conflitos de interesse</a><a>Contacto editorial</a></div>
+        <div style="background:var(--panel);border:1px solid var(--line);padding:16px;margin-top:24px;">
+          <div class="byline" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Documentos</div>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;"><a style="color:var(--green-link);font-weight:600;">Política editorial</a><a style="color:var(--ink-2);">Privacidade</a><a style="color:var(--ink-2);">Termos de utilização</a></div>
+        </div>
+      </div>
+
+      <!-- content, no card, just measured column -->
+      <div class="prose" style="max-width:680px;">
+        <p style="font-size:20px;color:var(--ink-2);">O Horizonte Económico rege-se por princípios de rigor, transparência e independência. Este documento descreve como produzimos, verificamos e corrigimos os nossos conteúdos.</p>
+        <h2>Princípios editoriais</h2>
+        <p>Comprometemo-nos a informar com exactidão e a contextualizar os acontecimentos económicos. O objectivo é ajudar o leitor a compreender causas e consequências, não apenas relatar factos isolados.</p>
+        <h2>Factos, análise e opinião</h2>
+        <p>Distinguimos claramente três tipos de conteúdo, sinalizados na etiqueta do artigo:</p>
+        <ul style="padding-left:22px;">
+          <li><b>Factos:</b> informação verificável, com fontes identificadas.</li>
+          <li><b>Análise:</b> interpretação dos factos por especialistas da redacção.</li>
+          <li><b>Opinião:</b> posição pessoal do autor, claramente assinada.</li>
+        </ul>
+        <h2>Correcções e actualizações</h2>
+        <p>Quando corrigimos um erro, mantemos o histórico editorial e apresentamos uma nota de correcção no fim do artigo, com data e natureza da alteração.</p>
+        <div style="font-family:'Inter';background:#faf3e2;border-left:3px solid var(--gold);padding:14px 18px;margin:8px 0 18px;"><div style="font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Nota de correcção — exemplo</div><p style="font-family:'Inter';margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-2);">Corrigido a 26 Set 2026: a versão inicial indicava 18% em vez de 19,7% para a inflação homóloga.</p></div>
+        <h2>Contacto editorial</h2>
+        <p>Para reportar um erro ou sugerir um tema, escreva para <b style="color:var(--green-link);">redacao@horizonteeconomico.com</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--green);color:#8fb0a4;"><div style="max-width:1240px;margin:0 auto;padding:26px 40px;display:flex;justify-content:space-between;font-size:12px;"><span>© 2026 Horizonte Económico</span><span>Sobre · Política editorial · Privacidade · Termos</span></div></div>
+
+</div>
+</x-dc>
+</body>
+</html>

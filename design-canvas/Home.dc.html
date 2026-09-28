@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+    :root{
+      --paper:#ffffff;--panel:#f1f3ef;--ink:#14201c;--ink-2:#3c463f;--ink-3:#6b746c;
+      --line:#e4e2da;--line-strong:#c7c4b8;--green:#123b30;--green-2:#2c5446;--green-link:#0f4c3c;--gold:#9a7017;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    .serif{font-family:'Newsreader',Georgia,serif;}
+    .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+    .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-link);}
+    .byline{font-size:13px;color:var(--ink-3);font-weight:500;}
+    .hed{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.01em;color:var(--ink);line-height:1.13;}
+    .rule{border:0;border-top:1px solid var(--line);margin:0;}
+    .photo{background:var(--panel);border:1px solid var(--line);display:block;}
+    .sec-label{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--green);padding-bottom:10px;margin-bottom:24px;}
+    .sec-label h2{font-family:'Newsreader',serif;font-size:23px;font-weight:600;margin:0;}
+    .sec-label .more{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green-link);}
+  </style>
+</helmet>
+<div style="width:1440px;min-height:3860px;background:var(--paper);">
+
+  <!-- ===== INSTITUTIONAL HEADER (dark green) ===== -->
+  <div style="background:var(--green);color:#eaf1ed;">
+    <!-- market strip -->
+    <div style="border-bottom:1px solid var(--green-2);">
+      <div class="wrap" style="display:flex;align-items:center;height:38px;font-size:12px;">
+        <span style="color:#9db8ad;letter-spacing:.02em;">Segunda-feira, 28 de Setembro de 2026</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:24px;font-variant-numeric:tabular-nums;color:#9db8ad;">
+          <span>USD/AOA <b style="color:#fff;font-weight:600;">912,4</b> <span style="color:#7fd0a8;">+0,3%</span></span>
+          <span>Inflação <b style="color:#fff;font-weight:600;">19,7%</b> <span style="color:#e6a5a5;">−0,4</span></span>
+          <span>Brent <b style="color:#fff;font-weight:600;">78,1</b> <span style="color:#7fd0a8;">+1,1%</span></span>
+          <span>BODIVA <b style="color:#fff;font-weight:600;">1 284</b> <span style="color:#7fd0a8;">+0,6%</span></span>
+        </div>
+      </div>
+    </div>
+    <!-- masthead -->
+    <div class="wrap" style="padding-top:24px;padding-bottom:20px;display:flex;align-items:center;">
+      <div style="width:190px;font-size:12px;color:#9db8ad;">Edição de Luanda</div>
+      <div style="flex:1;text-align:center;">
+        <div class="serif" style="font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1;color:#fff;">Horizonte Económico</div>
+        <div style="font-size:11px;color:#8fb0a4;letter-spacing:.34em;text-transform:uppercase;margin-top:8px;">Economia · Análise · Literacia financeira</div>
+      </div>
+      <div style="width:190px;display:flex;justify-content:flex-end;align-items:center;gap:16px;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#eaf1ed" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <a style="font-size:13px;font-weight:600;color:var(--green);background:#e9c46a;padding:9px 16px;">Subscrever</a>
+      </div>
+    </div>
+    <!-- nav -->
+    <div style="border-top:1px solid var(--green-2);">
+      <div class="wrap" style="display:flex;align-items:stretch;gap:28px;height:46px;font-size:13.5px;font-weight:600;">
+        <a style="display:flex;align-items:center;height:100%;color:#fff;box-shadow:inset 0 -2px 0 #e9c46a;">Economia</a>
+        <a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Finanças pessoais</a>
+        <a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Banca &amp; seguros</a>
+        <a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Empresas</a>
+        <a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Mercados</a>
+        <a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Política económica</a>
+        <a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Literacia financeira</a>
+        <a style="display:flex;align-items:center;height:100%;margin-left:auto;color:#8fb0a4;">Opinião</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEAD (white) ===== -->
+  <div class="wrap" style="padding-top:36px;">
+    <div style="display:grid;grid-template-columns:1fr 1px 384px;gap:38px;">
+      <div>
+        <div style="display:inline-block;border-bottom:2px solid var(--gold);padding-bottom:3px;margin-bottom:16px;"><span class="kicker">Política económica</span></div>
+        <h1 class="hed" style="font-size:54px;line-height:1.04;margin:0 0 18px;">OGE 2027: onde vai o dinheiro do Estado e o que muda para as famílias</h1>
+        <p class="serif" style="font-size:22px;line-height:1.5;color:var(--ink-2);margin:0 0 20px;max-width:680px;">Uma leitura das prioridades orçamentais, do peso da dívida e das medidas com impacto directo no rendimento disponível e no custo de vida.</p>
+        <div class="byline" style="margin-bottom:22px;display:flex;align-items:center;gap:10px;">Por <b style="color:var(--ink);font-weight:600;">João Muanza</b>, Editor de Economia · 8 min de leitura <span style="color:var(--line-strong);">·</span> <span style="display:inline-flex;align-items:center;gap:5px;color:var(--gold);font-weight:600;"><span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;"></span>Actualizado há 12 min</span></div>
+        <div class="photo" style="height:404px;position:relative;">
+          <div style="position:absolute;left:12px;bottom:12px;font-size:11px;color:var(--ink-3);">Ministério das Finanças, Luanda · Arquivo HE</div>
+        </div>
+      </div>
+      <div style="background:var(--line);"></div>
+      <div style="display:flex;flex-direction:column;">
+        <div style="padding-bottom:20px;">
+          <span class="kicker">Mercados</span>
+          <h2 class="hed" style="font-size:25px;margin:9px 0 8px;">Kwanza recupera face ao dólar após leilão cambial do BNA</h2>
+          <p class="serif" style="font-size:16px;line-height:1.5;color:var(--ink-2);margin:0 0 8px;">A taxa oficial aproxima-se do câmbio informal pela primeira vez em meses.</p>
+          <div class="byline">Ana Cardoso · há 1 h</div>
+        </div>
+        <hr class="rule">
+        <div style="padding:20px 0;"><span class="kicker">Banca &amp; seguros</span><h2 class="hed" style="font-size:25px;margin:9px 0 8px;">Novas regras de crédito: o que muda ao pedir financiamento</h2><div class="byline">Pedro Lemos · há 3 h</div></div>
+        <hr class="rule">
+        <div style="padding:20px 0;"><span class="kicker">Finanças pessoais</span><h2 class="hed" style="font-size:25px;margin:9px 0 8px;">Como montar um fundo de emergência com salário em kwanzas</h2><div class="byline">Marta Songo · há 5 h</div></div>
+      </div>
+    </div>
+    <hr class="rule" style="margin-top:44px;">
+  </div>
+
+  <!-- ===== LATEST (white, image-led river) ===== -->
+  <div class="wrap" style="padding-top:44px;">
+    <div style="display:grid;grid-template-columns:1fr 384px;gap:56px;">
+      <div>
+        <div class="sec-label"><h2>Últimas publicações</h2><a class="more">Ver todas</a></div>
+        <div style="display:grid;grid-template-columns:1fr 240px;gap:26px;padding-bottom:26px;">
+          <div><span class="kicker">Empresas</span><h3 class="hed" style="font-size:29px;margin:8px 0 10px;">Startups angolanas captam ronda recorde em 2026</h3><p class="serif" style="font-size:17px;line-height:1.55;color:var(--ink-2);margin:0 0 10px;">O ecossistema tecnológico atrai investidores regionais com foco em fintech e logística, num ano de recuperação do investimento privado.</p><div class="byline">Bruno Kiala · 24 Set · 5 min</div></div>
+          <div class="photo" style="height:158px;align-self:start;"></div>
+        </div>
+        <hr class="rule">
+        <div style="display:grid;grid-template-columns:1fr 240px;gap:26px;padding:26px 0;">
+          <div><span class="kicker">Economia</span><h3 class="hed" style="font-size:29px;margin:8px 0 10px;">PIB não-petrolífero cresce acima do esperado no 3.º trimestre</h3><p class="serif" style="font-size:17px;line-height:1.55;color:var(--ink-2);margin:0 0 10px;">Agricultura e serviços puxam a actividade económica e reduzem a dependência do crude.</p><div class="byline">Ana Cardoso · 23 Set · 6 min</div></div>
+          <div class="photo" style="height:158px;align-self:start;"></div>
+        </div>
+        <hr class="rule">
+        <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:28px;padding:26px 0 0;">
+          <div><span class="kicker">Banca &amp; seguros</span><h3 class="hed" style="font-size:21px;margin:8px 0 8px;">Seguro automóvel: guia para escolher a cobertura certa</h3><div class="byline">Pedro Lemos · 22 Set</div></div>
+          <div style="background:var(--line);"></div>
+          <div><span class="kicker">Literacia financeira</span><h3 class="hed" style="font-size:21px;margin:8px 0 8px;">Juros compostos explicados com exemplos do dia a dia</h3><div class="byline">Marta Songo · 21 Set</div></div>
+        </div>
+      </div>
+
+      <!-- RAIL: most read -->
+      <div>
+        <div class="sec-label"><h2>Mais lidos</h2></div>
+        <div style="display:grid;grid-template-columns:34px 1fr;gap:14px;padding-bottom:16px;"><div class="serif" style="font-size:30px;font-weight:600;color:var(--gold);line-height:1;">1</div><div><h3 class="hed" style="font-size:18px;line-height:1.28;margin:0 0 4px;">Salário mínimo em 2027: o que se sabe até agora</h3><div class="byline" style="font-size:12px;">Economia</div></div></div>
+        <hr class="rule">
+        <div style="display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0;"><div class="serif" style="font-size:30px;font-weight:600;color:var(--gold);line-height:1;">2</div><div><h3 class="hed" style="font-size:18px;line-height:1.28;margin:0 0 4px;">Como declarar IRT sem erros — passo a passo</h3><div class="byline" style="font-size:12px;">Literacia financeira</div></div></div>
+        <hr class="rule">
+        <div style="display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0;"><div class="serif" style="font-size:30px;font-weight:600;color:var(--gold);line-height:1;">3</div><div><h3 class="hed" style="font-size:18px;line-height:1.28;margin:0 0 4px;">Depósitos a prazo: onde rende mais o kwanza</h3><div class="byline" style="font-size:12px;">Banca &amp; seguros</div></div></div>
+        <hr class="rule">
+        <div style="display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0;"><div class="serif" style="font-size:30px;font-weight:600;color:var(--gold);line-height:1;">4</div><div><h3 class="hed" style="font-size:18px;line-height:1.28;margin:0 0 4px;">Câmbio informal vs. oficial: porquê a diferença</h3><div class="byline" style="font-size:12px;">Mercados</div></div></div>
+        <hr class="rule">
+        <div style="display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0 0;"><div class="serif" style="font-size:30px;font-weight:600;color:var(--gold);line-height:1;">5</div><div><h3 class="hed" style="font-size:18px;line-height:1.28;margin:0 0 4px;">Abrir empresa em Angola: custos e prazos reais</h3><div class="byline" style="font-size:12px;">Empresas</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ANÁLISE & OPINIÃO (panel band #F1F3EF, distinct component) ===== -->
+  <div style="background:var(--panel);margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap" style="padding-top:44px;padding-bottom:48px;">
+      <div class="sec-label" style="border-color:var(--green);"><h2>Análise &amp; Opinião</h2></div>
+      <div style="display:grid;grid-template-columns:1.5fr 1px 1fr;gap:44px;">
+        <!-- lead opinion: quote-led, no image -->
+        <div>
+          <div style="display:flex;gap:18px;align-items:center;margin-bottom:16px;"><div class="photo" style="width:56px;height:56px;border-radius:50%;flex-shrink:0;"></div><div><div style="font-weight:700;font-size:14px;">João Muanza</div><div class="byline">Editor de Economia</div></div></div>
+          <h3 class="hed" style="font-size:34px;font-style:italic;font-weight:500;line-height:1.15;margin:0 0 14px;">A dívida não é o problema de Angola. A execução orçamental é.</h3>
+          <p class="serif" style="font-size:18px;line-height:1.6;color:var(--ink-2);margin:0;max-width:560px;">Todos os anos o debate fixa-se no rácio da dívida. Mas o que trava o país é a incapacidade de transformar orçamento aprovado em investimento realizado — e isso raramente aparece nos números do costume.</p>
+        </div>
+        <div style="background:var(--line-strong);"></div>
+        <!-- opinion list -->
+        <div style="display:flex;flex-direction:column;">
+          <div style="padding-bottom:18px;"><span class="kicker" style="color:var(--gold);">Coluna</span><h4 class="hed" style="font-size:19px;font-style:italic;font-weight:500;margin:7px 0 6px;">O kwanza forte é uma bênção envenenada?</h4><div class="byline">Ana Cardoso</div></div>
+          <hr style="border:0;border-top:1px solid var(--line-strong);margin:0;">
+          <div style="padding:18px 0;"><span class="kicker" style="color:var(--gold);">Análise</span><h4 class="hed" style="font-size:19px;font-style:italic;font-weight:500;margin:7px 0 6px;">Porque a inflação teima em não descer aos dois dígitos</h4><div class="byline">Pedro Lemos</div></div>
+          <hr style="border:0;border-top:1px solid var(--line-strong);margin:0;">
+          <div style="padding-top:18px;"><span class="kicker" style="color:var(--gold);">Convidado</span><h4 class="hed" style="font-size:19px;font-style:italic;font-weight:500;margin:7px 0 6px;">O que falta para a banca financiar as PME</h4><div class="byline">Economista convidado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NEWSLETTER (dark green institutional band) ===== -->
+  <div style="background:var(--green);color:#eaf1ed;">
+    <div class="wrap" style="padding-top:44px;padding-bottom:44px;display:flex;align-items:center;gap:48px;">
+      <div style="flex:1;">
+        <div class="serif" style="font-size:30px;font-weight:600;color:#fff;line-height:1.1;">A economia, explicada — todas as sextas.</div>
+        <p style="font-size:14px;line-height:1.6;color:#9db8ad;margin:10px 0 0;max-width:520px;">A análise da semana, sem jargão, no seu email. Grátis e sem spam.</p>
+      </div>
+      <div style="display:flex;gap:10px;width:440px;">
+        <div style="flex:1;background:#fff;padding:14px 16px;color:var(--ink-3);font-size:14px;">o.seu@email.co.ao</div>
+        <a style="background:#e9c46a;color:var(--green);padding:14px 22px;font-size:14px;font-weight:700;white-space:nowrap;">Subscrever</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECÇÕES (white, ruled directory) ===== -->
+  <div class="wrap" style="padding-top:56px;">
+    <div class="sec-label"><h2>Secções</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);">
+      <a style="padding:20px 24px 20px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line);"><div class="hed" style="font-size:20px;">Economia</div><div class="byline" style="margin-top:4px;">Indicadores e crescimento · 210</div></a>
+      <a style="padding:20px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);"><div class="hed" style="font-size:20px;">Finanças pessoais</div><div class="byline" style="margin-top:4px;">Poupança e crédito · 168</div></a>
+      <a style="padding:20px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);"><div class="hed" style="font-size:20px;">Banca &amp; seguros</div><div class="byline" style="margin-top:4px;">Produtos e regulação · 124</div></a>
+      <a style="padding:20px 0 20px 24px;border-bottom:1px solid var(--line);"><div class="hed" style="font-size:20px;">Empresas</div><div class="byline" style="margin-top:4px;">Negócios e investimento · 97</div></a>
+      <a style="padding:20px 24px 20px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line);"><div class="hed" style="font-size:20px;">Mercados</div><div class="byline" style="margin-top:4px;">Câmbio e matérias-primas · 142</div></a>
+      <a style="padding:20px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);"><div class="hed" style="font-size:20px;">Política económica</div><div class="byline" style="margin-top:4px;">OGE e fiscalidade · 88</div></a>
+      <a style="padding:20px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);"><div class="hed" style="font-size:20px;">Literacia financeira</div><div class="byline" style="margin-top:4px;">Guias e explicações · 56</div></a>
+      <a style="padding:20px 0 20px 24px;border-bottom:1px solid var(--line);"><div class="hed" style="font-size:20px;color:var(--green-link);">Ver todas →</div><div class="byline" style="margin-top:4px;">7 categorias</div></a>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER (dark green institutional) ===== -->
+  <div style="background:var(--green);color:#b7c9c0;margin-top:64px;">
+    <div class="wrap" style="padding-top:52px;padding-bottom:34px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:44px;">
+      <div>
+        <div class="serif" style="font-size:22px;font-weight:700;color:#fff;">Horizonte Económico</div>
+        <p style="font-size:13.5px;line-height:1.75;max-width:320px;color:#8fb0a4;margin:12px 0 0;">Informação e análise económica para decisões mais informadas. Compreender a economia para viver melhor.</p>
+      </div>
+      <div><div style="color:#fff;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;">Secções</div><div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;"><a>Economia</a><a>Finanças pessoais</a><a>Mercados</a><a>Empresas</a></div></div>
+      <div><div style="color:#fff;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;">Institucional</div><div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;"><a>Sobre nós</a><a>Política editorial</a><a>Privacidade</a><a>Termos</a></div></div>
+      <div><div style="color:#fff;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;">Seguir</div><div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;"><a>Newsletter</a><a>LinkedIn</a><a>Facebook</a><a>X (Twitter)</a></div></div>
+    </div>
+    <div style="border-top:1px solid var(--green-2);"><div class="wrap" style="padding-top:18px;padding-bottom:18px;display:flex;justify-content:space-between;font-size:12px;color:#6f887d;"><span>© 2026 Horizonte Económico. Todos os direitos reservados.</span><span>Luanda · Angola</span></div></div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
