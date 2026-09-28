@@ -5,6 +5,37 @@
 @section('title', ($article->seo_title ?: $article->title).' — Horizonte Económico')
 @section('meta_description', $article->seo_description ?: $article->excerpt)
 @section('og_type', 'article')
+@section('canonical', route('artigo', $article->slug))
+@section('og_image', $article->cover?->url() ?? url('/imagem-partilha-1200x630.png'))
+
+@push('head')
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'NewsArticle',
+        'headline' => $article->title,
+        'description' => $article->excerpt,
+        'datePublished' => $article->published_at?->toAtomString(),
+        'dateModified' => $article->updated_at?->toAtomString(),
+        'articleSection' => $sec?->name,
+        'image' => [$article->cover?->url() ?? url('/imagem-partilha-1200x630.png')],
+        'mainEntityOfPage' => route('artigo', $article->slug),
+        'author' => ['@type' => 'Person', 'name' => $article->author->name, 'url' => route('autor', $article->author->slug)],
+        'publisher' => ['@type' => 'Organization', 'name' => 'Horizonte Económico', 'logo' => ['@type' => 'ImageObject', 'url' => url('/brand/he-horizontal-cor.svg')]],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => array_values(array_filter([
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Início', 'item' => url('/')],
+            $sec ? ['@type' => 'ListItem', 'position' => 2, 'name' => $sec->name, 'item' => route('categoria', $sec->slug)] : null,
+            ['@type' => 'ListItem', 'position' => $sec ? 3 : 2, 'name' => $article->title, 'item' => route('artigo', $article->slug)],
+        ])),
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endpush
 
 @section('content')
     {{-- ===== Barra de contexto + ferramentas de leitura (fixa ao rolar) ===== --}}

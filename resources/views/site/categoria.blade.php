@@ -4,6 +4,7 @@
 
 @section('title', $category->name.' — Horizonte Económico')
 @section('meta_description', $category->name.': '.$category->description.'. Notícias e análise do Horizonte Económico.')
+@section('canonical', route('categoria', $category->slug))
 
 @section('content')
     {{-- ===== Masthead da categoria ===== --}}

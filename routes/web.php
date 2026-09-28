@@ -5,7 +5,12 @@ use App\Http\Controllers\Site\AuthorController;
 use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\SearchController;
+use App\Http\Controllers\Site\SitemapController;
 use Illuminate\Support\Facades\Route;
+
+// SEO técnico
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 // Site editorial público (Blade, SSR)
 Route::get('/', [HomeController::class, 'index'])->name('home');

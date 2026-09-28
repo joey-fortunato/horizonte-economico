@@ -5,9 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Horizonte Económico')</title>
     <meta name="description" content="@yield('meta_description', 'Informação e análise económica para decisões mais informadas. Compreender a economia para viver melhor.')">
-    @hasSection('canonical')
-        <link rel="canonical" href="@yield('canonical')">
-    @endif
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
+    <meta name="author" content="Horizonte Económico">
+    <meta property="og:locale" content="pt_AO">
+    <meta name="twitter:site" content="@HorizonteEcon">
+    <link rel="alternate" type="application/rss+xml" title="Horizonte Económico" href="{{ url('sitemap.xml') }}">
+    <meta name="sitemap" content="{{ url('sitemap.xml') }}">
+    {{-- Dados estruturados base: a organização/publicação --}}
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'NewsMediaOrganization',
+        'name' => 'Horizonte Económico',
+        'url' => url('/'),
+        'logo' => url('/brand/he-horizontal-cor.svg'),
+        'sameAs' => ['https://www.linkedin.com', 'https://www.facebook.com', 'https://x.com'],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
     {{-- Ícones / manifest (kit de marca) --}}
     <link rel="icon" href="/favicon.ico" sizes="48x48">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

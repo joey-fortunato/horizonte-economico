@@ -13,6 +13,7 @@
 
 @section('title', ($term !== '' ? 'Pesquisa: '.$term : 'Pesquisa').' — Horizonte Económico')
 @section('meta_description', 'Pesquise artigos, análises e explicações económicas no Horizonte Económico.')
+@section('robots', 'noindex, follow')
 
 @section('content')
     <section class="mx-auto w-full max-w-[1000px] px-10 pt-11">
