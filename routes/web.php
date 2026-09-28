@@ -14,6 +14,21 @@ Route::get('/categoria/{slug}', function (string $slug) {
     return view('site.categoria', ['slug' => $slug, 'activeSection' => $slug]);
 })->name('categoria');
 
+Route::get('/pesquisa', fn () => view('site.pesquisa', ['q' => request('q', '')]))->name('pesquisa');
+
+Route::get('/autor/{slug}', fn (string $slug) => view('site.autor', ['slug' => $slug]))->name('autor');
+
+Route::view('/sobre', 'site.sobre')->name('sobre');
+Route::view('/contactos', 'site.contactos')->name('contactos');
+
+// Páginas institucionais (política editorial, privacidade, termos)
+Route::get('/{page}', function (string $page) {
+    $pages = ['politica-editorial', 'privacidade', 'termos'];
+    abort_unless(in_array($page, $pages, true), 404);
+
+    return view('site.institucional', ['page' => $page]);
+})->whereIn('page', ['politica-editorial', 'privacidade', 'termos'])->name('pagina');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 });
