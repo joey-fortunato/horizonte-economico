@@ -18,15 +18,24 @@
 @endphp
 
 <header class="bg-green text-[#eaf1ed]">
-    {{-- Faixa de mercados --}}
+    {{-- Faixa de mercados — data fixa + ticker deslizante confinado à secção --}}
     <div class="border-b border-green-2">
-        <div class="u-wrap flex h-[38px] items-center text-[12px]">
-            <span class="text-[#9db8ad] tracking-[0.02em]">{{ \Carbon\Carbon::now()->translatedFormat('l, j \d\e F \d\e Y') }} · Luanda</span>
-            <div class="ml-auto flex items-center gap-6 tabular-nums text-[#9db8ad]">
-                @foreach ($markets as [$label, $value, $delta, $up])
-                    <span>{{ $label }} <b class="font-semibold text-white">{{ $value }}</b>
-                        <span class="{{ $up ? 'text-[#7fd0a8]' : 'text-[#e6a5a5]' }}">{{ $delta }}</span></span>
-                @endforeach
+        <div class="u-wrap flex h-[38px] items-center gap-6 text-[12px]">
+            <span class="shrink-0 tracking-[0.02em] text-[#9db8ad]">{{ \Carbon\Carbon::now()->translatedFormat('l, j \d\e F \d\e Y') }} · Luanda</span>
+            <span class="shrink-0 border-l border-green-2 pl-6 text-[11px] font-bold uppercase tracking-[0.1em] text-[#8fb0a4]">Mercados</span>
+            {{-- máscara: overflow-hidden garante que o slide não ultrapassa a secção --}}
+            <div class="he-ticker-mask ml-auto flex-1">
+                <div class="he-ticker tabular-nums text-[#9db8ad]">
+                    {{-- duas cópias idênticas → translateX(-50%) faz loop sem cortes --}}
+                    @for ($copy = 0; $copy < 2; $copy++)
+                        <div class="flex items-center gap-8 pr-8" @if ($copy === 1) aria-hidden="true" @endif>
+                            @foreach ($markets as [$label, $value, $delta, $up])
+                                <span>{{ $label }} <b class="font-semibold text-white">{{ $value }}</b>
+                                    <span class="{{ $up ? 'text-[#7fd0a8]' : 'text-[#e6a5a5]' }}">{{ $delta }}</span></span>
+                            @endforeach
+                        </div>
+                    @endfor
+                </div>
             </div>
         </div>
     </div>

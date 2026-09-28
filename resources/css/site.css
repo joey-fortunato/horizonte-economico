@@ -31,6 +31,35 @@
     }
 }
 
+/* Ticker de mercados — desliza confinado à secção (contentor com overflow:hidden) */
+@keyframes he-ticker {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+.he-ticker-mask {
+    overflow: hidden;
+    min-width: 0; /* permite encolher dentro do flex e clipar */
+}
+.he-ticker {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    will-change: transform;
+    animation: he-ticker 45s linear infinite;
+}
+.he-ticker-mask:hover .he-ticker {
+    animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+    .he-ticker {
+        animation: none;
+    }
+}
+
 @layer components {
     .u-wrap {
         @apply mx-auto w-full max-w-[1240px] px-10;
