@@ -25,7 +25,8 @@ Route::get('/{page}', function (string $page) {
     return view('site.institucional', ['page' => $page]);
 })->whereIn('page', ['politica-editorial', 'privacidade', 'termos'])->name('pagina');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+// Backoffice editorial (acesso restrito por perfil)
+Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 });
 

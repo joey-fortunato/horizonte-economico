@@ -24,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+
+        \Illuminate\Support\Facades\Gate::define(
+            'access-backoffice',
+            fn (\App\Models\User $user): bool => $user->canAccessBackoffice(),
+        );
     }
 
     /**

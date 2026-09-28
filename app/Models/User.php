@@ -39,6 +39,37 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         return $this->hasMany(Article::class, 'author_id');
     }
 
+    public function role(): ?\App\Enums\UserRole
+    {
+        return \App\Enums\UserRole::tryFrom((string) $this->getAttribute('role'));
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role() === \App\Enums\UserRole::Administrator;
+    }
+
+    public function isEditor(): bool
+    {
+        return $this->role() === \App\Enums\UserRole::Editor;
+    }
+
+    public function isAuthor(): bool
+    {
+        return $this->role() === \App\Enums\UserRole::Author;
+    }
+
+    /** Admin e editor podem publicar/rever. */
+    public function canPublish(): bool
+    {
+        return $this->isAdmin() || $this->isEditor();
+    }
+
+    public function canAccessBackoffice(): bool
+    {
+        return in_array($this->role(), \App\Enums\UserRole::backoffice(), true);
+    }
+
     public function avatar(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Media::class, 'avatar_media_id');
