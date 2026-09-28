@@ -31,7 +31,8 @@
 @section('og_type', 'article')
 
 @section('content')
-    {{-- ===== Barra de contexto + ferramentas de leitura ===== --}}
+    {{-- ===== Barra de contexto + ferramentas de leitura (fixa ao rolar) ===== --}}
+    <div class="sticky top-0 z-50">
     <div class="text-[#cfe0d8]" style="background:#0e3228;">
         <div class="u-wrap flex h-11 items-center text-[13px]">
             <a href="{{ url('categoria/'.$article['section']) }}" class="flex items-center gap-2 font-semibold text-white">
@@ -49,6 +50,7 @@
     </div>
     {{-- progresso de leitura --}}
     <div class="h-[3px] bg-line"><div class="h-full w-[38%] bg-gold"></div></div>
+    </div>{{-- /sticky ferramentas --}}
 
     {{-- ===== Cabeçalho do artigo ===== --}}
     <div class="u-wrap pt-9">

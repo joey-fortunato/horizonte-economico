@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Route;
 // Site editorial público (Blade, SSR)
 Route::view('/', 'site.home')->name('home');
 
-Route::view('/artigo/{slug}', 'site.artigo', ['activeSection' => 'politica-economica'])
-    ->name('artigo');
+// No artigo o header não é fixo — apenas a barra de ferramentas de leitura fica sticky
+Route::view('/artigo/{slug}', 'site.artigo', [
+    'activeSection' => 'politica-economica',
+    'stickyHeader' => false,
+])->name('artigo');
 
 Route::get('/categoria/{slug}', function (string $slug) {
     abort_unless(config()->has('sections.'.$slug), 404);

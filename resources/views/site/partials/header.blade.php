@@ -17,7 +17,7 @@
     ];
 @endphp
 
-<header class="bg-green text-[#eaf1ed]">
+<header class="bg-green text-[#eaf1ed] {{ ($stickyHeader ?? true) ? 'sticky top-0 z-50' : '' }}">
     {{-- Faixa de mercados — data fixa + ticker deslizante confinado à secção --}}
     <div class="border-b border-green-2">
         <div class="u-wrap flex h-[38px] items-center gap-6 text-[12px]">
