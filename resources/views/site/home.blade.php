@@ -5,7 +5,7 @@
 
 @php
     $lead = [
-        'kicker' => 'Política económica',
+        'section' => 'politica-economica',
         'title' => 'OGE 2027: onde vai o dinheiro do Estado e o que muda para as famílias',
         'standfirst' => 'Uma leitura das prioridades orçamentais, do peso da dívida e das medidas com impacto directo no rendimento disponível e no custo de vida.',
         'author' => 'João Muanza',
@@ -15,38 +15,30 @@
         'caption' => 'Ministério das Finanças, Luanda · Arquivo HE',
     ];
     $secondary = [
-        ['kicker' => 'Mercados', 'title' => 'Kwanza recupera face ao dólar após leilão cambial do BNA', 'standfirst' => 'A taxa oficial aproxima-se do câmbio informal pela primeira vez em meses.', 'byline' => 'Ana Cardoso · há 1 h'],
-        ['kicker' => 'Banca & seguros', 'title' => 'Novas regras de crédito: o que muda ao pedir financiamento', 'byline' => 'Pedro Lemos · há 3 h'],
-        ['kicker' => 'Finanças pessoais', 'title' => 'Como montar um fundo de emergência com salário em kwanzas', 'byline' => 'Marta Songo · há 5 h'],
+        ['section' => 'mercados', 'title' => 'Kwanza recupera face ao dólar após leilão cambial do BNA', 'byline' => 'Ana Cardoso · há 1 h'],
+        ['section' => 'banca-seguros', 'title' => 'Novas regras de crédito: o que muda ao pedir financiamento', 'byline' => 'Pedro Lemos · há 3 h'],
+        ['section' => 'financas-pessoais', 'title' => 'Como montar um fundo de emergência com salário em kwanzas', 'byline' => 'Marta Songo · há 5 h'],
     ];
     $latestLead = [
-        ['kicker' => 'Empresas', 'title' => 'Startups angolanas captam ronda recorde em 2026', 'standfirst' => 'O ecossistema tecnológico atrai investidores regionais com foco em fintech e logística, num ano de recuperação do investimento privado.', 'byline' => 'Bruno Kiala · 24 Set · 5 min'],
-        ['kicker' => 'Economia', 'title' => 'PIB não-petrolífero cresce acima do esperado no 3.º trimestre', 'standfirst' => 'Agricultura e serviços puxam a actividade económica e reduzem a dependência do crude.', 'byline' => 'Ana Cardoso · 23 Set · 6 min'],
+        ['section' => 'empresas', 'title' => 'Startups angolanas captam ronda recorde em 2026', 'standfirst' => 'O ecossistema tecnológico atrai investidores regionais com foco em fintech e logística, num ano de recuperação do investimento privado.', 'byline' => 'Bruno Kiala · 24 Set · 5 min'],
+        ['section' => 'economia', 'title' => 'PIB não-petrolífero cresce acima do esperado no 3.º trimestre', 'standfirst' => 'Agricultura e serviços puxam a actividade económica e reduzem a dependência do crude.', 'byline' => 'Ana Cardoso · 23 Set · 6 min'],
     ];
-    $latestPair = [
-        ['kicker' => 'Banca & seguros', 'title' => 'Seguro automóvel: guia para escolher a cobertura certa', 'byline' => 'Pedro Lemos · 22 Set'],
-        ['kicker' => 'Literacia financeira', 'title' => 'Juros compostos explicados com exemplos do dia a dia', 'byline' => 'Marta Songo · 21 Set'],
+    $latestGrid = [
+        ['section' => 'banca-seguros', 'title' => 'Seguro automóvel: guia para escolher a cobertura certa', 'byline' => 'Pedro Lemos · 22 Set'],
+        ['section' => 'literacia-financeira', 'title' => 'Juros compostos explicados com exemplos do dia a dia', 'byline' => 'Marta Songo · 21 Set'],
+        ['section' => 'mercados', 'title' => 'Procura por Obrigações do Tesouro sobe no leilão', 'byline' => 'João Muanza · 20 Set'],
     ];
     $mostRead = [
-        ['Salário mínimo em 2027: o que se sabe até agora', 'Economia'],
-        ['Como declarar IRT sem erros — passo a passo', 'Literacia financeira'],
-        ['Depósitos a prazo: onde rende mais o kwanza', 'Banca & seguros'],
-        ['Câmbio informal vs. oficial: porquê a diferença', 'Mercados'],
-        ['Abrir empresa em Angola: custos e prazos reais', 'Empresas'],
+        ['Salário mínimo em 2027: o que se sabe até agora', 'economia'],
+        ['Como declarar IRT sem erros — passo a passo', 'literacia-financeira'],
+        ['Depósitos a prazo: onde rende mais o kwanza', 'banca-seguros'],
+        ['Câmbio informal vs. oficial: porquê a diferença', 'mercados'],
+        ['Abrir empresa em Angola: custos e prazos reais', 'empresas'],
     ];
     $opinionList = [
         ['Coluna', 'O kwanza forte é uma bênção envenenada?', 'Ana Cardoso'],
         ['Análise', 'Porque a inflação teima em não descer aos dois dígitos', 'Pedro Lemos'],
         ['Convidado', 'O que falta para a banca financiar as PME', 'Economista convidado'],
-    ];
-    $directory = [
-        ['Economia', 'Indicadores e crescimento · 210'],
-        ['Finanças pessoais', 'Poupança e crédito · 168'],
-        ['Banca & seguros', 'Produtos e regulação · 124'],
-        ['Empresas', 'Negócios e investimento · 97'],
-        ['Mercados', 'Câmbio e matérias-primas · 142'],
-        ['Política económica', 'OGE e fiscalidade · 88'],
-        ['Literacia financeira', 'Guias e explicações · 56'],
     ];
 @endphp
 
@@ -56,36 +48,32 @@
         <div class="grid grid-cols-[1fr_1px_384px] gap-[38px]">
             {{-- Manchete --}}
             <article>
-                <span class="mb-4 inline-block border-b-2 border-gold pb-[3px]"><span class="u-kicker">{{ $lead['kicker'] }}</span></span>
+                <div class="mb-4"><x-site.category :slug="$lead['section']" variant="lead" /></div>
                 <h1 class="u-hed mb-[18px] text-[54px] leading-[1.04]">
                     <a href="{{ url('artigo/oge-2027') }}">{{ $lead['title'] }}</a>
                 </h1>
                 <p class="u-serif mb-5 max-w-[680px] text-[22px] leading-[1.5] text-ink-2">{{ $lead['standfirst'] }}</p>
-                <div class="u-byline mb-[22px] flex items-center gap-[10px]">
+                <div class="u-byline mb-5 flex items-center gap-[10px]">
                     Por <b class="font-semibold text-ink">{{ $lead['author'] }}</b>, {{ $lead['role'] }} · {{ $lead['read'] }}
                     <span class="text-line-strong">·</span>
                     <span class="flex items-center gap-[5px] font-semibold text-gold">
                         <span class="inline-block h-[6px] w-[6px] rounded-full bg-gold"></span>{{ $lead['updated'] }}
                     </span>
                 </div>
-                <div class="u-photo relative h-[404px]">
-                    <span class="absolute bottom-3 left-3 text-[11px] text-ink-3">{{ $lead['caption'] }}</span>
-                </div>
+                <x-site.thumb ratio="3/2" :caption="$lead['caption']" />
             </article>
 
             {{-- Fio vertical --}}
             <div class="bg-line"></div>
 
-            {{-- Secundárias --}}
+            {{-- Secundárias (com thumbnail 16:9) --}}
             <div class="flex flex-col">
                 @foreach ($secondary as $i => $s)
                     @if ($i > 0)<hr class="u-rule">@endif
                     <article class="{{ $i === 0 ? 'pb-5' : 'py-5' }}">
-                        <span class="u-kicker">{{ $s['kicker'] }}</span>
-                        <h2 class="u-hed my-2 text-[25px]"><a href="#">{{ $s['title'] }}</a></h2>
-                        @isset($s['standfirst'])
-                            <p class="u-serif mb-2 text-[16px] leading-[1.5] text-ink-2">{{ $s['standfirst'] }}</p>
-                        @endisset
+                        <x-site.thumb ratio="16/9" class="mb-3" />
+                        <x-site.category :slug="$s['section']" />
+                        <h2 class="u-hed my-2 text-[22px]"><a href="#">{{ $s['title'] }}</a></h2>
                         <div class="u-byline">{{ $s['byline'] }}</div>
                     </article>
                 @endforeach
@@ -103,46 +91,53 @@
 
                 @foreach ($latestLead as $i => $a)
                     @if ($i > 0)<hr class="u-rule">@endif
-                    <article class="grid grid-cols-[1fr_240px] gap-[26px] {{ $i === 0 ? 'pb-[26px]' : 'py-[26px]' }}">
+                    <article class="grid grid-cols-[1fr_280px] gap-7 {{ $i === 0 ? 'pb-7' : 'py-7' }}">
                         <div>
-                            <span class="u-kicker">{{ $a['kicker'] }}</span>
+                            <x-site.category :slug="$a['section']" />
                             <h3 class="u-hed my-2 text-[29px]"><a href="#">{{ $a['title'] }}</a></h3>
                             <p class="u-serif mb-[10px] text-[17px] leading-[1.55] text-ink-2">{{ $a['standfirst'] }}</p>
                             <div class="u-byline">{{ $a['byline'] }}</div>
                         </div>
-                        <div class="u-photo h-[158px] self-start"></div>
+                        <x-site.thumb ratio="3/2" class="self-start" />
                     </article>
                 @endforeach
 
                 <hr class="u-rule">
-                <div class="grid grid-cols-[1fr_1px_1fr] gap-7 pt-[26px]">
-                    <article>
-                        <span class="u-kicker">{{ $latestPair[0]['kicker'] }}</span>
-                        <h3 class="u-hed my-2 text-[21px]"><a href="#">{{ $latestPair[0]['title'] }}</a></h3>
-                        <div class="u-byline">{{ $latestPair[0]['byline'] }}</div>
-                    </article>
-                    <div class="bg-line"></div>
-                    <article>
-                        <span class="u-kicker">{{ $latestPair[1]['kicker'] }}</span>
-                        <h3 class="u-hed my-2 text-[21px]"><a href="#">{{ $latestPair[1]['title'] }}</a></h3>
-                        <div class="u-byline">{{ $latestPair[1]['byline'] }}</div>
-                    </article>
+
+                {{-- Grelha de três com thumbnail 16:9 --}}
+                <div class="grid grid-cols-3 gap-7 pt-7">
+                    @foreach ($latestGrid as $a)
+                        <article>
+                            <x-site.thumb ratio="16/9" class="mb-3" />
+                            <x-site.category :slug="$a['section']" />
+                            <h3 class="u-hed my-2 text-[19px]"><a href="#">{{ $a['title'] }}</a></h3>
+                            <div class="u-byline">{{ $a['byline'] }}</div>
+                        </article>
+                    @endforeach
                 </div>
             </div>
 
             {{-- Rail: mais lidos --}}
             <aside>
                 <div class="u-sec-label"><h2>Mais lidos</h2></div>
-                @foreach ($mostRead as $i => [$title, $cat])
+                @foreach ($mostRead as $i => [$title, $slug])
                     @if ($i > 0)<hr class="u-rule">@endif
                     <div class="grid grid-cols-[34px_1fr] gap-[14px] {{ $i === 0 ? 'pb-4' : ($loop->last ? 'pt-4' : 'py-4') }}">
                         <div class="u-serif text-[30px] font-semibold leading-none text-gold">{{ $i + 1 }}</div>
                         <div>
-                            <h3 class="u-hed mb-1 text-[18px] leading-[1.28]"><a href="#">{{ $title }}</a></h3>
-                            <div class="u-byline text-[12px]">{{ $cat }}</div>
+                            <h3 class="u-hed mb-[6px] text-[18px] leading-[1.28]"><a href="#">{{ $title }}</a></h3>
+                            <x-site.category :slug="$slug" class="!text-[11px]" />
                         </div>
                     </div>
                 @endforeach
+
+                {{-- caixa newsletter compacta no rail para encher o fim da coluna --}}
+                <div class="mt-9 border-2 border-green p-6">
+                    <div class="u-serif text-[20px] font-semibold leading-[1.15]">A economia, explicada.</div>
+                    <p class="mt-2 text-[13px] leading-[1.55] text-ink-2">A análise da semana no seu email, às sextas.</p>
+                    <input type="email" placeholder="o.seu@email.co.ao" class="mt-3 w-full border border-line-strong px-3 py-[10px] text-[13px] text-ink-3 focus:outline-none">
+                    <button class="mt-[10px] w-full bg-green py-3 text-[13.5px] font-semibold text-white">Subscrever</button>
+                </div>
             </aside>
         </div>
     </section>
@@ -189,14 +184,18 @@
         </div>
     </section>
 
-    {{-- ===== SECÇÕES (directório) ===== --}}
+    {{-- ===== SECÇÕES (directório com código de cor) ===== --}}
     <section class="u-wrap pt-14">
         <div class="u-sec-label"><h2>Secções</h2></div>
         <div class="grid grid-cols-4 border-t border-line">
-            @foreach ($directory as $i => [$name, $desc])
-                <a href="#" class="border-b border-line px-6 py-5 {{ $i % 4 !== 3 ? 'border-r' : '' }} {{ $i % 4 === 0 ? 'pl-0' : '' }} {{ $i % 4 === 3 ? 'pr-0' : '' }}">
-                    <div class="u-hed text-[20px]">{{ $name }}</div>
-                    <div class="u-byline mt-1">{{ $desc }}</div>
+            @foreach (config('sections') as $slug => $s)
+                <a href="{{ url('categoria/'.$slug) }}"
+                   class="border-b border-line px-6 py-5 {{ $loop->iteration % 4 !== 0 ? 'border-r' : '' }} {{ $loop->iteration % 4 === 1 ? 'pl-0' : '' }} {{ $loop->iteration % 4 === 0 ? 'pr-0' : '' }}">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block h-[10px] w-[10px]" style="background: {{ $s['color'] }};"></span>
+                        <div class="u-hed text-[20px]">{{ $s['label'] }}</div>
+                    </div>
+                    <div class="u-byline mt-1">{{ $s['desc'] }}</div>
                 </a>
             @endforeach
             <a href="#" class="border-b border-line py-5 pl-6">
