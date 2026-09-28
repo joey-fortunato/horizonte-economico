@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+/* Só escaneia as views do site público */
+@source '../views/site/**/*.blade.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+    /* Sistema editorial "broadsheet" — Horizonte Económico */
+    --color-paper: #ffffff;
+    --color-panel: #f1f3ef;
+    --color-ink: #14201c;
+    --color-ink-2: #3c463f;
+    --color-ink-3: #6b746c;
+    --color-line: #e4e2da;
+    --color-line-strong: #c7c4b8;
+    --color-green: #123b30;
+    --color-green-2: #2c5446;
+    --color-green-link: #0f4c3c;
+    --color-gold: #9a7017;
+    --color-gold-soft: #e9c46a;
+}
+
+@layer base {
+    body {
+        @apply bg-paper text-ink antialiased;
+        font-family: var(--font-sans);
+    }
+}
+
+@layer components {
+    .u-wrap {
+        @apply mx-auto w-full max-w-[1240px] px-10;
+    }
+    .u-serif {
+        font-family: var(--font-serif);
+    }
+    .u-kicker {
+        @apply font-sans text-[12px] font-bold tracking-[0.12em] text-green-link uppercase;
+    }
+    .u-byline {
+        @apply font-sans text-[13px] font-medium text-ink-3;
+    }
+    .u-hed {
+        font-family: var(--font-serif);
+        @apply font-semibold tracking-[-0.01em] text-ink;
+        line-height: 1.13;
+    }
+    .u-photo {
+        @apply block border border-line bg-panel;
+    }
+    .u-rule {
+        @apply border-0 border-t border-line;
+    }
+    /* nav do cabeçalho: item ocupa a altura total; activo com fio dourado interno */
+    .u-nav {
+        @apply flex h-full items-center text-[13.5px] font-semibold;
+    }
+    .u-nav--active {
+        box-shadow: inset 0 -2px 0 var(--color-gold-soft);
+    }
+    .u-sec-label {
+        @apply mb-6 flex items-baseline gap-3 border-b-2 border-green pb-[10px];
+    }
+    .u-sec-label h2 {
+        font-family: var(--font-serif);
+        @apply m-0 text-[23px] font-semibold;
+    }
+}
