@@ -129,11 +129,7 @@
             {{-- aside --}}
             <aside class="sticky top-16 self-start">
                 <div class="border-b-2 border-green pb-[10px] text-[11px] font-bold uppercase tracking-[0.1em] text-ink-3">Mais deste autor</div>
-                <div class="mt-3 bg-green p-[22px_20px] text-[#eaf1ed]">
-                    <div class="u-serif text-[20px] font-semibold leading-[1.2] text-white">Não perca a análise da semana</div>
-                    <input type="email" placeholder="o.seu@email.co.ao" class="my-[14px] w-full bg-white px-[13px] py-[10px] text-[13px] text-ink-3 focus:outline-none">
-                    <button class="w-full bg-gold-soft py-[11px] text-[13.5px] font-bold text-green">Subscrever</button>
-                </div>
+                <x-site.newsletter variant="aside" source="artigo" />
             </aside>
         </div>
     </div>

@@ -16,10 +16,18 @@ class SearchController extends Controller
 
         if ($q !== '') {
             $like = '%'.$q.'%';
-            $results->where(function ($query) use ($like) {
-                $query->where('title', 'ilike', $like)
-                    ->orWhere('excerpt', 'ilike', $like)
-                    ->orWhere('body', 'ilike', $like);
+            $pg = \Illuminate\Support\Facades\DB::getDriverName() === 'pgsql';
+            $results->where(function ($query) use ($like, $pg) {
+                if ($pg) {
+                    // Insensível a acentos e maiúsculas via unaccent
+                    $query->whereRaw('unaccent(title) ILIKE unaccent(?)', [$like])
+                        ->orWhereRaw('unaccent(coalesce(excerpt,\'\')) ILIKE unaccent(?)', [$like])
+                        ->orWhereRaw('unaccent(coalesce(body,\'\')) ILIKE unaccent(?)', [$like]);
+                } else {
+                    $query->where('title', 'like', $like)
+                        ->orWhere('excerpt', 'like', $like)
+                        ->orWhere('body', 'like', $like);
+                }
             });
         }
 

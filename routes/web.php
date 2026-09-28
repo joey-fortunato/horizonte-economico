@@ -17,6 +17,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/artigo/{slug}', [ArticleController::class, 'show'])->name('artigo');
 Route::get('/categoria/{slug}', [CategoryController::class, 'show'])->name('categoria');
 Route::get('/pesquisa', [SearchController::class, 'index'])->name('pesquisa');
+Route::post('/newsletter', [\App\Http\Controllers\Site\NewsletterController::class, 'store'])->name('newsletter.store');
 Route::get('/autor/{slug}', [AuthorController::class, 'show'])->name('autor');
 
 Route::view('/sobre', 'site.sobre')->name('sobre');

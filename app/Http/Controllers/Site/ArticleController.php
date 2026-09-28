@@ -16,6 +16,13 @@ class ArticleController extends Controller
 
         $article->increment('views_count');
 
+        // Registo de leitura (para métricas por janela temporal)
+        \Illuminate\Support\Facades\DB::table('article_views')->insert([
+            'article_id' => $article->id,
+            'viewed_at' => now(),
+            'ip_hash' => hash('sha256', (string) request()->ip()),
+        ]);
+
         $related = Article::published()
             ->where('id', '!=', $article->id)
             ->when($article->category_id, fn ($q) => $q->where('category_id', $article->category_id))
