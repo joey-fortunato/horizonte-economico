@@ -16,6 +16,7 @@ import {
     X,
 } from 'lucide-react';
 import { type ReactNode, useEffect, useState } from 'react';
+import FigureImage from '@/components/extensions/figure-image';
 
 type Props = {
     value: string;
@@ -56,6 +57,7 @@ export default function RichEditor({ value, onChange }: Props) {
             ResponsiveImage.configure({
                 HTMLAttributes: { class: 'article-image' },
             }),
+            FigureImage.configure({ HTMLAttributes: { class: 'article-figure' } }),
         ],
         content: value || '',
         editorProps: {
@@ -74,14 +76,12 @@ export default function RichEditor({ value, onChange }: Props) {
         editor
             .chain()
             .focus()
-            .insertContent({
-                type: 'image',
-                attrs: {
-                    src: m.url,
-                    alt: m.alt ?? '',
-                    srcset: m.srcset,
-                    sizes: '(max-width: 768px) 100vw, 720px',
-                },
+            .setFigureImage({
+                src: m.url,
+                alt: m.alt ?? '',
+                srcset: m.srcset,
+                sizes: '(max-width: 768px) 100vw, 720px',
+                caption: m.alt ?? '',
             })
             .run();
         setPickerOpen(false);

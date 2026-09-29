@@ -157,3 +157,7 @@
 .prose-editor a { color: var(--primary); text-decoration: underline; }
 .prose-editor:focus { outline: none; }
 .prose-editor img { max-width: 100%; height: auto; margin: 1rem 0; border: 1px solid var(--border); border-radius: 4px; }
+.prose-editor figure { margin: 1rem 0; }
+.prose-editor figure img { margin: 0; }
+.prose-editor figcaption { margin-top: .4rem; font-size: .85rem; font-style: italic; color: var(--muted-foreground); }
+.prose-editor figcaption:empty::before { content: 'Escreva a legenda…'; color: var(--muted-foreground); opacity: .6; }

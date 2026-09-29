@@ -139,4 +139,16 @@
     .u-prose img {
         @apply my-8 block h-auto w-full border border-line;
     }
+    .u-prose figure {
+        @apply my-8;
+    }
+    .u-prose figure img {
+        @apply my-0;
+    }
+    .u-prose figcaption {
+        @apply mt-2 text-[13px] text-ink-3 italic;
+    }
+    .u-prose figcaption:empty {
+        @apply hidden;
+    }
 }
