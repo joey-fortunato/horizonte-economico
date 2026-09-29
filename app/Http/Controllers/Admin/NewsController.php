@@ -27,7 +27,9 @@ class NewsController extends Controller
             ->when($request->query('q'), fn ($q, $term) => $q->where('title', 'like', "%{$term}%"))
             ->when($request->query('from'), fn ($q, $d) => $q->whereDate('published_at', '>=', $d))
             ->when($request->query('to'), fn ($q, $d) => $q->whereDate('published_at', '<=', $d))
-            ->latest('fetched_at')
+            ->orderByRaw('published_at is null') // não-nulas primeiro (portável pgsql/sqlite)
+            ->orderByDesc('published_at')
+            ->orderByDesc('fetched_at')
             ->paginate(20)
             ->withQueryString()
             ->through(fn (CollectedNews $n) => [
