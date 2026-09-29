@@ -2,6 +2,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import { ArrowLeft } from 'lucide-react';
 import { type FormEvent } from 'react';
 import InputError from '@/components/input-error';
+import RichEditor from '@/components/rich-editor';
 import { dashboard } from '@/routes';
 
 type ArticleData = {
@@ -130,13 +131,11 @@ export default function ArticleEdit({
                             <InputError message={form.errors.excerpt} className="mt-1" />
 
                             <label className={`${label} mt-4`}>
-                                Corpo do artigo (HTML)
+                                Corpo do artigo
                             </label>
-                            <textarea
-                                rows={16}
-                                className={`${field} font-mono text-[13px] leading-relaxed`}
+                            <RichEditor
                                 value={form.data.body}
-                                onChange={(e) => form.setData('body', e.target.value)}
+                                onChange={(html) => form.setData('body', html)}
                             />
                             <InputError message={form.errors.body} className="mt-1" />
                         </div>
