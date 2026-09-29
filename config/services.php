@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'analytics' => [
+        'ga_id' => env('GA_MEASUREMENT_ID'), // ex.: G-XXXXXXX (só carrega se definido e após consentimento)
+    ],
+
 ];

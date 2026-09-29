@@ -83,13 +83,26 @@
 
         {{-- ===== Corpo ===== --}}
         <div class="mt-11 grid grid-cols-[64px_minmax(0,720px)_300px] justify-center gap-12">
-            {{-- rail partilha --}}
+            {{-- rail partilha (URLs canónicos) --}}
+            @php
+                $shareUrl = route('artigo', $article->slug);
+                $shareTitle = $article->title;
+                $enc = rawurlencode($shareUrl);
+                $encT = rawurlencode($shareTitle);
+            @endphp
             <div class="sticky top-16 flex flex-col gap-[10px] self-start">
-                @foreach (['whatsapp','facebook','linkedin','x'] as $net)
-                    <span class="flex h-[42px] w-[42px] items-center justify-center border border-line-strong text-ink">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                    </span>
-                @endforeach
+                <a href="https://wa.me/?text={{ $encT }}%20{{ $enc }}" target="_blank" rel="noopener" aria-label="Partilhar no WhatsApp" class="flex h-[42px] w-[42px] items-center justify-center border border-line-strong text-ink hover:bg-panel">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ $enc }}" target="_blank" rel="noopener" aria-label="Partilhar no Facebook" class="flex h-[42px] w-[42px] items-center justify-center border border-line-strong text-ink hover:bg-panel">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l.5-3H13V9c0-1 .3-1.5 1.6-1.5H17V4.9s-1.2-.2-2.3-.2c-2.3 0-3.7 1.3-3.7 3.9V11H8v3h3v8z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $enc }}" target="_blank" rel="noopener" aria-label="Partilhar no LinkedIn" class="flex h-[42px] w-[42px] items-center justify-center border border-line-strong text-ink hover:bg-panel">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21H21v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H13z"/></svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ $enc }}&text={{ $encT }}" target="_blank" rel="noopener" aria-label="Partilhar no X" class="flex h-[42px] w-[42px] items-center justify-center border border-line-strong text-ink hover:bg-panel">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H3l8-9L3 2h6l4 6z"/></svg>
+                </a>
             </div>
 
             {{-- prosa --}}

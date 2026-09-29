@@ -47,6 +47,7 @@
     </main>
 
     @include('site.partials.footer')
+    @include('site.partials.analytics')
     @stack('scripts')
 </body>
 </html>
