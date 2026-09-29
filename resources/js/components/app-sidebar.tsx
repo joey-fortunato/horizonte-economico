@@ -5,6 +5,7 @@ import {
     Image as ImageIcon,
     LayoutGrid,
     Newspaper,
+    Rss,
     Tags,
     Users,
 } from 'lucide-react';
@@ -27,6 +28,7 @@ import type { NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     { title: 'Painel', href: dashboard(), icon: LayoutGrid },
     { title: 'Artigos', href: '/artigos', icon: Newspaper },
+    { title: 'Central de Notícias', href: '/noticias', icon: Rss },
     { title: 'Categorias', href: '/categorias', icon: Tags },
     { title: 'Media', href: '/media', icon: ImageIcon },
     { title: 'Utilizadores', href: '/utilizadores', icon: Users },

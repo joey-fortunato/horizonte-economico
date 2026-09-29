@@ -46,6 +46,11 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function collectedNews(): BelongsToMany
+    {
+        return $this->belongsToMany(CollectedNews::class, 'article_news_sources');
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';

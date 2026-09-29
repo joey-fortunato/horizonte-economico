@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\StatsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ArticleController;
@@ -65,6 +66,16 @@ Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function
     });
 
     Route::get('estatisticas', [StatsController::class, 'index'])->name('admin.stats');
+
+    Route::prefix('noticias')->name('admin.news.')->group(function () {
+        Route::get('/', [NewsController::class, 'index'])->name('index');
+        Route::get('/historico', [NewsController::class, 'runs'])->name('runs');
+        Route::post('/recolher', [NewsController::class, 'collect'])->name('collect');
+        Route::get('/{news}', [NewsController::class, 'show'])->whereNumber('news')->name('show');
+        Route::post('/{news}/decisao', [NewsController::class, 'decide'])->whereNumber('news')->name('decide');
+        Route::post('/{news}/nota', [NewsController::class, 'note'])->whereNumber('news')->name('note');
+        Route::post('/{news}/converter', [NewsController::class, 'convert'])->whereNumber('news')->name('convert');
+    });
 
     Route::prefix('utilizadores')->name('admin.users.')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
