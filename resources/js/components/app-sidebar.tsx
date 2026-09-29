@@ -26,7 +26,7 @@ import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     { title: 'Painel', href: dashboard(), icon: LayoutGrid },
-    { title: 'Artigos', href: '#', icon: Newspaper },
+    { title: 'Artigos', href: '/artigos', icon: Newspaper },
     { title: 'Categorias', href: '#', icon: Tags },
     { title: 'Media', href: '#', icon: ImageIcon },
     { title: 'Utilizadores', href: '#', icon: Users },

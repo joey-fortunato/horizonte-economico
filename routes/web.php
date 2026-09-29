@@ -34,6 +34,15 @@ Route::get('/{page}', function (string $page) {
 // Backoffice editorial (acesso restrito por perfil)
 Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
+    Route::prefix('artigos')->name('admin.articles.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('index');
+        Route::get('/novo', [\App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('create');
+        Route::post('/', [\App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
+        Route::get('/{article}/editar', [\App\Http\Controllers\Admin\ArticleController::class, 'edit'])->name('edit');
+        Route::put('/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'update'])->name('update');
+        Route::delete('/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy'])->name('destroy');
+    });
 });
 
 require __DIR__.'/settings.php';
