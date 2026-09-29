@@ -24,7 +24,10 @@ export default function MediaIndex({ media }: Props) {
 
     const submit = (e: FormEvent) => {
         e.preventDefault();
-        form.post('/media', { forceFormData: true, onSuccess: () => form.reset() });
+        form.post('/media', {
+            forceFormData: true,
+            onSuccess: () => form.reset(),
+        });
     };
 
     return (
@@ -40,26 +43,31 @@ export default function MediaIndex({ media }: Props) {
                     className="flex flex-wrap items-end gap-4 rounded-xl border border-border bg-card p-5"
                 >
                     <div>
-                        <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        <label className="mb-1.5 block text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                             Imagem (máx. 5 MB)
                         </label>
                         <input
                             type="file"
                             accept="image/*"
                             onChange={(e) =>
-                                form.setData('file', e.target.files?.[0] ?? null)
+                                form.setData(
+                                    'file',
+                                    e.target.files?.[0] ?? null,
+                                )
                             }
                             className="text-sm"
                         />
                     </div>
                     <div className="flex-1">
-                        <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        <label className="mb-1.5 block text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                             Texto alternativo
                         </label>
                         <input
                             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-ring focus:outline-none"
                             value={form.data.alt_text}
-                            onChange={(e) => form.setData('alt_text', e.target.value)}
+                            onChange={(e) =>
+                                form.setData('alt_text', e.target.value)
+                            }
                         />
                     </div>
                     <button

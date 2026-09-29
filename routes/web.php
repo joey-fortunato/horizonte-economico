@@ -1,9 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\StatsController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\ArticleController;
 use App\Http\Controllers\Site\AuthorController;
 use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\NewsletterController;
 use App\Http\Controllers\Site\SearchController;
 use App\Http\Controllers\Site\SitemapController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +22,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/artigo/{slug}', [ArticleController::class, 'show'])->name('artigo');
 Route::get('/categoria/{slug}', [CategoryController::class, 'show'])->name('categoria');
 Route::get('/pesquisa', [SearchController::class, 'index'])->name('pesquisa');
-Route::post('/newsletter', [\App\Http\Controllers\Site\NewsletterController::class, 'store'])->name('newsletter.store');
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 Route::get('/autor/{slug}', [AuthorController::class, 'show'])->name('autor');
 
 Route::view('/sobre', 'site.sobre')->name('sobre');
@@ -33,39 +38,39 @@ Route::get('/{page}', function (string $page) {
 
 // Backoffice editorial (acesso restrito por perfil)
 Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function () {
-    Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('artigos')->name('admin.articles.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('index');
-        Route::get('/novo', [\App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('create');
-        Route::post('/', [\App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
-        Route::get('/{article}/editar', [\App\Http\Controllers\Admin\ArticleController::class, 'edit'])->name('edit');
-        Route::put('/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'update'])->name('update');
-        Route::delete('/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy'])->name('destroy');
+        Route::get('/', [App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('index');
+        Route::get('/novo', [App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
+        Route::get('/{article}/editar', [App\Http\Controllers\Admin\ArticleController::class, 'edit'])->name('edit');
+        Route::put('/{article}', [App\Http\Controllers\Admin\ArticleController::class, 'update'])->name('update');
+        Route::delete('/{article}', [App\Http\Controllers\Admin\ArticleController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('categorias')->name('admin.categories.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
-        Route::post('/', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
-        Route::put('/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
-        Route::delete('/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('destroy');
+        Route::get('/', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
+        Route::put('/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
+        Route::delete('/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('media')->name('admin.media.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\MediaController::class, 'index'])->name('index');
-        Route::get('/list', [\App\Http\Controllers\Admin\MediaController::class, 'list'])->name('list');
-        Route::post('/', [\App\Http\Controllers\Admin\MediaController::class, 'store'])->name('store');
-        Route::post('/upload', [\App\Http\Controllers\Admin\MediaController::class, 'upload'])->name('upload');
-        Route::delete('/{media}', [\App\Http\Controllers\Admin\MediaController::class, 'destroy'])->name('destroy');
+        Route::get('/', [MediaController::class, 'index'])->name('index');
+        Route::get('/list', [MediaController::class, 'list'])->name('list');
+        Route::post('/', [MediaController::class, 'store'])->name('store');
+        Route::post('/upload', [MediaController::class, 'upload'])->name('upload');
+        Route::delete('/{media}', [MediaController::class, 'destroy'])->name('destroy');
     });
 
-    Route::get('estatisticas', [\App\Http\Controllers\Admin\StatsController::class, 'index'])->name('admin.stats');
+    Route::get('estatisticas', [StatsController::class, 'index'])->name('admin.stats');
 
     Route::prefix('utilizadores')->name('admin.users.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
-        Route::post('/', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('store');
-        Route::put('/{user}', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('update');
-        Route::delete('/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('destroy');
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::post('/', [UserController::class, 'store'])->name('store');
+        Route::put('/{user}', [UserController::class, 'update'])->name('update');
+        Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
     });
 });
 

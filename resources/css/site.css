@@ -68,21 +68,21 @@
         font-family: var(--font-serif);
     }
     .u-kicker {
-        @apply font-sans text-[12px] font-bold tracking-[0.12em] text-green-link uppercase;
+        @apply text-green-link font-sans text-[12px] font-bold tracking-[0.12em] uppercase;
     }
     .u-byline {
-        @apply font-sans text-[13px] font-medium text-ink-3;
+        @apply text-ink-3 font-sans text-[13px] font-medium;
     }
     .u-hed {
         font-family: var(--font-serif);
-        @apply font-semibold tracking-[-0.01em] text-ink;
+        @apply text-ink font-semibold tracking-[-0.01em];
         line-height: 1.13;
     }
     .u-photo {
-        @apply block border border-line bg-panel;
+        @apply border-line bg-panel block border;
     }
     .u-rule {
-        @apply border-0 border-t border-line;
+        @apply border-line border-0 border-t;
     }
     /* nav do cabeçalho: item ocupa a altura total; activo com fio dourado interno */
     .u-nav {
@@ -92,7 +92,7 @@
         box-shadow: inset 0 -2px 0 var(--color-gold-soft);
     }
     .u-sec-label {
-        @apply mb-6 flex items-baseline gap-3 border-b-2 border-green pb-[10px];
+        @apply border-green mb-6 flex items-baseline gap-3 border-b-2 pb-[10px];
     }
     .u-sec-label h2 {
         font-family: var(--font-serif);
@@ -109,7 +109,7 @@
     }
     .u-prose h2 {
         font-family: var(--font-serif);
-        @apply mt-10 mb-3 text-[28px] font-semibold leading-[1.2];
+        @apply mt-10 mb-3 text-[28px] leading-[1.2] font-semibold;
         color: var(--color-ink);
     }
     .u-prose blockquote {
@@ -137,7 +137,7 @@
         color: var(--color-ink);
     }
     .u-prose img {
-        @apply my-8 block h-auto w-full border border-line;
+        @apply border-line my-8 block h-auto w-full border;
     }
     .u-prose figure {
         @apply my-8;
@@ -146,7 +146,7 @@
         @apply my-0;
     }
     .u-prose figcaption {
-        @apply mt-2 text-[13px] text-ink-3 italic;
+        @apply text-ink-3 mt-2 text-[13px] italic;
     }
     .u-prose figcaption:empty {
         @apply hidden;

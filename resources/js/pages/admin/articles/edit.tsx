@@ -79,7 +79,8 @@ export default function ArticleEdit({
 
     const field =
         'w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-ring focus:outline-none';
-    const label = 'mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-foreground';
+    const label =
+        'mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted-foreground';
 
     return (
         <>
@@ -117,18 +118,28 @@ export default function ArticleEdit({
                             <input
                                 className={field}
                                 value={form.data.title}
-                                onChange={(e) => form.setData('title', e.target.value)}
+                                onChange={(e) =>
+                                    form.setData('title', e.target.value)
+                                }
                             />
-                            <InputError message={form.errors.title} className="mt-1" />
+                            <InputError
+                                message={form.errors.title}
+                                className="mt-1"
+                            />
 
                             <label className={`${label} mt-4`}>Resumo</label>
                             <textarea
                                 rows={2}
                                 className={field}
                                 value={form.data.excerpt}
-                                onChange={(e) => form.setData('excerpt', e.target.value)}
+                                onChange={(e) =>
+                                    form.setData('excerpt', e.target.value)
+                                }
                             />
-                            <InputError message={form.errors.excerpt} className="mt-1" />
+                            <InputError
+                                message={form.errors.excerpt}
+                                className="mt-1"
+                            />
 
                             <label className={`${label} mt-4`}>
                                 Corpo do artigo
@@ -137,7 +148,10 @@ export default function ArticleEdit({
                                 value={form.data.body}
                                 onChange={(html) => form.setData('body', html)}
                             />
-                            <InputError message={form.errors.body} className="mt-1" />
+                            <InputError
+                                message={form.errors.body}
+                                className="mt-1"
+                            />
                         </div>
 
                         <div className="rounded-xl border border-border bg-card p-5">
@@ -146,14 +160,23 @@ export default function ArticleEdit({
                             <input
                                 className={field}
                                 value={form.data.seo_title}
-                                onChange={(e) => form.setData('seo_title', e.target.value)}
+                                onChange={(e) =>
+                                    form.setData('seo_title', e.target.value)
+                                }
                             />
-                            <label className={`${label} mt-4`}>Descrição SEO</label>
+                            <label className={`${label} mt-4`}>
+                                Descrição SEO
+                            </label>
                             <textarea
                                 rows={2}
                                 className={field}
                                 value={form.data.seo_description}
-                                onChange={(e) => form.setData('seo_description', e.target.value)}
+                                onChange={(e) =>
+                                    form.setData(
+                                        'seo_description',
+                                        e.target.value,
+                                    )
+                                }
                             />
                         </div>
                     </div>
@@ -165,7 +188,9 @@ export default function ArticleEdit({
                             <select
                                 className={field}
                                 value={form.data.status}
-                                onChange={(e) => form.setData('status', e.target.value)}
+                                onChange={(e) =>
+                                    form.setData('status', e.target.value)
+                                }
                             >
                                 {availableStatuses.map((s) => (
                                     <option key={s.value} value={s.value}>
@@ -173,7 +198,10 @@ export default function ArticleEdit({
                                     </option>
                                 ))}
                             </select>
-                            <InputError message={form.errors.status} className="mt-1" />
+                            <InputError
+                                message={form.errors.status}
+                                className="mt-1"
+                            />
 
                             {form.data.status === 'scheduled' && (
                                 <>
@@ -184,7 +212,12 @@ export default function ArticleEdit({
                                         type="datetime-local"
                                         className={field}
                                         value={form.data.published_at ?? ''}
-                                        onChange={(e) => form.setData('published_at', e.target.value)}
+                                        onChange={(e) =>
+                                            form.setData(
+                                                'published_at',
+                                                e.target.value,
+                                            )
+                                        }
                                     />
                                 </>
                             )}
@@ -198,7 +231,9 @@ export default function ArticleEdit({
                                 onChange={(e) =>
                                     form.setData(
                                         'category_id',
-                                        e.target.value ? Number(e.target.value) : '',
+                                        e.target.value
+                                            ? Number(e.target.value)
+                                            : '',
                                     )
                                 }
                             >
@@ -253,11 +288,17 @@ export default function ArticleEdit({
                                 type="file"
                                 accept="image/*"
                                 onChange={(e) =>
-                                    form.setData('cover', e.target.files?.[0] ?? null)
+                                    form.setData(
+                                        'cover',
+                                        e.target.files?.[0] ?? null,
+                                    )
                                 }
                                 className="text-sm"
                             />
-                            <InputError message={form.errors.cover} className="mt-1" />
+                            <InputError
+                                message={form.errors.cover}
+                                className="mt-1"
+                            />
                         </div>
 
                         <div className="rounded-xl border border-border bg-card p-5">
@@ -267,7 +308,10 @@ export default function ArticleEdit({
                                 className={field}
                                 value={form.data.correction_note}
                                 onChange={(e) =>
-                                    form.setData('correction_note', e.target.value)
+                                    form.setData(
+                                        'correction_note',
+                                        e.target.value,
+                                    )
                                 }
                             />
                         </div>

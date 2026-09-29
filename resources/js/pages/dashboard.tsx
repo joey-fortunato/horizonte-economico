@@ -20,8 +20,19 @@ type Metrics = {
 type Props = {
     metrics: Metrics;
     perDay: { label: string; count: number }[];
-    mostRead: { title: string; views: number; category: string | null; color: string }[];
-    recent: { title: string; author: string; status: string; statusLabel: string; updated: string }[];
+    mostRead: {
+        title: string;
+        views: number;
+        category: string | null;
+        color: string;
+    }[];
+    recent: {
+        title: string;
+        author: string;
+        status: string;
+        statusLabel: string;
+        updated: string;
+    }[];
 };
 
 const nf = new Intl.NumberFormat('pt-PT');
@@ -48,10 +59,34 @@ export default function Dashboard({
     const maxDay = Math.max(1, ...perDay.map((d) => d.count));
 
     const cards = [
-        { label: 'Publicados', value: metrics.published, icon: Check, tint: 'bg-primary/10 text-primary', note: 'Visíveis ao público' },
-        { label: 'Rascunhos', value: metrics.draft, icon: PencilLine, tint: 'bg-muted text-muted-foreground', note: `${metrics.review} em revisão` },
-        { label: 'Agendados', value: metrics.scheduled, icon: CalendarClock, tint: 'bg-[#f4ead6] text-[#7a5a12]', note: 'Publicação automática' },
-        { label: 'Leituras (total)', value: metrics.views, icon: Eye, tint: 'bg-primary/10 text-primary', note: 'Somatório de visualizações' },
+        {
+            label: 'Publicados',
+            value: metrics.published,
+            icon: Check,
+            tint: 'bg-primary/10 text-primary',
+            note: 'Visíveis ao público',
+        },
+        {
+            label: 'Rascunhos',
+            value: metrics.draft,
+            icon: PencilLine,
+            tint: 'bg-muted text-muted-foreground',
+            note: `${metrics.review} em revisão`,
+        },
+        {
+            label: 'Agendados',
+            value: metrics.scheduled,
+            icon: CalendarClock,
+            tint: 'bg-[#f4ead6] text-[#7a5a12]',
+            note: 'Publicação automática',
+        },
+        {
+            label: 'Leituras (total)',
+            value: metrics.views,
+            icon: Eye,
+            tint: 'bg-primary/10 text-primary',
+            note: 'Somatório de visualizações',
+        },
     ];
 
     return (
@@ -150,7 +185,10 @@ export default function Dashboard({
                         </div>
                         <div className="flex flex-col gap-4">
                             {mostRead.map((a, i) => (
-                                <div key={i} className="flex items-center gap-3">
+                                <div
+                                    key={i}
+                                    className="flex items-center gap-3"
+                                >
                                     <span
                                         className="font-serif text-xl font-semibold"
                                         style={{ color: a.color }}
@@ -163,7 +201,9 @@ export default function Dashboard({
                                         </div>
                                         <div className="text-xs text-muted-foreground">
                                             {nf.format(a.views)} leituras
-                                            {a.category ? ` · ${a.category}` : ''}
+                                            {a.category
+                                                ? ` · ${a.category}`
+                                                : ''}
                                         </div>
                                     </div>
                                 </div>
@@ -187,11 +227,13 @@ export default function Dashboard({
                     </div>
                     <table className="w-full text-sm">
                         <thead>
-                            <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
+                            <tr className="border-b border-border text-left text-xs tracking-wide text-muted-foreground uppercase">
                                 <th className="px-5 py-3 font-semibold">
                                     Título
                                 </th>
-                                <th className="px-5 py-3 font-semibold">Autor</th>
+                                <th className="px-5 py-3 font-semibold">
+                                    Autor
+                                </th>
                                 <th className="px-5 py-3 font-semibold">
                                     Estado
                                 </th>

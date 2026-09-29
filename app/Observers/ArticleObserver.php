@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\AuditLog;
 use Illuminate\Support\Facades\Cache;
@@ -30,7 +31,7 @@ class ArticleObserver
         if ($article->wasChanged('status')) {
             $this->log($article, 'status_changed', [
                 'from' => $article->getOriginal('status'),
-                'to' => $article->status instanceof \App\Enums\ArticleStatus ? $article->status->value : $article->status,
+                'to' => $article->status instanceof ArticleStatus ? $article->status->value : $article->status,
             ]);
         }
     }

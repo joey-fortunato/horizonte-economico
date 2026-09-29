@@ -57,7 +57,9 @@ export default function RichEditor({ value, onChange }: Props) {
             ResponsiveImage.configure({
                 HTMLAttributes: { class: 'article-image' },
             }),
-            FigureImage.configure({ HTMLAttributes: { class: 'article-figure' } }),
+            FigureImage.configure({
+                HTMLAttributes: { class: 'article-figure' },
+            }),
         ],
         content: value || '',
         editorProps: {
@@ -120,49 +122,106 @@ export default function RichEditor({ value, onChange }: Props) {
             editor.chain().focus().extendMarkRange('link').unsetLink().run();
             return;
         }
-        editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+        editor
+            .chain()
+            .focus()
+            .extendMarkRange('link')
+            .setLink({ href: url })
+            .run();
     };
 
     return (
         <div className="overflow-hidden rounded-md border border-input bg-background">
             <div className="flex flex-wrap items-center gap-1 border-b border-border bg-muted/40 p-1.5">
-                <Btn title="Parágrafo" active={editor.isActive('paragraph')} onClick={() => editor.chain().focus().setParagraph().run()}>
+                <Btn
+                    title="Parágrafo"
+                    active={editor.isActive('paragraph')}
+                    onClick={() => editor.chain().focus().setParagraph().run()}
+                >
                     P
                 </Btn>
-                <Btn title="Título 2" active={editor.isActive('heading', { level: 2 })} onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}>
+                <Btn
+                    title="Título 2"
+                    active={editor.isActive('heading', { level: 2 })}
+                    onClick={() =>
+                        editor.chain().focus().toggleHeading({ level: 2 }).run()
+                    }
+                >
                     H2
                 </Btn>
-                <Btn title="Título 3" active={editor.isActive('heading', { level: 3 })} onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}>
+                <Btn
+                    title="Título 3"
+                    active={editor.isActive('heading', { level: 3 })}
+                    onClick={() =>
+                        editor.chain().focus().toggleHeading({ level: 3 }).run()
+                    }
+                >
                     H3
                 </Btn>
                 <span className="mx-1 h-5 w-px bg-border" />
-                <Btn title="Negrito" active={editor.isActive('bold')} onClick={() => editor.chain().focus().toggleBold().run()}>
+                <Btn
+                    title="Negrito"
+                    active={editor.isActive('bold')}
+                    onClick={() => editor.chain().focus().toggleBold().run()}
+                >
                     <Bold className="size-4" />
                 </Btn>
-                <Btn title="Itálico" active={editor.isActive('italic')} onClick={() => editor.chain().focus().toggleItalic().run()}>
+                <Btn
+                    title="Itálico"
+                    active={editor.isActive('italic')}
+                    onClick={() => editor.chain().focus().toggleItalic().run()}
+                >
                     <Italic className="size-4" />
                 </Btn>
-                <Btn title="Ligação" active={editor.isActive('link')} onClick={setLink}>
+                <Btn
+                    title="Ligação"
+                    active={editor.isActive('link')}
+                    onClick={setLink}
+                >
                     <LinkIcon className="size-4" />
                 </Btn>
                 <Btn title="Imagem" onClick={() => setPickerOpen(true)}>
                     <ImageIcon className="size-4" />
                 </Btn>
                 <span className="mx-1 h-5 w-px bg-border" />
-                <Btn title="Lista" active={editor.isActive('bulletList')} onClick={() => editor.chain().focus().toggleBulletList().run()}>
+                <Btn
+                    title="Lista"
+                    active={editor.isActive('bulletList')}
+                    onClick={() =>
+                        editor.chain().focus().toggleBulletList().run()
+                    }
+                >
                     <List className="size-4" />
                 </Btn>
-                <Btn title="Lista numerada" active={editor.isActive('orderedList')} onClick={() => editor.chain().focus().toggleOrderedList().run()}>
+                <Btn
+                    title="Lista numerada"
+                    active={editor.isActive('orderedList')}
+                    onClick={() =>
+                        editor.chain().focus().toggleOrderedList().run()
+                    }
+                >
                     <ListOrdered className="size-4" />
                 </Btn>
-                <Btn title="Citação" active={editor.isActive('blockquote')} onClick={() => editor.chain().focus().toggleBlockquote().run()}>
+                <Btn
+                    title="Citação"
+                    active={editor.isActive('blockquote')}
+                    onClick={() =>
+                        editor.chain().focus().toggleBlockquote().run()
+                    }
+                >
                     <Quote className="size-4" />
                 </Btn>
                 <span className="mx-1 h-5 w-px bg-border" />
-                <Btn title="Desfazer" onClick={() => editor.chain().focus().undo().run()}>
+                <Btn
+                    title="Desfazer"
+                    onClick={() => editor.chain().focus().undo().run()}
+                >
                     <Undo2 className="size-4" />
                 </Btn>
-                <Btn title="Refazer" onClick={() => editor.chain().focus().redo().run()}>
+                <Btn
+                    title="Refazer"
+                    onClick={() => editor.chain().focus().redo().run()}
+                >
                     <Redo2 className="size-4" />
                 </Btn>
             </div>

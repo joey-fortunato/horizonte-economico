@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -16,7 +17,7 @@ class SearchController extends Controller
 
         if ($q !== '') {
             $like = '%'.$q.'%';
-            $pg = \Illuminate\Support\Facades\DB::getDriverName() === 'pgsql';
+            $pg = DB::getDriverName() === 'pgsql';
             $results->where(function ($query) use ($like, $pg) {
                 if ($pg) {
                     // Insensível a acentos e maiúsculas via unaccent

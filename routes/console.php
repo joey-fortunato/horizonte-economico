@@ -10,3 +10,6 @@ Artisan::command('inspire', function () {
 
 // Publicação automática dos artigos agendados
 Schedule::command('articles:publish-scheduled')->everyMinute()->withoutOverlapping();
+
+// Recolha de notícias das fontes activas (RSS / Google News RSS)
+Schedule::command('news:collect')->hourly()->withoutOverlapping();

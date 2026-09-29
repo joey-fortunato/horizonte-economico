@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -25,9 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
 
-        \Illuminate\Support\Facades\Gate::define(
+        Gate::define(
             'access-backoffice',
-            fn (\App\Models\User $user): bool => $user->canAccessBackoffice(),
+            fn (User $user): bool => $user->canAccessBackoffice(),
         );
     }
 
@@ -37,8 +40,8 @@ class AppServiceProvider extends ServiceProvider
     protected function configureDefaults(): void
     {
         Date::use(CarbonImmutable::class);
-        \Carbon\Carbon::setLocale('pt');
-        \Carbon\CarbonImmutable::setLocale('pt');
+        Carbon::setLocale('pt');
+        CarbonImmutable::setLocale('pt');
 
         DB::prohibitDestructiveCommands(
             app()->isProduction(),

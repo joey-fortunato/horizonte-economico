@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -17,7 +18,7 @@ class ArticleController extends Controller
         $article->increment('views_count');
 
         // Registo de leitura (para métricas por janela temporal)
-        \Illuminate\Support\Facades\DB::table('article_views')->insert([
+        DB::table('article_views')->insert([
             'article_id' => $article->id,
             'viewed_at' => now(),
             'ip_hash' => hash('sha256', (string) request()->ip()),

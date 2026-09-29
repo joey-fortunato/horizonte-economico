@@ -7,7 +7,7 @@
 **Domínio previsto:** `horizonteeconomico.com`\
 **Tecnologia prevista:** Laravel
 
-------------------------------------------------------------------------
+---
 
 ## 1. Resumo executivo
 
@@ -24,10 +24,10 @@ suas causas e as consequências para a vida das pessoas e das empresas.
 
 O sistema terá duas componentes principais:
 
--   **Frontend público:** experiência de leitura rápida, intuitiva,
-    responsiva e optimizada para motores de busca.
--   **Backoffice editorial:** área privada para gerir artigos,
-    categorias, autores, imagens, conteúdos e publicações.
+- **Frontend público:** experiência de leitura rápida, intuitiva,
+  responsiva e optimizada para motores de busca.
+- **Backoffice editorial:** área privada para gerir artigos,
+  categorias, autores, imagens, conteúdos e publicações.
 
 ### Objectivo do MVP
 
@@ -70,15 +70,17 @@ de actualização.
 
 ### 3.2 Indicadores de sucesso
 
-  Indicador               Objectivo inicial
-  ----------------------- ----------------------------------------------------
-  Publicação de artigos   Processo integralmente gerido no backoffice
-  Responsividade          Suporte a telemóveis, tablets e computadores
-  SEO                     Metadados e URLs optimizados
-  Desempenho              Carregamento rápido, especialmente em redes móveis
-  Gestão editorial        Criar, editar, agendar e publicar artigos
-  Segurança               Acesso protegido ao painel editorial
-  Audiência               Medir visitas, leituras e artigos mais consultados
+Indicador Objectivo inicial
+
+---
+
+Publicação de artigos Processo integralmente gerido no backoffice
+Responsividade Suporte a telemóveis, tablets e computadores
+SEO Metadados e URLs optimizados
+Desempenho Carregamento rápido, especialmente em redes móveis
+Gestão editorial Criar, editar, agendar e publicar artigos
+Segurança Acesso protegido ao painel editorial
+Audiência Medir visitas, leituras e artigos mais consultados
 
 As metas quantitativas de audiência e desempenho deverão ser definidas
 após os primeiros testes e a recolha de dados reais.
@@ -87,62 +89,65 @@ após os primeiros testes e a recolha de dados reais.
 
 ### 4.1 Incluído no MVP
 
--   Homepage editorial com artigos em destaque e recentes.
--   Páginas de artigos com conteúdo multimédia.
--   Categorias e páginas de arquivo.
--   Pesquisa de artigos.
--   Páginas de autor e apresentação da publicação.
--   Backoffice para gestão de artigos e categorias.
--   Gestão de imagens e metadados SEO.
--   Agendamento de publicações.
--   Partilha de artigos nas redes sociais.
--   Integração com ferramentas de análise de tráfego.
+- Homepage editorial com artigos em destaque e recentes.
+- Páginas de artigos com conteúdo multimédia.
+- Categorias e páginas de arquivo.
+- Pesquisa de artigos.
+- Páginas de autor e apresentação da publicação.
+- Backoffice para gestão de artigos e categorias.
+- Gestão de imagens e metadados SEO.
+- Agendamento de publicações.
+- Partilha de artigos nas redes sociais.
+- Integração com ferramentas de análise de tráfego.
 
 ### 4.2 Fora do MVP
 
--   Simulador de crédito e outras calculadoras financeiras.
--   Aplicação móvel nativa.
--   Comentários públicos e fóruns.
--   Subscrições pagas e paywall.
--   Personalização avançada do feed.
--   Marketplace de produtos financeiros.
--   Publicação automática de notícias por inteligência artificial.
+- Simulador de crédito e outras calculadoras financeiras.
+- Aplicação móvel nativa.
+- Comentários públicos e fóruns.
+- Subscrições pagas e paywall.
+- Personalização avançada do feed.
+- Marketplace de produtos financeiros.
+- Publicação automática de notícias por inteligência artificial.
 
 ## 5. Arquitectura da informação
 
 A plataforma deverá ter uma estrutura simples, com navegação intuitiva e
 espaço para expansão.
 
-  -----------------------------------------------------------------------
-  Página                  URL proposta            Descrição
-  ----------------------- ----------------------- -----------------------
-  Homepage                `/`                     Destaques, artigos
-                                                  recentes e categorias
+---
 
-  Artigo                  `/artigo/{slug}`        Conteúdo integral de um
-                                                  artigo
+Página URL proposta Descrição
 
-  Categoria               `/categoria/{slug}`     Artigos de uma
-                                                  categoria
+---
 
-  Pesquisa                `/pesquisa?q={termo}`   Resultados de pesquisa
+Homepage `/` Destaques, artigos
+recentes e categorias
 
-  Autor                   `/autor/{slug}`         Biografia e artigos do
-                                                  autor
+Artigo `/artigo/{slug}` Conteúdo integral de um
+artigo
 
-  Sobre                   `/sobre`                Apresentação do
-                                                  Horizonte Económico
+Categoria `/categoria/{slug}` Artigos de uma
+categoria
 
-  Contactos               `/contactos`            Formulário e contactos
-                                                  editoriais
+Pesquisa `/pesquisa?q={termo}` Resultados de pesquisa
 
-  Política editorial      `/politica-editorial`   Princípios de
-                                                  publicação e correcções
+Autor `/autor/{slug}` Biografia e artigos do
+autor
 
-  Privacidade             `/privacidade`          Política de privacidade
+Sobre `/sobre` Apresentação do
+Horizonte Económico
 
-  Termos                  `/termos`               Condições de utilização
-  -----------------------------------------------------------------------
+Contactos `/contactos` Formulário e contactos
+editoriais
+
+Política editorial `/politica-editorial` Princípios de
+publicação e correcções
+
+Privacidade `/privacidade` Política de privacidade
+
+Termos `/termos` Condições de utilização
+-----------------------------------------------------------------------
 
 As URLs deverão ser legíveis, permanentes e independentes dos
 identificadores internos da base de dados.
@@ -151,17 +156,17 @@ identificadores internos da base de dados.
 
 Categorias iniciais propostas:
 
--   **Economia:** indicadores, crescimento, inflação e actividade
-    económica.
--   **Finanças pessoais:** poupança, orçamento, crédito e gestão do
-    dinheiro.
--   **Banca e seguros:** produtos, serviços, instituições e regulação.
--   **Empresas e negócios:** empreendedorismo, investimento e mercado
-    empresarial.
--   **Mercados:** câmbio, matérias-primas e mercados financeiros.
--   **Política económica:** orçamento de Estado, fiscalidade e decisões
-    económicas.
--   **Literacia financeira:** artigos explicativos e guias educativos.
+- **Economia:** indicadores, crescimento, inflação e actividade
+  económica.
+- **Finanças pessoais:** poupança, orçamento, crédito e gestão do
+  dinheiro.
+- **Banca e seguros:** produtos, serviços, instituições e regulação.
+- **Empresas e negócios:** empreendedorismo, investimento e mercado
+  empresarial.
+- **Mercados:** câmbio, matérias-primas e mercados financeiros.
+- **Política económica:** orçamento de Estado, fiscalidade e decisões
+  económicas.
+- **Literacia financeira:** artigos explicativos e guias educativos.
 
 As categorias deverão ser configuráveis pelo administrador. Um artigo
 poderá pertencer a uma categoria principal e ter etiquetas adicionais.
@@ -295,33 +300,37 @@ fonte de medição configurada.
 O administrador e os editores autorizados deverão poder criar, editar,
 pré-visualizar, publicar, agendar e arquivar artigos.
 
-  Campo                         Obrigatório
-  ----------------------------- -----------------------------
-  Título                        Sim
-  Slug                          Sim, gerado automaticamente
-  Resumo                        Sim
-  Corpo do artigo               Sim
-  Imagem de capa                Sim
-  Texto alternativo da imagem   Sim
-  Categoria principal           Sim
-  Etiquetas                     Não
-  Autor                         Sim
-  Estado editorial              Sim
-  Data de publicação            Conforme o estado
-  Título SEO                    Não
-  Descrição SEO                 Não
-  Imagem para partilha          Não
-  Fontes e referências          Recomendado
+Campo Obrigatório
+
+---
+
+Título Sim
+Slug Sim, gerado automaticamente
+Resumo Sim
+Corpo do artigo Sim
+Imagem de capa Sim
+Texto alternativo da imagem Sim
+Categoria principal Sim
+Etiquetas Não
+Autor Sim
+Estado editorial Sim
+Data de publicação Conforme o estado
+Título SEO Não
+Descrição SEO Não
+Imagem para partilha Não
+Fontes e referências Recomendado
 
 #### Estados de um artigo
 
-  Estado       Comportamento
-  ------------ -------------------------------------------
-  Rascunho     Visível apenas a utilizadores autorizados
-  Em revisão   Aguarda aprovação editorial
-  Agendado     Publicação automática na data definida
-  Publicado    Visível ao público
-  Arquivado    Deixa de aparecer nas listagens públicas
+Estado Comportamento
+
+---
+
+Rascunho Visível apenas a utilizadores autorizados
+Em revisão Aguarda aprovação editorial
+Agendado Publicação automática na data definida
+Publicado Visível ao público
+Arquivado Deixa de aparecer nas listagens públicas
 
 A publicação agendada deverá ser processada por uma tarefa programada do
 Laravel. Se a tarefa falhar, o artigo deverá permanecer registado como
@@ -345,18 +354,21 @@ migrações.
 
 O MVP deverá suportar, no mínimo, três perfis:
 
-  -----------------------------------------------------------------------
-  Perfil                              Permissões
-  ----------------------------------- -----------------------------------
-  Administrador                       Acesso completo ao backoffice e
-                                      gestão de utilizadores
+---
 
-  Editor                              Criar, editar, rever e publicar
-                                      artigos
+Perfil Permissões
 
-  Autor                               Criar e editar os próprios artigos,
-                                      sem publicar directamente
-  -----------------------------------------------------------------------
+---
+
+Administrador Acesso completo ao backoffice e
+gestão de utilizadores
+
+Editor Criar, editar, rever e publicar
+artigos
+
+Autor Criar e editar os próprios artigos,
+sem publicar directamente
+-----------------------------------------------------------------------
 
 O sistema deverá aplicar autorização no servidor, não apenas esconder
 botões na interface.
@@ -374,39 +386,42 @@ a confirmação e verificação de dependências.
 
 ## 8. Requisitos não funcionais
 
-  -----------------------------------------------------------------------
-  Área                                Requisito
-  ----------------------------------- -----------------------------------
-  Desempenho                          Optimizar imagens, consultas e
-                                      recursos estáticos
+---
 
-  Responsividade                      Compatibilidade com telemóveis,
-                                      tablets e computadores
+Área Requisito
 
-  Segurança                           Protecção contra CSRF, XSS, SQL
-                                      injection e acessos não autorizados
+---
 
-  SEO                                 URLs canónicos, sitemap XML,
-                                      robots.txt e metadados
+Desempenho Optimizar imagens, consultas e
+recursos estáticos
 
-  Acessibilidade                      Navegação por teclado, contraste
-                                      adequado e textos alternativos
+Responsividade Compatibilidade com telemóveis,
+tablets e computadores
 
-  Disponibilidade                     Monitorização de erros e cópias de
-                                      segurança regulares
+Segurança Protecção contra CSRF, XSS, SQL
+injection e acessos não autorizados
 
-  Compatibilidade                     Suporte às versões actuais dos
-                                      principais navegadores
+SEO URLs canónicos, sitemap XML,
+robots.txt e metadados
 
-  Manutenção                          Código modular, testável e
-                                      documentado
+Acessibilidade Navegação por teclado, contraste
+adequado e textos alternativos
 
-  Internacionalização                 Preparação para português e futuras
-                                      traduções
+Disponibilidade Monitorização de erros e cópias de
+segurança regulares
 
-  Privacidade                         Recolha mínima de dados e gestão de
-                                      consentimentos
-  -----------------------------------------------------------------------
+Compatibilidade Suporte às versões actuais dos
+principais navegadores
+
+Manutenção Código modular, testável e
+documentado
+
+Internacionalização Preparação para português e futuras
+traduções
+
+Privacidade Recolha mínima de dados e gestão de
+consentimentos
+-----------------------------------------------------------------------
 
 ### 8.1 Desempenho
 
@@ -421,11 +436,13 @@ páginas e consultas adequadas, use o skeleton para melhorar a experiência do u
 
 Metas de desempenho propostas, medidas no percentil 75:
 
-  Métrica         Meta
-  --------- ----------
-  LCP          ≤ 2,5 s
-  INP         ≤ 200 ms
-  CLS            ≤ 0,1
+Métrica Meta
+
+---
+
+LCP ≤ 2,5 s
+INP ≤ 200 ms
+CLS ≤ 0,1
 
 Estas metas devem ser avaliadas em condições reais, não apenas em
 ambiente local.
@@ -451,28 +468,30 @@ introduzir microserviços nesta fase.
 
 ### 9.1 Arquitectura lógica
 
--   **Frontend público:** homepage, artigos, categorias e pesquisa.
--   **Aplicação Laravel:** rotas, controllers, services, policies e
-    jobs.
--   **Base de dados:** Postgres.
--   **Armazenamento:** imagens e ficheiros através do Laravel Storage.
--   **Scheduler:** processamento de publicações agendadas.
--   **Analytics:** medição de audiência.
+- **Frontend público:** homepage, artigos, categorias e pesquisa.
+- **Aplicação Laravel:** rotas, controllers, services, policies e
+  jobs.
+- **Base de dados:** Postgres.
+- **Armazenamento:** imagens e ficheiros através do Laravel Storage.
+- **Scheduler:** processamento de publicações agendadas.
+- **Analytics:** medição de audiência.
 
 ### 9.2 Stack tecnológica recomendada
 
-  Componente        Tecnologia proposta
-  ----------------- ----------------------------------------------------
-  Backend           Laravel
-  Frontend          Blade e Tailwind CSS
-  Interactividade   Alpine.js, quando necessário
-  Base de dados     Postgres
-  Autenticação      Laravel Breeze ou solução equivalente
-  Editor            Tiptap ou editor compatível
-  Imagens           Laravel Storage
-  Cache             Cache de ficheiros ou Redis, conforme o alojamento
-  Testes            PHPUnit ou Pest
-  Analytics         Google Analytics 4 ou alternativa compatível
+Componente Tecnologia proposta
+
+---
+
+Backend Laravel
+Frontend Blade e Tailwind CSS
+Interactividade Alpine.js, quando necessário
+Base de dados Postgres
+Autenticação Laravel Breeze ou solução equivalente
+Editor Tiptap ou editor compatível
+Imagens Laravel Storage
+Cache Cache de ficheiros ou Redis, conforme o alojamento
+Testes PHPUnit ou Pest
+Analytics Google Analytics 4 ou alternativa compatível
 
 A utilização de Blade permite desenvolver um portal rápido, com
 renderização no servidor e boa compatibilidade com SEO. Não é necessário
@@ -485,31 +504,34 @@ versão de Laravel e o ambiente de alojamento.
 
 O modelo inicial deverá incluir as seguintes entidades:
 
-  -----------------------------------------------------------------------
-  Entidade                            Campos principais
-  ----------------------------------- -----------------------------------
-  `users`                             id, name, email, password, role,
-                                      status
+---
 
-  `articles`                          id, author_id, title, slug,
-                                      excerpt, body, cover_image, status,
-                                      published_at, updated_at
+Entidade Campos principais
 
-  `categories`                        id, name, slug, description
+---
 
-  `tags`                              id, name, slug
+`users` id, name, email, password, role,
+status
 
-  `article_category`                  Relação entre artigos e categorias
+`articles` id, author_id, title, slug,
+excerpt, body, cover_image, status,
+published_at, updated_at
 
-  `article_tag`                       Relação entre artigos e etiquetas
+`categories` id, name, slug, description
 
-  `media`                             id, path, alt_text, mime_type, size
+`tags` id, name, slug
 
-  `article_views`                     id, article_id, viewed_at
+`article_category` Relação entre artigos e categorias
 
-  `newsletter_subscribers`            id, email, status, consented_at,
-                                      unsubscribed_at
-  -----------------------------------------------------------------------
+`article_tag` Relação entre artigos e etiquetas
+
+`media` id, path, alt_text, mime_type, size
+
+`article_views` id, article_id, viewed_at
+
+`newsletter_subscribers` id, email, status, consented_at,
+unsubscribed_at
+-----------------------------------------------------------------------
 
 O sistema deverá ainda manter registos de auditoria para operações
 editoriais importantes, como publicação, alteração de estado e
@@ -541,54 +563,57 @@ definidos durante a implementação.
 O MVP só deverá ser considerado funcional quando os seguintes cenários
 forem testados com sucesso.
 
-  -----------------------------------------------------------------------
-  ID                      Critério de aceitação   Prioridade
-  ----------------------- ----------------------- -----------------------
-  AC-01                   Um visitante consegue   P0
-                          consultar a homepage    
-                          sem autenticação.       
+---
 
-  AC-02                   Um visitante consegue   P0
-                          abrir e ler um artigo   
-                          publicado.              
+ID Critério de aceitação Prioridade
 
-  AC-03                   Um visitante consegue   P0
-                          navegar pelas           
-                          categorias.             
+---
 
-  AC-04                   A pesquisa devolve      P0
-                          resultados relevantes.  
+AC-01 Um visitante consegue P0
+consultar a homepage  
+sem autenticação.
 
-  AC-05                   Um autor consegue criar P0
-                          e guardar um rascunho.  
+AC-02 Um visitante consegue P0
+abrir e ler um artigo  
+publicado.
 
-  AC-06                   Um editor consegue      P0
-                          rever e publicar um     
-                          artigo.                 
+AC-03 Um visitante consegue P0
+navegar pelas  
+categorias.
 
-  AC-07                   Um artigo agendado é    P0
-                          publicado na data       
-                          definida.               
+AC-04 A pesquisa devolve P0
+resultados relevantes.
 
-  AC-08                   Um utilizador não       P0
-                          autorizado não consegue 
-                          aceder ao backoffice.   
+AC-05 Um autor consegue criar P0
+e guardar um rascunho.
 
-  AC-09                   As páginas de artigos   P0
-                          apresentam metadados    
-                          SEO.                    
+AC-06 Um editor consegue P0
+rever e publicar um  
+artigo.
 
-  AC-10                   O leitor consegue       P0
-                          partilhar um artigo.    
+AC-07 Um artigo agendado é P0
+publicado na data  
+definida.
 
-  AC-11                   O leitor consegue       P1
-                          subscrever a            
-                          newsletter.             
+AC-08 Um utilizador não P0
+autorizado não consegue
+aceder ao backoffice.
 
-  AC-12                   O administrador         P1
-                          consegue consultar      
-                          métricas de audiência.  
-  -----------------------------------------------------------------------
+AC-09 As páginas de artigos P0
+apresentam metadados  
+SEO.
+
+AC-10 O leitor consegue P0
+partilhar um artigo.
+
+AC-11 O leitor consegue P1
+subscrever a  
+newsletter.
+
+AC-12 O administrador P1
+consegue consultar  
+métricas de audiência.
+-----------------------------------------------------------------------
 
 Cada funcionalidade deverá ter testes automatizados para os
 comportamentos críticos e testes manuais de interface nos principais
@@ -614,32 +639,35 @@ variáveis de ambiente, nunca no código-fonte.
 Estimativa inicial para um programador com experiência em Laravel. Os
 prazos deverão ser ajustados após a definição do design e do alojamento.
 
-  ------------------------------------------------------------------------
-  Fase                  Actividades                             Estimativa
-  --------------------- --------------------- ----------------------------
-  1\. Planeamento e     Identidade visual,                       3--5 dias
-  design                wireframes e          
-                        arquitectura da       
-                        informação            
+---
 
-  2\. Estrutura técnica Configuração Laravel,                    3--5 dias
-                        modelos, migrations,  
-                        autenticação e        
-                        permissões            
+Fase Actividades Estimativa
 
-  3\. Backoffice        Dashboard, editor,                      7--10 dias
-  editorial             gestão de artigos,    
-                        categorias, media e   
-                        agendamento           
+---
 
-  4\. Frontend público  Homepage, artigos,                      7--10 dias
-                        categorias, pesquisa, 
-                        SEO e responsividade  
+1\. Planeamento e Identidade visual, 3--5 dias
+design wireframes e  
+arquitectura da  
+informação
 
-  5\. Testes e          Testes, optimização,                     4--7 dias
-  lançamento            analytics, backups e  
-                        publicação            
-  ------------------------------------------------------------------------
+2\. Estrutura técnica Configuração Laravel, 3--5 dias
+modelos, migrations,  
+autenticação e  
+permissões
+
+3\. Backoffice Dashboard, editor, 7--10 dias
+editorial gestão de artigos,  
+categorias, media e  
+agendamento
+
+4\. Frontend público Homepage, artigos, 7--10 dias
+categorias, pesquisa,
+SEO e responsividade
+
+5\. Testes e Testes, optimização, 4--7 dias
+lançamento analytics, backups e  
+publicação
+------------------------------------------------------------------------
 
 **Estimativa total: 24--37 dias úteis.**
 
@@ -649,31 +677,34 @@ dependências externas.
 
 ## 15. Riscos e medidas de mitigação
 
-  -----------------------------------------------------------------------
-  Risco                   Impacto                 Mitigação
-  ----------------------- ----------------------- -----------------------
-  Baixa frequência de     Redução da audiência    Calendário editorial e
-  publicação              recorrente              planeamento antecipado
+---
 
-  Conteúdos com erros     Perda de credibilidade  Revisão editorial e
-  factuais                                        fontes verificáveis
+Risco Impacto Mitigação
 
-  Lentidão em redes       Abandono dos leitores   Optimização de imagens
-  móveis                                          e cache
+---
 
-  Problemas de segurança  Comprometimento do      Actualizações, testes e
-                          portal                  backups
+Baixa frequência de Redução da audiência Calendário editorial e
+publicação recorrente planeamento antecipado
 
-  Dependência de um único Atrasos nas publicações Permissões e fluxo de
-  editor                                          revisão
+Conteúdos com erros Perda de credibilidade Revisão editorial e
+factuais fontes verificáveis
 
-  Custos de serviços      Aumento dos custos      Começar com serviços
-  externos                operacionais            essenciais e económicos
+Lentidão em redes Abandono dos leitores Optimização de imagens
+móveis e cache
 
-  Dificuldade em atrair   Baixo crescimento       SEO, distribuição e
-  audiência                                       análise de
-                                                  comportamento
-  -----------------------------------------------------------------------
+Problemas de segurança Comprometimento do Actualizações, testes e
+portal backups
+
+Dependência de um único Atrasos nas publicações Permissões e fluxo de
+editor revisão
+
+Custos de serviços Aumento dos custos Começar com serviços
+externos operacionais essenciais e económicos
+
+Dificuldade em atrair Baixo crescimento SEO, distribuição e
+audiência análise de
+comportamento
+-----------------------------------------------------------------------
 
 ## 16. Funcionalidades futuras
 
@@ -714,13 +745,13 @@ Estiver disponível no ambiente de produção, quando aplicável.
 Antes de iniciar a implementação, é necessário fechar as seguintes
 decisões:
 
--   Identidade visual e logótipo definitivos.
--   Editor de conteúdo a utilizar.
--   Fornecedor de newsletter.
--   Ferramenta de analytics.
--   Ambiente de alojamento e configuração do cron.
--   Fluxo de aprovação editorial.
--   Política de publicação e correcção de artigos.
+- Identidade visual e logótipo definitivos.
+- Editor de conteúdo a utilizar.
+- Fornecedor de newsletter.
+- Ferramenta de analytics.
+- Ambiente de alojamento e configuração do cron.
+- Fluxo de aprovação editorial.
+- Política de publicação e correcção de artigos.
 
 ## 19. Conclusão
 

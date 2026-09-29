@@ -51,11 +51,10 @@ export default function ArticlesIndex({
     const total = Object.values(counts).reduce((a, b) => a + b, 0);
 
     const filterBy = (status: string | null) => {
-        router.get(
-            '/artigos',
-            status ? { status } : {},
-            { preserveState: true, replace: true },
-        );
+        router.get('/artigos', status ? { status } : {}, {
+            preserveState: true,
+            replace: true,
+        });
     };
 
     return (
@@ -108,12 +107,22 @@ export default function ArticlesIndex({
                 <div className="overflow-hidden rounded-xl border border-border bg-card">
                     <table className="w-full text-sm">
                         <thead>
-                            <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
-                                <th className="px-5 py-3 font-semibold">Título</th>
-                                <th className="px-5 py-3 font-semibold">Categoria</th>
-                                <th className="px-5 py-3 font-semibold">Autor</th>
-                                <th className="px-5 py-3 font-semibold">Estado</th>
-                                <th className="px-5 py-3 font-semibold">Actualizado</th>
+                            <tr className="border-b border-border text-left text-xs tracking-wide text-muted-foreground uppercase">
+                                <th className="px-5 py-3 font-semibold">
+                                    Título
+                                </th>
+                                <th className="px-5 py-3 font-semibold">
+                                    Categoria
+                                </th>
+                                <th className="px-5 py-3 font-semibold">
+                                    Autor
+                                </th>
+                                <th className="px-5 py-3 font-semibold">
+                                    Estado
+                                </th>
+                                <th className="px-5 py-3 font-semibold">
+                                    Actualizado
+                                </th>
                                 <th className="px-5 py-3"></th>
                             </tr>
                         </thead>
@@ -131,12 +140,18 @@ export default function ArticlesIndex({
                                             <span className="inline-flex items-center gap-2 text-muted-foreground">
                                                 <span
                                                     className="inline-block size-2"
-                                                    style={{ background: a.color ?? '#123b30' }}
+                                                    style={{
+                                                        background:
+                                                            a.color ??
+                                                            '#123b30',
+                                                    }}
                                                 />
                                                 {a.category}
                                             </span>
                                         ) : (
-                                            <span className="text-muted-foreground">—</span>
+                                            <span className="text-muted-foreground">
+                                                —
+                                            </span>
                                         )}
                                     </td>
                                     <td className="px-5 py-3 text-muted-foreground">
@@ -174,7 +189,9 @@ export default function ArticlesIndex({
                                                         ) {
                                                             router.delete(
                                                                 `/artigos/${a.slug}`,
-                                                                { preserveScroll: true },
+                                                                {
+                                                                    preserveScroll: true,
+                                                                },
                                                             );
                                                         }
                                                     }}

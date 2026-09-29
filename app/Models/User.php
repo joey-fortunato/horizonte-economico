@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\UserRole;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -34,29 +37,29 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, PasskeyAuthenticatable, TwoFactorAuthenticatable;
 
-    public function articles(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function articles(): HasMany
     {
         return $this->hasMany(Article::class, 'author_id');
     }
 
-    public function role(): ?\App\Enums\UserRole
+    public function role(): ?UserRole
     {
-        return \App\Enums\UserRole::tryFrom((string) $this->getAttribute('role'));
+        return UserRole::tryFrom((string) $this->getAttribute('role'));
     }
 
     public function isAdmin(): bool
     {
-        return $this->role() === \App\Enums\UserRole::Administrator;
+        return $this->role() === UserRole::Administrator;
     }
 
     public function isEditor(): bool
     {
-        return $this->role() === \App\Enums\UserRole::Editor;
+        return $this->role() === UserRole::Editor;
     }
 
     public function isAuthor(): bool
     {
-        return $this->role() === \App\Enums\UserRole::Author;
+        return $this->role() === UserRole::Author;
     }
 
     /** Admin e editor podem publicar/rever. */
@@ -67,10 +70,10 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 
     public function canAccessBackoffice(): bool
     {
-        return in_array($this->role(), \App\Enums\UserRole::backoffice(), true);
+        return in_array($this->role(), UserRole::backoffice(), true);
     }
 
-    public function avatar(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function avatar(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'avatar_media_id');
     }
@@ -85,9 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            /* @chisel-2fa */
             'two_factor_confirmed_at' => 'datetime',
-            /* @end-chisel-2fa */
         ];
     }
 }

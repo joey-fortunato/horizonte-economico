@@ -1,6 +1,6 @@
 :root {
-  --he-verde-profundo: #123B30; /* Cor principal */
-  --he-branco: #FFFFFF; /* Fundo e contraste */
-  --he-dourado-suave: #D4AD67; /* Horizonte, filetes, destaques */
-  --he-cinzento-esverdeado: #E9EEE9; /* Fundos secundários */
+    --he-verde-profundo: #123b30; /* Cor principal */
+    --he-branco: #ffffff; /* Fundo e contraste */
+    --he-dourado-suave: #d4ad67; /* Horizonte, filetes, destaques */
+    --he-cinzento-esverdeado: #e9eee9; /* Fundos secundários */
 }

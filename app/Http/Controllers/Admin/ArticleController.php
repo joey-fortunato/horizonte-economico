@@ -9,6 +9,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Media;
 use App\Models\Tag;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -74,7 +75,7 @@ class ArticleController extends Controller
             abort(403, 'Sem permissão para publicar. Guarde como rascunho ou envie para revisão.');
         }
 
-        $article = new Article();
+        $article = new Article;
         $this->fill($article, $request);
         $article->author_id = $request->user()->id;
         $article->save();
@@ -132,7 +133,7 @@ class ArticleController extends Controller
         $article->correction_note = $data['correction_note'] ?? null;
 
         if ($request->hasFile('cover')) {
-            $result = app(\App\Services\ImageService::class)->store($request->file('cover'), 'covers');
+            $result = app(ImageService::class)->store($request->file('cover'), 'covers');
             $media = Media::create([
                 'disk' => 'public',
                 'path' => $result['path'],

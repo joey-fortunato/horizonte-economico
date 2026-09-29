@@ -60,7 +60,9 @@ function CreateForm() {
                     <input
                         type="checkbox"
                         checked={form.data.is_active}
-                        onChange={(e) => form.setData('is_active', e.target.checked)}
+                        onChange={(e) =>
+                            form.setData('is_active', e.target.checked)
+                        }
                     />
                     Activa
                 </label>
@@ -101,7 +103,9 @@ function Row({ category }: { category: Category }) {
                     />
                 </div>
             </td>
-            <td className="px-4 py-3 text-muted-foreground">/{category.slug}</td>
+            <td className="px-4 py-3 text-muted-foreground">
+                /{category.slug}
+            </td>
             <td className="px-4 py-3 text-muted-foreground">
                 {category.articles_count}
             </td>
@@ -110,7 +114,9 @@ function Row({ category }: { category: Category }) {
                     <input
                         type="checkbox"
                         checked={form.data.is_active}
-                        onChange={(e) => form.setData('is_active', e.target.checked)}
+                        onChange={(e) =>
+                            form.setData('is_active', e.target.checked)
+                        }
                     />
                     {form.data.is_active ? 'Activa' : 'Inactiva'}
                 </label>
@@ -126,9 +132,7 @@ function Row({ category }: { category: Category }) {
                     Guardar
                 </button>
                 <button
-                    onClick={() =>
-                        form.delete(`/categorias/${category.slug}`)
-                    }
+                    onClick={() => form.delete(`/categorias/${category.slug}`)}
                     className="text-sm text-destructive"
                     aria-label="Eliminar"
                 >
@@ -152,11 +156,19 @@ export default function CategoriesIndex({ categories }: Props) {
                     <div className="overflow-hidden rounded-xl border border-border bg-card">
                         <table className="w-full text-sm">
                             <thead>
-                                <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
-                                    <th className="px-4 py-3 font-semibold">Categoria</th>
-                                    <th className="px-4 py-3 font-semibold">Slug</th>
-                                    <th className="px-4 py-3 font-semibold">Artigos</th>
-                                    <th className="px-4 py-3 font-semibold">Estado</th>
+                                <tr className="border-b border-border text-left text-xs tracking-wide text-muted-foreground uppercase">
+                                    <th className="px-4 py-3 font-semibold">
+                                        Categoria
+                                    </th>
+                                    <th className="px-4 py-3 font-semibold">
+                                        Slug
+                                    </th>
+                                    <th className="px-4 py-3 font-semibold">
+                                        Artigos
+                                    </th>
+                                    <th className="px-4 py-3 font-semibold">
+                                        Estado
+                                    </th>
                                     <th className="px-4 py-3"></th>
                                 </tr>
                             </thead>

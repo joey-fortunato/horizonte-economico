@@ -1,107 +1,804 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
-    :root{--bg:#ecefe9;--fg:#14201c;--muted:#5f6b64;--border:#e2e4de;--card:#fff;--brand:#123b30;--brand-weak:#e7ece9;--gold:#9a7017;--gold-weak:#f6edda;--ink:#123b30;--radius:8px;}
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--fg);}
-    .serif{font-family:'Newsreader',Georgia,serif;}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);}
-    .btn{background:var(--brand);color:#fff;border:none;border-radius:9px;padding:10px 16px;font-weight:600;font-size:14px;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
-    .btn-ghost{background:var(--card);color:var(--fg);border:1px solid var(--border);}
-    .meta{font-size:12.5px;color:var(--muted);}
-    .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:8px;display:block;}
-    .field{width:100%;border:1px solid var(--border);border-radius:9px;padding:10px 12px;font-size:13.5px;color:var(--fg);background:var(--card);}
-    .tbtn{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#44514a;cursor:pointer;}
-    .tbtn.on{background:var(--brand-weak);color:var(--brand);}
-    .pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;}
-  </style>
-</helmet>
-<div style="width:1440px;min-height:1060px;display:flex;flex-direction:column;background:var(--bg);">
+    <head>
+        <meta charset="utf-8" />
+        <script src="./support.js"></script>
+    </head>
+    <body>
+        <x-dc>
+            <helmet>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+                    :root {
+                        --bg: #ecefe9;
+                        --fg: #14201c;
+                        --muted: #5f6b64;
+                        --border: #e2e4de;
+                        --card: #fff;
+                        --brand: #123b30;
+                        --brand-weak: #e7ece9;
+                        --gold: #9a7017;
+                        --gold-weak: #f6edda;
+                        --ink: #123b30;
+                        --radius: 8px;
+                    }
+                    * {
+                        box-sizing: border-box;
+                    }
+                    body {
+                        margin: 0;
+                        font-family:
+                            'Inter', ui-sans-serif, system-ui, sans-serif;
+                        background: var(--bg);
+                        color: var(--fg);
+                    }
+                    .serif {
+                        font-family: 'Newsreader', Georgia, serif;
+                    }
+                    .card {
+                        background: var(--card);
+                        border: 1px solid var(--border);
+                        border-radius: var(--radius);
+                    }
+                    .btn {
+                        background: var(--brand);
+                        color: #fff;
+                        border: none;
+                        border-radius: 9px;
+                        padding: 10px 16px;
+                        font-weight: 600;
+                        font-size: 14px;
+                        font-family: inherit;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                    .btn-ghost {
+                        background: var(--card);
+                        color: var(--fg);
+                        border: 1px solid var(--border);
+                    }
+                    .meta {
+                        font-size: 12.5px;
+                        color: var(--muted);
+                    }
+                    .lbl {
+                        font-size: 12px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 0.04em;
+                        color: var(--muted);
+                        margin-bottom: 8px;
+                        display: block;
+                    }
+                    .field {
+                        width: 100%;
+                        border: 1px solid var(--border);
+                        border-radius: 9px;
+                        padding: 10px 12px;
+                        font-size: 13.5px;
+                        color: var(--fg);
+                        background: var(--card);
+                    }
+                    .tbtn {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 7px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #44514a;
+                        cursor: pointer;
+                    }
+                    .tbtn.on {
+                        background: var(--brand-weak);
+                        color: var(--brand);
+                    }
+                    .pill {
+                        font-size: 11px;
+                        font-weight: 700;
+                        padding: 3px 9px;
+                        border-radius: 999px;
+                    }
+                </style>
+            </helmet>
+            <div
+                style="
+                    width: 1440px;
+                    min-height: 1060px;
+                    display: flex;
+                    flex-direction: column;
+                    background: var(--bg);
+                "
+            >
+                <!-- top action bar -->
+                <div
+                    style="
+                        background: var(--card);
+                        border-bottom: 1px solid var(--border);
+                        padding: 12px 26px;
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+                    "
+                >
+                    <span
+                        style="
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            font-size: 13.5px;
+                            font-weight: 600;
+                            color: var(--muted);
+                        "
+                        ><svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        >
+                            <path d="m15 18-6-6 6-6" /></svg
+                        >Voltar aos artigos</span
+                    >
+                    <span
+                        style="margin-left: 8px"
+                        class="pill"
+                        style="background: #eef1ee; color: #5f6b64"
+                        >Rascunho</span
+                    >
+                    <span
+                        class="meta"
+                        style="display: flex; align-items: center; gap: 6px"
+                        ><svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#0b6b53"
+                            stroke-width="2"
+                        >
+                            <path d="M20 6 9 17l-5-5" /></svg
+                        >Guardado automaticamente há 12 s</span
+                    >
+                    <div
+                        style="
+                            margin-left: auto;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        "
+                    >
+                        <button class="btn btn-ghost">
+                            <svg
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+                                />
+                                <circle cx="12" cy="12" r="3" /></svg
+                            >Pré-visualizar
+                        </button>
+                        <button class="btn btn-ghost">Guardar rascunho</button>
+                        <button class="btn">Publicar</button>
+                    </div>
+                </div>
 
-  <!-- top action bar -->
-  <div style="background:var(--card);border-bottom:1px solid var(--border);padding:12px 26px;display:flex;align-items:center;gap:16px;">
-    <span style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--muted);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg>Voltar aos artigos</span>
-    <span style="margin-left:8px;" class="pill" style="background:#eef1ee;color:#5f6b64;">Rascunho</span>
-    <span class="meta" style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0b6b53" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Guardado automaticamente há 12 s</span>
-    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
-      <button class="btn btn-ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>Pré-visualizar</button>
-      <button class="btn btn-ghost">Guardar rascunho</button>
-      <button class="btn">Publicar</button>
-    </div>
-  </div>
+                <div
+                    style="
+                        flex: 1;
+                        display: grid;
+                        grid-template-columns: 1fr 340px;
+                        overflow: hidden;
+                    "
+                >
+                    <!-- editor canvas -->
+                    <div style="padding: 28px 40px; overflow: auto">
+                        <div style="max-width: 720px; margin: 0 auto">
+                            <!-- toolbar -->
+                            <div
+                                class="card"
+                                style="
+                                    position: sticky;
+                                    top: 0;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 3px;
+                                    padding: 6px;
+                                    margin-bottom: 20px;
+                                    flex-wrap: wrap;
+                                "
+                            >
+                                <span
+                                    class="tbtn"
+                                    style="
+                                        width: auto;
+                                        padding: 0 10px;
+                                        font-size: 13px;
+                                        font-weight: 600;
+                                    "
+                                    >Parágrafo ▾</span
+                                >
+                                <span
+                                    style="
+                                        width: 1px;
+                                        height: 20px;
+                                        background: var(--border);
+                                        margin: 0 4px;
+                                    "
+                                ></span>
+                                <span class="tbtn" style="font-weight: 700"
+                                    >B</span
+                                >
+                                <span class="tbtn" style="font-style: italic"
+                                    >I</span
+                                >
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"
+                                        />
+                                        <path
+                                            d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"
+                                        /></svg
+                                ></span>
+                                <span
+                                    style="
+                                        width: 1px;
+                                        height: 20px;
+                                        background: var(--border);
+                                        margin: 0 4px;
+                                    "
+                                ></span>
+                                <span
+                                    class="tbtn on"
+                                    style="
+                                        width: auto;
+                                        padding: 0 8px;
+                                        font-weight: 700;
+                                    "
+                                    >H2</span
+                                >
+                                <span
+                                    class="tbtn"
+                                    style="
+                                        width: auto;
+                                        padding: 0 8px;
+                                        font-weight: 700;
+                                    "
+                                    >H3</span
+                                >
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"
+                                        /></svg
+                                ></span>
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M7 8h10M7 12h10M7 16h6" /></svg
+                                ></span>
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path d="M6 4v6a6 6 0 0 0 12 0V4" />
+                                        <path d="M4 20h16" /></svg
+                                ></span>
+                                <span
+                                    style="
+                                        width: 1px;
+                                        height: 20px;
+                                        background: var(--border);
+                                        margin: 0 4px;
+                                    "
+                                ></span>
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <rect
+                                            x="3"
+                                            y="3"
+                                            width="18"
+                                            height="18"
+                                            rx="2"
+                                        />
+                                        <circle cx="9" cy="9" r="2" />
+                                        <path d="m21 15-5-5L5 21" /></svg
+                                ></span>
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <rect
+                                            x="3"
+                                            y="3"
+                                            width="18"
+                                            height="18"
+                                            rx="1"
+                                        />
+                                        <path
+                                            d="M3 9h18M3 15h18M9 3v18M15 3v18"
+                                        /></svg
+                                ></span>
+                                <span class="tbtn"
+                                    ><svg
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            d="M4 7V4h16v3M9 20h6M12 4v16"
+                                        /></svg
+                                ></span>
+                            </div>
 
-  <div style="flex:1;display:grid;grid-template-columns:1fr 340px;overflow:hidden;">
-    <!-- editor canvas -->
-    <div style="padding:28px 40px;overflow:auto;">
-      <div style="max-width:720px;margin:0 auto;">
-        <!-- toolbar -->
-        <div class="card" style="position:sticky;top:0;display:flex;align-items:center;gap:3px;padding:6px;margin-bottom:20px;flex-wrap:wrap;">
-          <span class="tbtn" style="width:auto;padding:0 10px;font-size:13px;font-weight:600;">Parágrafo ▾</span>
-          <span style="width:1px;height:20px;background:var(--border);margin:0 4px;"></span>
-          <span class="tbtn" style="font-weight:700;">B</span>
-          <span class="tbtn" style="font-style:italic;">I</span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></span>
-          <span style="width:1px;height:20px;background:var(--border);margin:0 4px;"></span>
-          <span class="tbtn on" style="width:auto;padding:0 8px;font-weight:700;">H2</span>
-          <span class="tbtn" style="width:auto;padding:0 8px;font-weight:700;">H3</span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 8h10M7 12h10M7 16h6"/></svg></span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><path d="M4 20h16"/></svg></span>
-          <span style="width:1px;height:20px;background:var(--border);margin:0 4px;"></span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
-          <span class="tbtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span>
-        </div>
+                            <!-- title -->
+                            <input
+                                disabled
+                                class="serif"
+                                style="
+                                    width: 100%;
+                                    border: none;
+                                    background: transparent;
+                                    font-size: 38px;
+                                    font-weight: 700;
+                                    color: var(--ink);
+                                    outline: none;
+                                    padding: 0;
+                                "
+                                value="OGE 2027: onde vai o dinheiro do Estado"
+                            />
+                            <div
+                                class="serif"
+                                style="
+                                    font-size: 18px;
+                                    color: var(--muted);
+                                    margin-top: 10px;
+                                "
+                            >
+                                Subtítulo / resumo do artigo…
+                            </div>
 
-        <!-- title -->
-        <input disabled class="serif" style="width:100%;border:none;background:transparent;font-size:38px;font-weight:700;color:var(--ink);outline:none;padding:0;" value="OGE 2027: onde vai o dinheiro do Estado" />
-        <div class="serif" style="font-size:18px;color:var(--muted);margin-top:10px;">Subtítulo / resumo do artigo…</div>
+                            <div
+                                style="
+                                    height: 1px;
+                                    background: var(--border);
+                                    margin: 22px 0;
+                                "
+                            ></div>
 
-        <div style="height:1px;background:var(--border);margin:22px 0;"></div>
+                            <!-- body content -->
+                            <div
+                                class="serif"
+                                style="
+                                    font-size: 18px;
+                                    line-height: 1.75;
+                                    color: #26312b;
+                                "
+                            >
+                                <p style="margin: 0 0 18px">
+                                    O Orçamento Geral do Estado para 2027 chega
+                                    num momento de transição. Depois de dois
+                                    anos de ajustamento, o Executivo aposta em
+                                    recuperar investimento público sem perder de
+                                    vista o controlo da dívida.
+                                </p>
+                                <h2
+                                    style="
+                                        font-size: 26px;
+                                        font-weight: 600;
+                                        margin: 26px 0 12px;
+                                    "
+                                >
+                                    As grandes prioridades
+                                </h2>
+                                <p style="margin: 0 0 18px">
+                                    Educação e saúde continuam a absorver a
+                                    maior fatia da despesa social, mas é no
+                                    investimento em infra-estruturas que se nota
+                                    a maior variação face ao ano anterior.<span
+                                        style="
+                                            display: inline-block;
+                                            width: 2px;
+                                            height: 20px;
+                                            background: var(--brand);
+                                            vertical-align: middle;
+                                            margin-left: 1px;
+                                        "
+                                    ></span>
+                                </p>
+                                <div
+                                    style="
+                                        border-left: 4px solid var(--gold);
+                                        padding: 4px 0 4px 20px;
+                                        margin: 22px 0;
+                                        font-size: 22px;
+                                        font-weight: 600;
+                                        color: var(--ink);
+                                    "
+                                >
+                                    "A verdadeira prova do orçamento não está no
+                                    que promete, mas no que consegue executar."
+                                </div>
+                                <!-- image block placeholder -->
+                                <div
+                                    style="
+                                        background: linear-gradient(
+                                            135deg,
+                                            #e9efe9,
+                                            #dbe6df
+                                        );
+                                        border-radius: 10px;
+                                        height: 220px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        justify-content: center;
+                                        gap: 8px;
+                                        color: #9db3a6;
+                                        font-family: 'Inter';
+                                        font-size: 13px;
+                                    "
+                                >
+                                    <svg
+                                        width="30"
+                                        height="30"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="#a7c0b2"
+                                        stroke-width="1.5"
+                                    >
+                                        <rect
+                                            x="3"
+                                            y="3"
+                                            width="18"
+                                            height="18"
+                                            rx="2"
+                                        />
+                                        <circle cx="9" cy="9" r="2" />
+                                        <path d="m21 15-5-5L5 21" /></svg
+                                    >Imagem com legenda
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- body content -->
-        <div class="serif" style="font-size:18px;line-height:1.75;color:#26312b;">
-          <p style="margin:0 0 18px;">O Orçamento Geral do Estado para 2027 chega num momento de transição. Depois de dois anos de ajustamento, o Executivo aposta em recuperar investimento público sem perder de vista o controlo da dívida.</p>
-          <h2 style="font-size:26px;font-weight:600;margin:26px 0 12px;">As grandes prioridades</h2>
-          <p style="margin:0 0 18px;">Educação e saúde continuam a absorver a maior fatia da despesa social, mas é no investimento em infra-estruturas que se nota a maior variação face ao ano anterior.<span style="display:inline-block;width:2px;height:20px;background:var(--brand);vertical-align:middle;margin-left:1px;"></span></p>
-          <div style="border-left:4px solid var(--gold);padding:4px 0 4px 20px;margin:22px 0;font-size:22px;font-weight:600;color:var(--ink);">"A verdadeira prova do orçamento não está no que promete, mas no que consegue executar."</div>
-          <!-- image block placeholder -->
-          <div style="background:linear-gradient(135deg,#e9efe9,#dbe6df);border-radius:10px;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#9db3a6;font-family:'Inter';font-size:13px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#a7c0b2" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>Imagem com legenda</div>
-        </div>
-      </div>
-    </div>
+                    <!-- settings panel -->
+                    <div
+                        style="
+                            background: var(--card);
+                            border-left: 1px solid var(--border);
+                            padding: 24px 22px;
+                            overflow: auto;
+                        "
+                    >
+                        <div
+                            style="
+                                font-weight: 700;
+                                font-size: 14px;
+                                margin-bottom: 18px;
+                            "
+                        >
+                            Definições do artigo
+                        </div>
 
-    <!-- settings panel -->
-    <div style="background:var(--card);border-left:1px solid var(--border);padding:24px 22px;overflow:auto;">
-      <div style="font-weight:700;font-size:14px;margin-bottom:18px;">Definições do artigo</div>
+                        <div style="margin-bottom: 20px">
+                            <label class="lbl">Estado editorial</label>
+                            <div
+                                class="field"
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                "
+                            >
+                                Rascunho
+                                <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#5f6b64"
+                                    stroke-width="2"
+                                >
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px">
+                            <label class="lbl">Categoria principal</label>
+                            <div
+                                class="field"
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                "
+                            >
+                                Política económica
+                                <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#5f6b64"
+                                    stroke-width="2"
+                                >
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px">
+                            <label class="lbl">Etiquetas</label>
+                            <div
+                                style="display: flex; gap: 6px; flex-wrap: wrap"
+                            >
+                                <span
+                                    class="pill"
+                                    style="
+                                        background: var(--brand-weak);
+                                        color: var(--brand);
+                                    "
+                                    >OGE2027 ✕</span
+                                ><span
+                                    class="pill"
+                                    style="
+                                        background: var(--brand-weak);
+                                        color: var(--brand);
+                                    "
+                                    >Fiscalidade ✕</span
+                                ><span
+                                    class="pill"
+                                    style="background: #eef1ee; color: #5f6b64"
+                                    >+ adicionar</span
+                                >
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px">
+                            <label class="lbl">Autor</label>
+                            <div
+                                class="field"
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 8px;
+                                "
+                            >
+                                <div
+                                    style="
+                                        width: 24px;
+                                        height: 24px;
+                                        border-radius: 999px;
+                                        background: var(--brand-weak);
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 10px;
+                                        font-weight: 700;
+                                        color: var(--brand);
+                                    "
+                                >
+                                    JM
+                                </div>
+                                João Muanza
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px">
+                            <label class="lbl">Publicação</label>
+                            <div
+                                class="field"
+                                style="
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                "
+                            >
+                                <span style="color: var(--muted)"
+                                    >Agendar data e hora</span
+                                ><svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#5f6b64"
+                                    stroke-width="2"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="4"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                    />
+                                    <path d="M16 2v4M8 2v4M3 10h18" />
+                                </svg>
+                            </div>
+                        </div>
 
-      <div style="margin-bottom:20px;"><label class="lbl">Estado editorial</label><div class="field" style="display:flex;justify-content:space-between;align-items:center;">Rascunho <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5f6b64" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div></div>
-      <div style="margin-bottom:20px;"><label class="lbl">Categoria principal</label><div class="field" style="display:flex;justify-content:space-between;align-items:center;">Política económica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5f6b64" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div></div>
-      <div style="margin-bottom:20px;"><label class="lbl">Etiquetas</label><div style="display:flex;gap:6px;flex-wrap:wrap;"><span class="pill" style="background:var(--brand-weak);color:var(--brand);">OGE2027 ✕</span><span class="pill" style="background:var(--brand-weak);color:var(--brand);">Fiscalidade ✕</span><span class="pill" style="background:#eef1ee;color:#5f6b64;">+ adicionar</span></div></div>
-      <div style="margin-bottom:20px;"><label class="lbl">Autor</label><div class="field" style="display:flex;align-items:center;gap:8px;"><div style="width:24px;height:24px;border-radius:999px;background:var(--brand-weak);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--brand);">JM</div>João Muanza</div></div>
-      <div style="margin-bottom:20px;"><label class="lbl">Publicação</label><div class="field" style="display:flex;justify-content:space-between;align-items:center;"><span style="color:var(--muted);">Agendar data e hora</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5f6b64" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div></div>
+                        <div
+                            style="
+                                height: 1px;
+                                background: var(--border);
+                                margin: 22px 0;
+                            "
+                        ></div>
+                        <div
+                            style="
+                                font-weight: 700;
+                                font-size: 14px;
+                                margin-bottom: 16px;
+                            "
+                        >
+                            Imagem de capa
+                        </div>
+                        <div
+                            style="
+                                background: linear-gradient(
+                                    135deg,
+                                    #e9efe9,
+                                    #dbe6df
+                                );
+                                border-radius: 10px;
+                                height: 130px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 6px;
+                                color: #9db3a6;
+                                font-size: 12px;
+                                margin-bottom: 10px;
+                            "
+                        >
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#a7c0b2"
+                                stroke-width="1.5"
+                            >
+                                <path d="M4 16l5-5 4 4 3-3 4 4" />
+                                <rect
+                                    x="3"
+                                    y="3"
+                                    width="18"
+                                    height="18"
+                                    rx="2"
+                                /></svg
+                            >Carregar imagem
+                        </div>
+                        <input
+                            disabled
+                            class="field"
+                            value="Texto alternativo (obrigatório)"
+                            style="color: var(--muted); margin-bottom: 22px"
+                        />
 
-      <div style="height:1px;background:var(--border);margin:22px 0;"></div>
-      <div style="font-weight:700;font-size:14px;margin-bottom:16px;">Imagem de capa</div>
-      <div style="background:linear-gradient(135deg,#e9efe9,#dbe6df);border-radius:10px;height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#9db3a6;font-size:12px;margin-bottom:10px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a7c0b2" stroke-width="1.5"><path d="M4 16l5-5 4 4 3-3 4 4"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>Carregar imagem</div>
-      <input disabled class="field" value="Texto alternativo (obrigatório)" style="color:var(--muted);margin-bottom:22px;"/>
-
-      <div style="height:1px;background:var(--border);margin:0 0 22px;"></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><div style="font-weight:700;font-size:14px;">SEO</div><span style="font-size:11px;font-weight:700;color:var(--brand);background:var(--brand-weak);padding:3px 8px;border-radius:999px;">Bom</span></div>
-      <div class="card" style="padding:12px 14px;background:var(--bg);border:1px solid var(--border);"><div style="font-size:13px;color:#1a56b0;font-weight:500;line-height:1.35;">OGE 2027: onde vai o dinheiro do Estado…</div><div style="font-size:12px;color:#0b7a3d;margin:3px 0;">horizonteeconomico.com › artigo › oge-2027</div><div style="font-size:12px;color:#5f6b64;line-height:1.4;">Uma leitura das prioridades orçamentais e do impacto nas famílias.</div></div>
-      <div class="meta" style="margin-top:10px;">Título SEO · Descrição · Imagem de partilha podem ser personalizados abaixo.</div>
-    </div>
-  </div>
-
-</div>
-</x-dc>
-</body>
+                        <div
+                            style="
+                                height: 1px;
+                                background: var(--border);
+                                margin: 0 0 22px;
+                            "
+                        ></div>
+                        <div
+                            style="
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-bottom: 14px;
+                            "
+                        >
+                            <div style="font-weight: 700; font-size: 14px">
+                                SEO
+                            </div>
+                            <span
+                                style="
+                                    font-size: 11px;
+                                    font-weight: 700;
+                                    color: var(--brand);
+                                    background: var(--brand-weak);
+                                    padding: 3px 8px;
+                                    border-radius: 999px;
+                                "
+                                >Bom</span
+                            >
+                        </div>
+                        <div
+                            class="card"
+                            style="
+                                padding: 12px 14px;
+                                background: var(--bg);
+                                border: 1px solid var(--border);
+                            "
+                        >
+                            <div
+                                style="
+                                    font-size: 13px;
+                                    color: #1a56b0;
+                                    font-weight: 500;
+                                    line-height: 1.35;
+                                "
+                            >
+                                OGE 2027: onde vai o dinheiro do Estado…
+                            </div>
+                            <div
+                                style="
+                                    font-size: 12px;
+                                    color: #0b7a3d;
+                                    margin: 3px 0;
+                                "
+                            >
+                                horizonteeconomico.com › artigo › oge-2027
+                            </div>
+                            <div
+                                style="
+                                    font-size: 12px;
+                                    color: #5f6b64;
+                                    line-height: 1.4;
+                                "
+                            >
+                                Uma leitura das prioridades orçamentais e do
+                                impacto nas famílias.
+                            </div>
+                        </div>
+                        <div class="meta" style="margin-top: 10px">
+                            Título SEO · Descrição · Imagem de partilha podem
+                            ser personalizados abaixo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </x-dc>
+    </body>
 </html>

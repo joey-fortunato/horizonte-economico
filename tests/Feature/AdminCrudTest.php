@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Enums\ArticleStatus;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Media;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -67,7 +68,7 @@ class AdminCrudTest extends TestCase
 
         $this->assertDatabaseCount('media', 1);
 
-        $media = \App\Models\Media::first();
+        $media = Media::first();
         $this->assertSame('image/webp', $media->mime_type);
         $this->assertNotEmpty($media->variants); // variantes responsivas geradas
     }

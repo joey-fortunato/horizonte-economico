@@ -1,32 +1,175 @@
 {
-  "pages": [
-    { "id": "page-publico", "name": "Frontend público" },
-    { "id": "page-backoffice", "name": "Backoffice editorial" },
-    { "id": "page-mobile", "name": "Mobile" }
-  ],
-  "artboards": [
-    { "file": "Home.dc.html", "page": "page-publico", "title": "Homepage editorial", "x": 0, "y": 0, "w": 1440, "h": 4180 },
-    { "file": "Artigo.dc.html", "page": "page-publico", "title": "Página de artigo", "x": 1560, "y": 0, "w": 1440, "h": 2560 },
-    { "file": "Categoria.dc.html", "page": "page-publico", "title": "Categoria / arquivo", "x": 3120, "y": 0, "w": 1440, "h": 2000 },
-    { "file": "Pesquisa.dc.html", "page": "page-publico", "title": "Resultados de pesquisa", "x": 4680, "y": 0, "w": 1440, "h": 1400 },
-    { "file": "Autor.dc.html", "page": "page-publico", "title": "Perfil de autor", "x": 3120, "y": 2120, "w": 1440, "h": 1500 },
-    { "file": "Sobre.dc.html", "page": "page-publico", "title": "Sobre nós", "x": 4680, "y": 1520, "w": 1440, "h": 1600 },
-    { "file": "Contactos.dc.html", "page": "page-publico", "title": "Contactos", "x": 1560, "y": 2680, "w": 1440, "h": 1120 },
-    { "file": "Institucional.dc.html", "page": "page-publico", "title": "Institucional (política editorial / privacidade / termos)", "x": 6240, "y": 0, "w": 1440, "h": 1500 },
+    "pages": [
+        { "id": "page-publico", "name": "Frontend público" },
+        { "id": "page-backoffice", "name": "Backoffice editorial" },
+        { "id": "page-mobile", "name": "Mobile" }
+    ],
+    "artboards": [
+        {
+            "file": "Home.dc.html",
+            "page": "page-publico",
+            "title": "Homepage editorial",
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 4180
+        },
+        {
+            "file": "Artigo.dc.html",
+            "page": "page-publico",
+            "title": "Página de artigo",
+            "x": 1560,
+            "y": 0,
+            "w": 1440,
+            "h": 2560
+        },
+        {
+            "file": "Categoria.dc.html",
+            "page": "page-publico",
+            "title": "Categoria / arquivo",
+            "x": 3120,
+            "y": 0,
+            "w": 1440,
+            "h": 2000
+        },
+        {
+            "file": "Pesquisa.dc.html",
+            "page": "page-publico",
+            "title": "Resultados de pesquisa",
+            "x": 4680,
+            "y": 0,
+            "w": 1440,
+            "h": 1400
+        },
+        {
+            "file": "Autor.dc.html",
+            "page": "page-publico",
+            "title": "Perfil de autor",
+            "x": 3120,
+            "y": 2120,
+            "w": 1440,
+            "h": 1500
+        },
+        {
+            "file": "Sobre.dc.html",
+            "page": "page-publico",
+            "title": "Sobre nós",
+            "x": 4680,
+            "y": 1520,
+            "w": 1440,
+            "h": 1600
+        },
+        {
+            "file": "Contactos.dc.html",
+            "page": "page-publico",
+            "title": "Contactos",
+            "x": 1560,
+            "y": 2680,
+            "w": 1440,
+            "h": 1120
+        },
+        {
+            "file": "Institucional.dc.html",
+            "page": "page-publico",
+            "title": "Institucional (política editorial / privacidade / termos)",
+            "x": 6240,
+            "y": 0,
+            "w": 1440,
+            "h": 1500
+        },
 
-    { "file": "Login.dc.html", "page": "page-backoffice", "title": "Login", "x": 0, "y": 4400, "w": 1440, "h": 900 },
-    { "file": "AdminDashboard.dc.html", "page": "page-backoffice", "title": "Dashboard", "x": 1560, "y": 4400, "w": 1440, "h": 1024 },
-    { "file": "AdminArtigos.dc.html", "page": "page-backoffice", "title": "Gestão de artigos", "x": 3120, "y": 4400, "w": 1440, "h": 1024 },
-    { "file": "AdminEditor.dc.html", "page": "page-backoffice", "title": "Editor de artigo", "x": 4680, "y": 4400, "w": 1440, "h": 1060 },
-    { "file": "AdminCategorias.dc.html", "page": "page-backoffice", "title": "Categorias", "x": 0, "y": 5560, "w": 1440, "h": 900 },
-    { "file": "AdminMedia.dc.html", "page": "page-backoffice", "title": "Biblioteca multimédia", "x": 1560, "y": 5560, "w": 1440, "h": 940 },
-    { "file": "AdminUtilizadores.dc.html", "page": "page-backoffice", "title": "Utilizadores e permissões", "x": 3120, "y": 5560, "w": 1440, "h": 940 },
+        {
+            "file": "Login.dc.html",
+            "page": "page-backoffice",
+            "title": "Login",
+            "x": 0,
+            "y": 4400,
+            "w": 1440,
+            "h": 900
+        },
+        {
+            "file": "AdminDashboard.dc.html",
+            "page": "page-backoffice",
+            "title": "Dashboard",
+            "x": 1560,
+            "y": 4400,
+            "w": 1440,
+            "h": 1024
+        },
+        {
+            "file": "AdminArtigos.dc.html",
+            "page": "page-backoffice",
+            "title": "Gestão de artigos",
+            "x": 3120,
+            "y": 4400,
+            "w": 1440,
+            "h": 1024
+        },
+        {
+            "file": "AdminEditor.dc.html",
+            "page": "page-backoffice",
+            "title": "Editor de artigo",
+            "x": 4680,
+            "y": 4400,
+            "w": 1440,
+            "h": 1060
+        },
+        {
+            "file": "AdminCategorias.dc.html",
+            "page": "page-backoffice",
+            "title": "Categorias",
+            "x": 0,
+            "y": 5560,
+            "w": 1440,
+            "h": 900
+        },
+        {
+            "file": "AdminMedia.dc.html",
+            "page": "page-backoffice",
+            "title": "Biblioteca multimédia",
+            "x": 1560,
+            "y": 5560,
+            "w": 1440,
+            "h": 940
+        },
+        {
+            "file": "AdminUtilizadores.dc.html",
+            "page": "page-backoffice",
+            "title": "Utilizadores e permissões",
+            "x": 3120,
+            "y": 5560,
+            "w": 1440,
+            "h": 940
+        },
 
-    { "file": "HomeMobile.dc.html", "page": "page-mobile", "title": "Home (mobile)", "x": 0, "y": 6700, "w": 390, "h": 1000 },
-    { "file": "ArtigoMobile.dc.html", "page": "page-mobile", "title": "Artigo (mobile)", "x": 510, "y": 6700, "w": 390, "h": 1180 }
-  ],
-  "annotations": [
-    { "id": "note-brand", "page": "page-publico", "x": 0, "y": -150, "w": 900, "text": "Horizonte Económico — plataforma editorial de economia (Angola). Identidade: verde esmeralda #0b6b53 + dourado #b6822e sobre marfim #f7f5f0. Títulos em Newsreader (serif), interface em Inter. Backoffice com sidebar escura #0d1512." }
-  ],
-  "launch": { "view": "canvas", "page": "page-publico" }
+        {
+            "file": "HomeMobile.dc.html",
+            "page": "page-mobile",
+            "title": "Home (mobile)",
+            "x": 0,
+            "y": 6700,
+            "w": 390,
+            "h": 1000
+        },
+        {
+            "file": "ArtigoMobile.dc.html",
+            "page": "page-mobile",
+            "title": "Artigo (mobile)",
+            "x": 510,
+            "y": 6700,
+            "w": 390,
+            "h": 1180
+        }
+    ],
+    "annotations": [
+        {
+            "id": "note-brand",
+            "page": "page-publico",
+            "x": 0,
+            "y": -150,
+            "w": 900,
+            "text": "Horizonte Económico — plataforma editorial de economia (Angola). Identidade: verde esmeralda #0b6b53 + dourado #b6822e sobre marfim #f7f5f0. Títulos em Newsreader (serif), interface em Inter. Backoffice com sidebar escura #0d1512."
+        }
+    ],
+    "launch": { "view": "canvas", "page": "page-publico" }
 }

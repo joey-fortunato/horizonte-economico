@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Media;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class MediaController extends Controller
@@ -35,7 +37,7 @@ class MediaController extends Controller
             'alt_text' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $result = app(\App\Services\ImageService::class)->store($request->file('file'), 'media');
+        $result = app(ImageService::class)->store($request->file('file'), 'media');
 
         Media::create([
             'disk' => 'public',
@@ -77,7 +79,7 @@ class MediaController extends Controller
             'alt_text' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $result = app(\App\Services\ImageService::class)->store($request->file('file'), 'media');
+        $result = app(ImageService::class)->store($request->file('file'), 'media');
 
         $media = Media::create([
             'disk' => 'public',
@@ -107,7 +109,7 @@ class MediaController extends Controller
             return back()->withErrors(['media' => 'Imagem em uso por um artigo. Remova a associação primeiro.']);
         }
 
-        \Illuminate\Support\Facades\Storage::disk($media->disk ?? 'public')->delete($media->path);
+        Storage::disk($media->disk ?? 'public')->delete($media->path);
         $media->delete();
 
         return back()->with('flash', 'Imagem eliminada.');

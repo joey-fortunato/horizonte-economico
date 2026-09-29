@@ -1,101 +1,537 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
-    :root{
-      --paper:#ffffff;--panel:#f1f3ef;--ink:#14201c;--ink-2:#3c463f;--ink-3:#6b746c;
-      --line:#e4e2da;--line-strong:#c7c4b8;--green:#123b30;--green-2:#2c5446;--green-link:#0f4c3c;--gold:#9a7017;
-    }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none;}
-    .serif{font-family:'Newsreader',Georgia,serif;}
-    .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
-    .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-link);}
-    .byline{font-size:13px;color:var(--ink-3);font-weight:500;}
-    .hed{font-family:'Newsreader',serif;font-weight:600;letter-spacing:-.01em;color:var(--ink);line-height:1.13;}
-    .rule{border:0;border-top:1px solid var(--line);margin:0;}
-    .photo{background:var(--panel);border:1px solid var(--line);display:block;}
-    .sec-label{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--green);padding-bottom:10px;margin-bottom:24px;}
-    .sec-label h2{font-family:'Newsreader',serif;font-size:23px;font-weight:600;margin:0;}
-    .chip{font-size:13px;font-weight:600;padding:8px 16px;border:1px solid var(--line-strong);color:var(--ink-2);cursor:pointer;}
-    .chip.on{background:var(--green);color:#fff;border-color:var(--green);}
-  </style>
-</helmet>
-<div style="width:1440px;min-height:1980px;background:var(--paper);">
+    <head>
+        <meta charset="utf-8" />
+        <script src="./support.js"></script>
+    </head>
+    <body>
+        <x-dc>
+            <helmet>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+                    :root {
+                        --paper: #ffffff;
+                        --panel: #f1f3ef;
+                        --ink: #14201c;
+                        --ink-2: #3c463f;
+                        --ink-3: #6b746c;
+                        --line: #e4e2da;
+                        --line-strong: #c7c4b8;
+                        --green: #123b30;
+                        --green-2: #2c5446;
+                        --green-link: #0f4c3c;
+                        --gold: #9a7017;
+                    }
+                    * {
+                        box-sizing: border-box;
+                    }
+                    body {
+                        margin: 0;
+                        font-family:
+                            'Inter', ui-sans-serif, system-ui, sans-serif;
+                        background: var(--paper);
+                        color: var(--ink);
+                        -webkit-font-smoothing: antialiased;
+                    }
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    .serif {
+                        font-family: 'Newsreader', Georgia, serif;
+                    }
+                    .wrap {
+                        max-width: 1240px;
+                        margin: 0 auto;
+                        padding: 0 40px;
+                    }
+                    .kicker {
+                        font-size: 12px;
+                        font-weight: 700;
+                        letter-spacing: 0.12em;
+                        text-transform: uppercase;
+                        color: var(--green-link);
+                    }
+                    .byline {
+                        font-size: 13px;
+                        color: var(--ink-3);
+                        font-weight: 500;
+                    }
+                    .hed {
+                        font-family: 'Newsreader', serif;
+                        font-weight: 600;
+                        letter-spacing: -0.01em;
+                        color: var(--ink);
+                        line-height: 1.13;
+                    }
+                    .rule {
+                        border: 0;
+                        border-top: 1px solid var(--line);
+                        margin: 0;
+                    }
+                    .photo {
+                        background: var(--panel);
+                        border: 1px solid var(--line);
+                        display: block;
+                    }
+                    .sec-label {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 12px;
+                        border-bottom: 2px solid var(--green);
+                        padding-bottom: 10px;
+                        margin-bottom: 24px;
+                    }
+                    .sec-label h2 {
+                        font-family: 'Newsreader', serif;
+                        font-size: 23px;
+                        font-weight: 600;
+                        margin: 0;
+                    }
+                    .chip {
+                        font-size: 13px;
+                        font-weight: 600;
+                        padding: 8px 16px;
+                        border: 1px solid var(--line-strong);
+                        color: var(--ink-2);
+                        cursor: pointer;
+                    }
+                    .chip.on {
+                        background: var(--green);
+                        color: #fff;
+                        border-color: var(--green);
+                    }
+                </style>
+            </helmet>
+            <div
+                style="
+                    width: 1440px;
+                    min-height: 1980px;
+                    background: var(--paper);
+                "
+            >
+                <!-- Header -->
+                <div style="background: var(--green); color: #eaf1ed">
+                    <div
+                        class="wrap"
+                        style="
+                            display: flex;
+                            align-items: stretch;
+                            height: 62px;
+                        "
+                    >
+                        <div
+                            class="serif"
+                            style="
+                                display: flex;
+                                align-items: center;
+                                font-size: 22px;
+                                font-weight: 700;
+                                color: #fff;
+                            "
+                        >
+                            Horizonte Económico
+                        </div>
+                        <div
+                            style="
+                                margin-left: 36px;
+                                display: flex;
+                                gap: 24px;
+                                font-size: 13.5px;
+                                font-weight: 600;
+                            "
+                        >
+                            <a
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    height: 100%;
+                                    color: #cfe0d8;
+                                "
+                                >Economia</a
+                            ><a
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    height: 100%;
+                                    color: #fff;
+                                    box-shadow: inset 0 -2px 0 #e9c46a;
+                                "
+                                >Mercados</a
+                            ><a
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    height: 100%;
+                                    color: #cfe0d8;
+                                "
+                                >Empresas</a
+                            ><a
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    height: 100%;
+                                    color: #cfe0d8;
+                                "
+                                >Finanças</a
+                            ><a
+                                style="
+                                    display: flex;
+                                    align-items: center;
+                                    height: 100%;
+                                    color: #cfe0d8;
+                                "
+                                >Literacia</a
+                            >
+                        </div>
+                        <div
+                            style="
+                                margin-left: auto;
+                                display: flex;
+                                align-items: center;
+                                gap: 16px;
+                            "
+                        >
+                            <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#eaf1ed"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            >
+                                <circle cx="11" cy="11" r="7" />
+                                <path d="m21 21-4.3-4.3" /></svg
+                            ><a
+                                style="
+                                    font-size: 13px;
+                                    font-weight: 600;
+                                    color: var(--green);
+                                    background: #e9c46a;
+                                    padding: 8px 15px;
+                                "
+                                >Subscrever</a
+                            >
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Header -->
-  <div style="background:var(--green);color:#eaf1ed;">
-    <div class="wrap" style="display:flex;align-items:stretch;height:62px;">
-      <div class="serif" style="display:flex;align-items:center;font-size:22px;font-weight:700;color:#fff;">Horizonte Económico</div>
-      <div style="margin-left:36px;display:flex;gap:24px;font-size:13.5px;font-weight:600;"><a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Economia</a><a style="display:flex;align-items:center;height:100%;color:#fff;box-shadow:inset 0 -2px 0 #e9c46a;">Mercados</a><a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Empresas</a><a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Finanças</a><a style="display:flex;align-items:center;height:100%;color:#cfe0d8;">Literacia</a></div>
-      <div style="margin-left:auto;display:flex;align-items:center;gap:16px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#eaf1ed" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><a style="font-size:13px;font-weight:600;color:var(--green);background:#e9c46a;padding:8px 15px;">Subscrever</a></div>
-    </div>
-  </div>
+                <!-- Category masthead: dark green continues, big serif title -->
+                <div
+                    style="
+                        background: var(--green);
+                        color: #fff;
+                        border-top: 1px solid var(--green-2);
+                    "
+                >
+                    <div
+                        class="wrap"
+                        style="padding-top: 40px; padding-bottom: 40px"
+                    >
+                        <div class="byline" style="color: #8fb0a4">
+                            Início / Categoria
+                        </div>
+                        <h1
+                            class="serif"
+                            style="
+                                font-size: 52px;
+                                font-weight: 700;
+                                letter-spacing: -0.02em;
+                                margin: 10px 0 12px;
+                                color: #fff;
+                            "
+                        >
+                            Mercados
+                        </h1>
+                        <p
+                            class="serif"
+                            style="
+                                font-size: 19px;
+                                line-height: 1.55;
+                                color: #cfe0d8;
+                                max-width: 640px;
+                                margin: 0;
+                            "
+                        >
+                            Câmbio, matérias-primas e mercados financeiros. O
+                            kwanza, o petróleo e a dívida soberana, com contexto
+                            e análise.
+                        </p>
+                        <div
+                            class="byline"
+                            style="color: #8fb0a4; margin-top: 16px"
+                        >
+                            142 artigos · Actualizado há 2 horas
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Category masthead: dark green continues, big serif title -->
-  <div style="background:var(--green);color:#fff;border-top:1px solid var(--green-2);">
-    <div class="wrap" style="padding-top:40px;padding-bottom:40px;">
-      <div class="byline" style="color:#8fb0a4;">Início / Categoria</div>
-      <h1 class="serif" style="font-size:52px;font-weight:700;letter-spacing:-.02em;margin:10px 0 12px;color:#fff;">Mercados</h1>
-      <p class="serif" style="font-size:19px;line-height:1.55;color:#cfe0d8;max-width:640px;margin:0;">Câmbio, matérias-primas e mercados financeiros. O kwanza, o petróleo e a dívida soberana, com contexto e análise.</p>
-      <div class="byline" style="color:#8fb0a4;margin-top:16px;">142 artigos · Actualizado há 2 horas</div>
-    </div>
-  </div>
+                <div class="wrap" style="padding-top: 30px">
+                    <!-- filters -->
+                    <div
+                        style="
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            flex-wrap: wrap;
+                            border-bottom: 1px solid var(--line);
+                            padding-bottom: 22px;
+                            margin-bottom: 30px;
+                        "
+                    >
+                        <span class="chip on">Todos</span
+                        ><span class="chip">Câmbio</span
+                        ><span class="chip">Petróleo</span
+                        ><span class="chip">Dívida</span
+                        ><span class="chip">Acções</span
+                        ><span class="chip">Commodities</span>
+                        <span class="byline" style="margin-left: auto"
+                            >Ordenar:
+                            <b style="color: var(--ink)">Mais recentes</b></span
+                        >
+                    </div>
 
-  <div class="wrap" style="padding-top:30px;">
-    <!-- filters -->
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px;">
-      <span class="chip on">Todos</span><span class="chip">Câmbio</span><span class="chip">Petróleo</span><span class="chip">Dívida</span><span class="chip">Acções</span><span class="chip">Commodities</span>
-      <span class="byline" style="margin-left:auto;">Ordenar: <b style="color:var(--ink);">Mais recentes</b></span>
-    </div>
+                    <!-- featured in category: text + big image, no card -->
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: 1.15fr 1fr;
+                            gap: 40px;
+                            padding-bottom: 34px;
+                            border-bottom: 1px solid var(--line);
+                        "
+                    >
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                            "
+                        >
+                            <div
+                                style="
+                                    display: inline-block;
+                                    border-bottom: 2px solid var(--gold);
+                                    padding-bottom: 3px;
+                                    margin-bottom: 14px;
+                                    width: fit-content;
+                                "
+                            >
+                                <span class="kicker">Em foco</span>
+                            </div>
+                            <h2
+                                class="hed"
+                                style="
+                                    font-size: 38px;
+                                    line-height: 1.08;
+                                    margin: 0 0 14px;
+                                "
+                            >
+                                Kwanza recupera face ao dólar após leilão
+                                cambial do BNA
+                            </h2>
+                            <p
+                                class="serif"
+                                style="
+                                    font-size: 18px;
+                                    line-height: 1.6;
+                                    color: var(--ink-2);
+                                    margin: 0 0 16px;
+                                "
+                            >
+                                O Banco Nacional injectou divisas no mercado e a
+                                taxa oficial aproximou-se do câmbio informal
+                                pela primeira vez em meses.
+                            </p>
+                            <div class="byline">
+                                Ana Cardoso · 28 Set 2026 · 6 min
+                            </div>
+                        </div>
+                        <div class="photo" style="height: 320px"></div>
+                    </div>
 
-    <!-- featured in category: text + big image, no card -->
-    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;padding-bottom:34px;border-bottom:1px solid var(--line);">
-      <div style="display:flex;flex-direction:column;justify-content:center;">
-        <div style="display:inline-block;border-bottom:2px solid var(--gold);padding-bottom:3px;margin-bottom:14px;width:fit-content;"><span class="kicker">Em foco</span></div>
-        <h2 class="hed" style="font-size:38px;line-height:1.08;margin:0 0 14px;">Kwanza recupera face ao dólar após leilão cambial do BNA</h2>
-        <p class="serif" style="font-size:18px;line-height:1.6;color:var(--ink-2);margin:0 0 16px;">O Banco Nacional injectou divisas no mercado e a taxa oficial aproximou-se do câmbio informal pela primeira vez em meses.</p>
-        <div class="byline">Ana Cardoso · 28 Set 2026 · 6 min</div>
-      </div>
-      <div class="photo" style="height:320px;"></div>
-    </div>
+                    <!-- river list -->
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: 1fr 1px 1fr;
+                            gap: 40px;
+                            padding-top: 34px;
+                        "
+                    >
+                        <div>
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 150px;
+                                    gap: 20px;
+                                    padding-bottom: 24px;
+                                "
+                            >
+                                <div>
+                                    <span class="kicker">Petróleo</span>
+                                    <h3
+                                        class="hed"
+                                        style="
+                                            font-size: 23px;
+                                            margin: 8px 0 8px;
+                                        "
+                                    >
+                                        Brent acima dos 78 dólares pressiona
+                                        receitas
+                                    </h3>
+                                    <div class="byline">
+                                        João Muanza · 27 Set
+                                    </div>
+                                </div>
+                                <div class="photo" style="height: 104px"></div>
+                            </div>
+                            <hr class="rule" />
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 150px;
+                                    gap: 20px;
+                                    padding: 24px 0;
+                                "
+                            >
+                                <div>
+                                    <span class="kicker">Dívida</span>
+                                    <h3
+                                        class="hed"
+                                        style="
+                                            font-size: 23px;
+                                            margin: 8px 0 8px;
+                                        "
+                                    >
+                                        Procura por OT sobe no leilão do Tesouro
+                                    </h3>
+                                    <div class="byline">
+                                        Ana Cardoso · 26 Set
+                                    </div>
+                                </div>
+                                <div class="photo" style="height: 104px"></div>
+                            </div>
+                            <hr class="rule" />
+                            <div style="padding: 24px 0 0">
+                                <span class="kicker">Câmbio</span>
+                                <h3
+                                    class="hed"
+                                    style="font-size: 23px; margin: 8px 0 8px"
+                                >
+                                    Câmbio informal vs. oficial: porquê a
+                                    diferença
+                                </h3>
+                                <div class="byline">Pedro Lemos · 25 Set</div>
+                            </div>
+                        </div>
+                        <div style="background: var(--line)"></div>
+                        <div>
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 150px;
+                                    gap: 20px;
+                                    padding-bottom: 24px;
+                                "
+                            >
+                                <div>
+                                    <span class="kicker">Commodities</span>
+                                    <h3
+                                        class="hed"
+                                        style="
+                                            font-size: 23px;
+                                            margin: 8px 0 8px;
+                                        "
+                                    >
+                                        Diamantes e cobre: a aposta na
+                                        diversificação
+                                    </h3>
+                                    <div class="byline">
+                                        Bruno Kiala · 24 Set
+                                    </div>
+                                </div>
+                                <div class="photo" style="height: 104px"></div>
+                            </div>
+                            <hr class="rule" />
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 150px;
+                                    gap: 20px;
+                                    padding: 24px 0;
+                                "
+                            >
+                                <div>
+                                    <span class="kicker">Acções</span>
+                                    <h3
+                                        class="hed"
+                                        style="
+                                            font-size: 23px;
+                                            margin: 8px 0 8px;
+                                        "
+                                    >
+                                        BODIVA: o que muda com as novas cotadas
+                                    </h3>
+                                    <div class="byline">
+                                        Ana Cardoso · 23 Set
+                                    </div>
+                                </div>
+                                <div class="photo" style="height: 104px"></div>
+                            </div>
+                            <hr class="rule" />
+                            <div style="padding: 24px 0 0">
+                                <span class="kicker">Câmbio</span>
+                                <h3
+                                    class="hed"
+                                    style="font-size: 23px; margin: 8px 0 8px"
+                                >
+                                    Reservas internacionais: onde estamos
+                                </h3>
+                                <div class="byline">João Muanza · 22 Set</div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- river list -->
-    <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:40px;padding-top:34px;">
-      <div>
-        <div style="display:grid;grid-template-columns:1fr 150px;gap:20px;padding-bottom:24px;"><div><span class="kicker">Petróleo</span><h3 class="hed" style="font-size:23px;margin:8px 0 8px;">Brent acima dos 78 dólares pressiona receitas</h3><div class="byline">João Muanza · 27 Set</div></div><div class="photo" style="height:104px;"></div></div>
-        <hr class="rule">
-        <div style="display:grid;grid-template-columns:1fr 150px;gap:20px;padding:24px 0;"><div><span class="kicker">Dívida</span><h3 class="hed" style="font-size:23px;margin:8px 0 8px;">Procura por OT sobe no leilão do Tesouro</h3><div class="byline">Ana Cardoso · 26 Set</div></div><div class="photo" style="height:104px;"></div></div>
-        <hr class="rule">
-        <div style="padding:24px 0 0;"><span class="kicker">Câmbio</span><h3 class="hed" style="font-size:23px;margin:8px 0 8px;">Câmbio informal vs. oficial: porquê a diferença</h3><div class="byline">Pedro Lemos · 25 Set</div></div>
-      </div>
-      <div style="background:var(--line);"></div>
-      <div>
-        <div style="display:grid;grid-template-columns:1fr 150px;gap:20px;padding-bottom:24px;"><div><span class="kicker">Commodities</span><h3 class="hed" style="font-size:23px;margin:8px 0 8px;">Diamantes e cobre: a aposta na diversificação</h3><div class="byline">Bruno Kiala · 24 Set</div></div><div class="photo" style="height:104px;"></div></div>
-        <hr class="rule">
-        <div style="display:grid;grid-template-columns:1fr 150px;gap:20px;padding:24px 0;"><div><span class="kicker">Acções</span><h3 class="hed" style="font-size:23px;margin:8px 0 8px;">BODIVA: o que muda com as novas cotadas</h3><div class="byline">Ana Cardoso · 23 Set</div></div><div class="photo" style="height:104px;"></div></div>
-        <hr class="rule">
-        <div style="padding:24px 0 0;"><span class="kicker">Câmbio</span><h3 class="hed" style="font-size:23px;margin:8px 0 8px;">Reservas internacionais: onde estamos</h3><div class="byline">João Muanza · 22 Set</div></div>
-      </div>
-    </div>
+                    <!-- pagination -->
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 8px;
+                            margin: 44px 0 60px;
+                        "
+                    >
+                        <span class="chip">‹ Anterior</span
+                        ><span class="chip on">1</span
+                        ><span class="chip">2</span><span class="chip">3</span
+                        ><span class="byline">…</span
+                        ><span class="chip">12</span
+                        ><span class="chip">Seguinte ›</span>
+                    </div>
+                </div>
 
-    <!-- pagination -->
-    <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin:44px 0 60px;">
-      <span class="chip">‹ Anterior</span><span class="chip on">1</span><span class="chip">2</span><span class="chip">3</span><span class="byline">…</span><span class="chip">12</span><span class="chip">Seguinte ›</span>
-    </div>
-  </div>
-
-  <div style="background:var(--green);color:#8fb0a4;"><div class="wrap" style="padding-top:26px;padding-bottom:26px;display:flex;justify-content:space-between;font-size:12px;"><span>© 2026 Horizonte Económico</span><span>Sobre · Política editorial · Privacidade · Termos</span></div></div>
-
-</div>
-</x-dc>
-</body>
+                <div style="background: var(--green); color: #8fb0a4">
+                    <div
+                        class="wrap"
+                        style="
+                            padding-top: 26px;
+                            padding-bottom: 26px;
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 12px;
+                        "
+                    >
+                        <span>© 2026 Horizonte Económico</span
+                        ><span
+                            >Sobre · Política editorial · Privacidade ·
+                            Termos</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </x-dc>
+    </body>
 </html>

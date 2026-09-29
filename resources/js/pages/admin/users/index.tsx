@@ -84,7 +84,9 @@ function UserRow({ user, roles }: { user: Row; roles: RoleOpt[] }) {
         <tr className="border-b border-border last:border-0">
             <td className="px-4 py-3">
                 <div className="font-medium">{user.name}</div>
-                <div className="text-xs text-muted-foreground">{user.email}</div>
+                <div className="text-xs text-muted-foreground">
+                    {user.email}
+                </div>
             </td>
             <td className="px-4 py-3">
                 <select
@@ -123,7 +125,9 @@ function UserRow({ user, roles }: { user: Row; roles: RoleOpt[] }) {
                 </button>
                 {!user.isSelf && (
                     <button
-                        onClick={() => router.delete(`/utilizadores/${user.id}`)}
+                        onClick={() =>
+                            router.delete(`/utilizadores/${user.id}`)
+                        }
                         className="text-destructive"
                         aria-label="Remover"
                     >
@@ -148,17 +152,29 @@ export default function UsersIndex({ users, roles }: Props) {
                     <div className="overflow-hidden rounded-xl border border-border bg-card">
                         <table className="w-full text-sm">
                             <thead>
-                                <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
-                                    <th className="px-4 py-3 font-semibold">Utilizador</th>
-                                    <th className="px-4 py-3 font-semibold">Perfil</th>
-                                    <th className="px-4 py-3 font-semibold">Estado</th>
-                                    <th className="px-4 py-3 font-semibold">Artigos</th>
+                                <tr className="border-b border-border text-left text-xs tracking-wide text-muted-foreground uppercase">
+                                    <th className="px-4 py-3 font-semibold">
+                                        Utilizador
+                                    </th>
+                                    <th className="px-4 py-3 font-semibold">
+                                        Perfil
+                                    </th>
+                                    <th className="px-4 py-3 font-semibold">
+                                        Estado
+                                    </th>
+                                    <th className="px-4 py-3 font-semibold">
+                                        Artigos
+                                    </th>
                                     <th className="px-4 py-3"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {users.map((u) => (
-                                    <UserRow key={u.id} user={u} roles={roles} />
+                                    <UserRow
+                                        key={u.id}
+                                        user={u}
+                                        roles={roles}
+                                    />
                                 ))}
                             </tbody>
                         </table>

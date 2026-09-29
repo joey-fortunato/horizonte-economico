@@ -1,38 +1,22 @@
 {
-  "verde-profundo": {
-    "hex": "#123B30",
-    "rgb": [
-      18,
-      59,
-      48
-    ],
-    "uso": "Cor principal"
-  },
-  "branco": {
-    "hex": "#FFFFFF",
-    "rgb": [
-      255,
-      255,
-      255
-    ],
-    "uso": "Fundo e contraste"
-  },
-  "dourado-suave": {
-    "hex": "#D4AD67",
-    "rgb": [
-      212,
-      173,
-      103
-    ],
-    "uso": "Horizonte, filetes, destaques"
-  },
-  "cinzento-esverdeado": {
-    "hex": "#E9EEE9",
-    "rgb": [
-      233,
-      238,
-      233
-    ],
-    "uso": "Fundos secundários"
-  }
+    "verde-profundo": {
+        "hex": "#123B30",
+        "rgb": [18, 59, 48],
+        "uso": "Cor principal"
+    },
+    "branco": {
+        "hex": "#FFFFFF",
+        "rgb": [255, 255, 255],
+        "uso": "Fundo e contraste"
+    },
+    "dourado-suave": {
+        "hex": "#D4AD67",
+        "rgb": [212, 173, 103],
+        "uso": "Horizonte, filetes, destaques"
+    },
+    "cinzento-esverdeado": {
+        "hex": "#E9EEE9",
+        "rgb": [233, 238, 233],
+        "uso": "Fundos secundários"
+    }
 }

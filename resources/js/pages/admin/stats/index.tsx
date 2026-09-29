@@ -16,8 +16,18 @@ type Props = {
         color: string | null;
         author: string;
     }[];
-    byCategory: { name: string; color: string; articles: number; views: number }[];
-    byAuthor: { name: string; title: string | null; articles: number; views: number }[];
+    byCategory: {
+        name: string;
+        color: string;
+        articles: number;
+        views: number;
+    }[];
+    byAuthor: {
+        name: string;
+        title: string | null;
+        articles: number;
+        views: number;
+    }[];
 };
 
 const nf = new Intl.NumberFormat('pt-PT');
@@ -143,7 +153,8 @@ export default function StatsIndex({
                                             {c.name}
                                         </span>
                                         <span className="text-muted-foreground tabular-nums">
-                                            {nf.format(c.views)} · {c.articles} art.
+                                            {nf.format(c.views)} · {c.articles}{' '}
+                                            art.
                                         </span>
                                     </div>
                                     <div className="h-2 w-full rounded bg-muted">
@@ -168,9 +179,13 @@ export default function StatsIndex({
                     </div>
                     <table className="w-full text-sm">
                         <thead>
-                            <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
-                                <th className="px-5 py-3 font-semibold">Autor</th>
-                                <th className="px-5 py-3 font-semibold">Artigos</th>
+                            <tr className="border-b border-border text-left text-xs tracking-wide text-muted-foreground uppercase">
+                                <th className="px-5 py-3 font-semibold">
+                                    Autor
+                                </th>
+                                <th className="px-5 py-3 font-semibold">
+                                    Artigos
+                                </th>
                                 <th className="px-5 py-3 text-right font-semibold">
                                     Leituras
                                 </th>
@@ -183,7 +198,9 @@ export default function StatsIndex({
                                     className="border-b border-border last:border-0"
                                 >
                                     <td className="px-5 py-3">
-                                        <div className="font-medium">{a.name}</div>
+                                        <div className="font-medium">
+                                            {a.name}
+                                        </div>
                                         {a.title && (
                                             <div className="text-xs text-muted-foreground">
                                                 {a.title}
