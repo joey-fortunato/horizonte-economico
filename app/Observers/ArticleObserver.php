@@ -4,12 +4,25 @@ namespace App\Observers;
 
 use App\Models\Article;
 use App\Models\AuditLog;
+use Illuminate\Support\Facades\Cache;
 
 class ArticleObserver
 {
     public function created(Article $article): void
     {
+        $this->flushHomeCache();
         $this->log($article, 'created');
+    }
+
+    public function saved(Article $article): void
+    {
+        $this->flushHomeCache();
+    }
+
+    private function flushHomeCache(): void
+    {
+        Cache::forget('home.pool');
+        Cache::forget('home.mostread');
     }
 
     public function updated(Article $article): void
@@ -24,6 +37,7 @@ class ArticleObserver
 
     public function deleted(Article $article): void
     {
+        $this->flushHomeCache();
         $this->log($article, 'deleted', ['title' => $article->title]);
     }
 

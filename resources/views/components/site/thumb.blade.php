@@ -2,6 +2,8 @@
     'ratio' => '16/9', // aspect-ratio: adequa a dimensão ao contexto da secção
     'media' => null,   // App\Models\Media (opcional)
     'src' => null,
+    'srcset' => null,
+    'sizes' => '(max-width: 768px) 100vw, 720px',
     'alt' => '',
     'caption' => null,
 ])
@@ -9,6 +11,7 @@
 @php
     if ($media) {
         $src = $media->url();
+        $srcset = $media->srcset();
         $alt = $alt !== '' ? $alt : ($media->alt_text ?? '');
     }
 @endphp
@@ -16,7 +19,8 @@
 <figure {{ $attributes->merge(['class' => 'm-0']) }}>
     <div class="u-photo relative w-full overflow-hidden" style="aspect-ratio: {{ $ratio }};">
         @if ($src)
-            <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy"
+            <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async"
+                 @if ($srcset) srcset="{{ $srcset }}" sizes="{{ $sizes }}" @endif
                  class="absolute inset-0 h-full w-full object-cover">
         @else
             {{-- placeholder com marca subtil enquanto não há fotografia real --}}

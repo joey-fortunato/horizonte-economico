@@ -131,13 +131,16 @@ class ArticleController extends Controller
         $article->correction_note = $data['correction_note'] ?? null;
 
         if ($request->hasFile('cover')) {
-            $path = $request->file('cover')->store('covers', 'public');
+            $result = app(\App\Services\ImageService::class)->store($request->file('cover'), 'covers');
             $media = Media::create([
                 'disk' => 'public',
-                'path' => $path,
+                'path' => $result['path'],
                 'alt_text' => $data['title'],
-                'mime_type' => $request->file('cover')->getMimeType(),
-                'size' => $request->file('cover')->getSize(),
+                'mime_type' => $result['mime_type'],
+                'size' => $result['size'],
+                'width' => $result['width'],
+                'height' => $result['height'],
+                'variants' => $result['variants'],
                 'uploaded_by' => $request->user()->id,
             ]);
             $article->cover_media_id = $media->id;

@@ -4,22 +4,24 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $pool = Article::published()
+        // Cache curto (60s) das consultas mais pesadas; invalidado no ArticleObserver.
+        $pool = Cache::remember('home.pool', 60, fn () => Article::published()
             ->with(['category', 'author', 'cover'])
             ->latest('published_at')
             ->take(14)
-            ->get();
+            ->get());
 
-        $mostRead = Article::published()
+        $mostRead = Cache::remember('home.mostread', 60, fn () => Article::published()
             ->with('category')
             ->orderByDesc('views_count')
             ->take(5)
-            ->get();
+            ->get());
 
         return view('site.home', [
             'lead' => $pool->get(0),

@@ -35,15 +35,17 @@ class MediaController extends Controller
             'alt_text' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $file = $request->file('file');
-        $path = $file->store('media', 'public');
+        $result = app(\App\Services\ImageService::class)->store($request->file('file'), 'media');
 
         Media::create([
             'disk' => 'public',
-            'path' => $path,
+            'path' => $result['path'],
             'alt_text' => $request->input('alt_text'),
-            'mime_type' => $file->getMimeType(),
-            'size' => $file->getSize(),
+            'mime_type' => $result['mime_type'],
+            'size' => $result['size'],
+            'width' => $result['width'],
+            'height' => $result['height'],
+            'variants' => $result['variants'],
             'uploaded_by' => $request->user()->id,
         ]);
 

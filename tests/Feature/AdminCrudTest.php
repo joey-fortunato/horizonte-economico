@@ -61,10 +61,14 @@ class AdminCrudTest extends TestCase
         $editor = User::factory()->create(['role' => 'editor']);
 
         $this->actingAs($editor)->post('/media', [
-            'file' => UploadedFile::fake()->image('capa.jpg', 1200, 675),
+            'file' => UploadedFile::fake()->image('capa.jpg', 1600, 900),
             'alt_text' => 'Capa',
         ])->assertRedirect();
 
         $this->assertDatabaseCount('media', 1);
+
+        $media = \App\Models\Media::first();
+        $this->assertSame('image/webp', $media->mime_type);
+        $this->assertNotEmpty($media->variants); // variantes responsivas geradas
     }
 }
