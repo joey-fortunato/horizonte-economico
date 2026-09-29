@@ -142,11 +142,11 @@ class NewsController extends Controller
 
         $sources = NewsSource::active()->get();
         foreach ($sources as $source) {
-            // Síncrono para feedback imediato; a recolha agendada corre por cron.
-            CollectNewsSourceJob::dispatchSync($source->id);
+            // Assíncrono: não bloqueia o painel; processado pela fila (worker ou cron do queue:work).
+            CollectNewsSourceJob::dispatch($source->id);
         }
 
-        return back()->with('flash', 'Recolha concluída para '.$sources->count().' fonte(s).');
+        return back()->with('flash', 'Recolha iniciada em segundo plano para '.$sources->count().' fonte(s). A lista actualiza em instantes.');
     }
 
     public function runs()
