@@ -136,4 +136,7 @@
         line-height: 0.72;
         color: var(--color-ink);
     }
+    .u-prose img {
+        @apply my-8 block h-auto w-full border border-line;
+    }
 }

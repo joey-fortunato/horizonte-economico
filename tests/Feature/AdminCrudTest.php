@@ -71,4 +71,16 @@ class AdminCrudTest extends TestCase
         $this->assertSame('image/webp', $media->mime_type);
         $this->assertNotEmpty($media->variants); // variantes responsivas geradas
     }
+
+    public function test_editor_media_json_endpoints(): void
+    {
+        Storage::fake('public');
+        $editor = User::factory()->create(['role' => 'editor']);
+
+        $this->actingAs($editor)->post('/media/upload', [
+            'file' => UploadedFile::fake()->image('a.jpg', 800, 450),
+        ])->assertOk()->assertJsonStructure(['id', 'url', 'srcset', 'alt']);
+
+        $this->actingAs($editor)->get('/media/list')->assertOk()->assertJsonCount(1);
+    }
 }

@@ -1,8 +1,10 @@
+import ImageExt from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import {
     Bold,
+    Image as ImageIcon,
     Italic,
     Link as LinkIcon,
     List,
@@ -10,20 +12,50 @@ import {
     Quote,
     Redo2,
     Undo2,
+    Upload,
+    X,
 } from 'lucide-react';
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 type Props = {
     value: string;
     onChange: (html: string) => void;
 };
 
+type MediaItem = {
+    id: number;
+    url: string;
+    srcset: string | null;
+    alt: string | null;
+};
+
+// Mantém srcset/sizes no HTML das imagens (responsivas no frontend)
+const ResponsiveImage = ImageExt.extend({
+    addAttributes() {
+        return {
+            ...this.parent?.(),
+            srcset: { default: null },
+            sizes: { default: null },
+        };
+    },
+});
+
+function xsrfToken(): string {
+    const m = document.cookie.match(/XSRF-TOKEN=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : '';
+}
+
 export default function RichEditor({ value, onChange }: Props) {
+    const [pickerOpen, setPickerOpen] = useState(false);
+
     const editor = useEditor({
         immediatelyRender: false,
         extensions: [
             StarterKit.configure({ heading: { levels: [2, 3] } }),
             Link.configure({ openOnClick: false, autolink: true }),
+            ResponsiveImage.configure({
+                HTMLAttributes: { class: 'article-image' },
+            }),
         ],
         content: value || '',
         editorProps: {
@@ -37,6 +69,23 @@ export default function RichEditor({ value, onChange }: Props) {
     if (!editor) {
         return null;
     }
+
+    const insertImage = (m: MediaItem) => {
+        editor
+            .chain()
+            .focus()
+            .insertContent({
+                type: 'image',
+                attrs: {
+                    src: m.url,
+                    alt: m.alt ?? '',
+                    srcset: m.srcset,
+                    sizes: '(max-width: 768px) 100vw, 720px',
+                },
+            })
+            .run();
+        setPickerOpen(false);
+    };
 
     const Btn = ({
         onClick,
@@ -96,6 +145,9 @@ export default function RichEditor({ value, onChange }: Props) {
                 <Btn title="Ligação" active={editor.isActive('link')} onClick={setLink}>
                     <LinkIcon className="size-4" />
                 </Btn>
+                <Btn title="Imagem" onClick={() => setPickerOpen(true)}>
+                    <ImageIcon className="size-4" />
+                </Btn>
                 <span className="mx-1 h-5 w-px bg-border" />
                 <Btn title="Lista" active={editor.isActive('bulletList')} onClick={() => editor.chain().focus().toggleBulletList().run()}>
                     <List className="size-4" />
@@ -115,6 +167,121 @@ export default function RichEditor({ value, onChange }: Props) {
                 </Btn>
             </div>
             <EditorContent editor={editor} />
+
+            {pickerOpen && (
+                <MediaPicker
+                    onClose={() => setPickerOpen(false)}
+                    onSelect={insertImage}
+                />
+            )}
+        </div>
+    );
+}
+
+function MediaPicker({
+    onClose,
+    onSelect,
+}: {
+    onClose: () => void;
+    onSelect: (m: MediaItem) => void;
+}) {
+    const [items, setItems] = useState<MediaItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [uploading, setUploading] = useState(false);
+
+    const load = () => {
+        setLoading(true);
+        fetch('/media/list', {
+            headers: { Accept: 'application/json' },
+            credentials: 'same-origin',
+        })
+            .then((r) => r.json())
+            .then((data: MediaItem[]) => setItems(data))
+            .finally(() => setLoading(false));
+    };
+
+    useEffect(load, []);
+
+    const upload = (file: File) => {
+        setUploading(true);
+        const body = new FormData();
+        body.append('file', file);
+        fetch('/media/upload', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                Accept: 'application/json',
+                'X-XSRF-TOKEN': xsrfToken(),
+            },
+            body,
+        })
+            .then((r) => r.json())
+            .then((m: MediaItem) => onSelect(m))
+            .finally(() => setUploading(false));
+    };
+
+    return (
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+            onClick={onClose}
+        >
+            <div
+                className="flex max-h-[80vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl border border-border bg-card"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="flex items-center justify-between border-b border-border px-5 py-3">
+                    <div className="font-semibold">Inserir imagem</div>
+                    <div className="flex items-center gap-3">
+                        <label className="inline-flex cursor-pointer items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground">
+                            <Upload className="size-4" />
+                            {uploading ? 'A carregar…' : 'Carregar'}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={(e) => {
+                                    const f = e.target.files?.[0];
+                                    if (f) upload(f);
+                                }}
+                            />
+                        </label>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            aria-label="Fechar"
+                            className="text-muted-foreground"
+                        >
+                            <X className="size-5" />
+                        </button>
+                    </div>
+                </div>
+                <div className="grid grid-cols-3 gap-3 overflow-y-auto p-5 sm:grid-cols-4">
+                    {loading && (
+                        <p className="col-span-full text-sm text-muted-foreground">
+                            A carregar…
+                        </p>
+                    )}
+                    {!loading && items.length === 0 && (
+                        <p className="col-span-full text-sm text-muted-foreground">
+                            Ainda não há imagens. Carregue uma acima.
+                        </p>
+                    )}
+                    {items.map((m) => (
+                        <button
+                            type="button"
+                            key={m.id}
+                            onClick={() => onSelect(m)}
+                            className="overflow-hidden rounded-md border border-border hover:border-primary"
+                        >
+                            <img
+                                src={m.url}
+                                alt={m.alt ?? ''}
+                                className="aspect-video w-full object-cover"
+                            />
+                        </button>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }

@@ -156,3 +156,4 @@
 .prose-editor blockquote { border-left: 3px solid var(--primary); padding-left: 1rem; font-style: italic; margin: 1rem 0; color: var(--muted-foreground); }
 .prose-editor a { color: var(--primary); text-decoration: underline; }
 .prose-editor:focus { outline: none; }
+.prose-editor img { max-width: 100%; height: auto; margin: 1rem 0; border: 1px solid var(--border); border-radius: 4px; }

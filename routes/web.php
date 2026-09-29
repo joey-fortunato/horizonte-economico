@@ -53,7 +53,9 @@ Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function
 
     Route::prefix('media')->name('admin.media.')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\MediaController::class, 'index'])->name('index');
+        Route::get('/list', [\App\Http\Controllers\Admin\MediaController::class, 'list'])->name('list');
         Route::post('/', [\App\Http\Controllers\Admin\MediaController::class, 'store'])->name('store');
+        Route::post('/upload', [\App\Http\Controllers\Admin\MediaController::class, 'upload'])->name('upload');
         Route::delete('/{media}', [\App\Http\Controllers\Admin\MediaController::class, 'destroy'])->name('destroy');
     });
 
