@@ -43,6 +43,26 @@ Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function
         Route::put('/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'update'])->name('update');
         Route::delete('/{article}', [\App\Http\Controllers\Admin\ArticleController::class, 'destroy'])->name('destroy');
     });
+
+    Route::prefix('categorias')->name('admin.categories.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
+        Route::put('/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
+        Route::delete('/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('media')->name('admin.media.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\MediaController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\Admin\MediaController::class, 'store'])->name('store');
+        Route::delete('/{media}', [\App\Http\Controllers\Admin\MediaController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('utilizadores')->name('admin.users.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('store');
+        Route::put('/{user}', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('update');
+        Route::delete('/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('destroy');
+    });
 });
 
 require __DIR__.'/settings.php';
