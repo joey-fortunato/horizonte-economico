@@ -27,9 +27,13 @@ class NewsController extends Controller
             ->when($request->query('q'), fn ($q, $term) => $q->where('title', 'like', "%{$term}%"))
             ->when($request->query('from'), fn ($q, $d) => $q->whereDate('published_at', '>=', $d))
             ->when($request->query('to'), fn ($q, $d) => $q->whereDate('published_at', '<=', $d))
-            ->orderByRaw('published_at is null') // não-nulas primeiro (portável pgsql/sqlite)
-            ->orderByDesc('published_at')
-            ->orderByDesc('fetched_at')
+            ->when($request->boolean('highlights'), fn ($q) => $q->highlights())
+            ->when(
+                $request->boolean('highlights'),
+                // ordena por relevância quando se filtra "melhores"
+                fn ($q) => $q->orderByDesc('relevance_score')->orderByDesc('published_at'),
+                fn ($q) => $q->orderByRaw('published_at is null')->orderByDesc('published_at')->orderByDesc('fetched_at'),
+            )
             ->paginate(20)
             ->withQueryString()
             ->through(fn (CollectedNews $n) => [
@@ -42,15 +46,19 @@ class NewsController extends Controller
                 'fetched_at' => $n->fetched_at->diffForHumans(),
                 'status' => $n->editorial_status->value,
                 'statusLabel' => $n->editorial_status->label(),
+                'score' => $n->relevance_score,
+                'highlight' => $n->relevance_score >= (int) config('editorial.highlight_threshold', 8),
             ]);
 
         $counts = CollectedNews::selectRaw('editorial_status, count(*) as total')
             ->groupBy('editorial_status')->pluck('total', 'editorial_status');
+        $highlightsCount = CollectedNews::highlights()->count();
 
         return Inertia::render('admin/news/index', [
             'news' => $news,
-            'filters' => $request->only(['status', 'source', 'q', 'from', 'to', 'unanalyzed']),
+            'filters' => $request->only(['status', 'source', 'q', 'from', 'to', 'unanalyzed', 'highlights']),
             'counts' => $counts,
+            'highlightsCount' => $highlightsCount,
             'statuses' => collect(NewsEditorialStatus::cases())->map(fn ($s) => ['value' => $s->value, 'label' => $s->label()]),
             'sources' => NewsSource::orderBy('name')->get(['id', 'name']),
             'canDecide' => $request->user()->can('decide', new CollectedNews()),
@@ -76,6 +84,9 @@ class NewsController extends Controller
                 'fetched_at' => $news->fetched_at->translatedFormat('j \d\e F \d\e Y, H:i'),
                 'status' => $news->editorial_status->value,
                 'statusLabel' => $news->editorial_status->label(),
+                'score' => $news->relevance_score,
+                'highlight' => $news->relevance_score >= (int) config('editorial.highlight_threshold', 8),
+                'terms' => $news->relevance_terms ?? [],
                 'notes' => $news->notes->map(fn (NewsEditorialNote $note) => [
                     'id' => $note->id,
                     'note' => $note->note,

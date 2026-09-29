@@ -14,6 +14,7 @@ class NewsCollector
     public function __construct(
         private FeedFetcher $fetcher,
         private UrlNormalizer $normalizer,
+        private RelevanceScorer $scorer,
     ) {}
 
     /** Recolhe uma fonte, isolando erros, e regista a execução. */
@@ -72,9 +73,13 @@ class NewsCollector
             return false;
         }
 
+        $relevance = $this->scorer->score($item['title'], $item['description'], $item['published_at']);
+
         try {
             CollectedNews::create([
                 'news_source_id' => $source->id,
+                'relevance_score' => $relevance['score'],
+                'relevance_terms' => $relevance['terms'],
                 'title' => mb_substr($item['title'], 0, 255),
                 'url' => mb_substr($item['url'], 0, 1024),
                 'normalized_url' => mb_substr($normalized, 0, 1024),

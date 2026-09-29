@@ -15,12 +15,14 @@ class CollectedNews extends Model
     protected $fillable = [
         'news_source_id', 'title', 'url', 'normalized_url', 'external_id',
         'source_name', 'description', 'published_at', 'fetched_at', 'editorial_status',
+        'relevance_score', 'relevance_terms',
     ];
 
     protected $casts = [
         'editorial_status' => NewsEditorialStatus::class,
         'published_at' => 'datetime',
         'fetched_at' => 'datetime',
+        'relevance_terms' => 'array',
     ];
 
     public function source(): BelongsTo
@@ -41,5 +43,10 @@ class CollectedNews extends Model
     public function scopeStatus($query, string $status)
     {
         return $query->where('editorial_status', $status);
+    }
+
+    public function scopeHighlights($query)
+    {
+        return $query->where('relevance_score', '>=', (int) config('editorial.highlight_threshold', 8));
     }
 }

@@ -1,5 +1,5 @@
 import { Head, Link, router } from '@inertiajs/react';
-import { ExternalLink, RefreshCw, History } from 'lucide-react';
+import { ExternalLink, History, RefreshCw, Star } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 type Row = {
@@ -12,6 +12,8 @@ type Row = {
     fetched_at: string;
     status: string;
     statusLabel: string;
+    score: number;
+    highlight: boolean;
 };
 
 type Props = {
@@ -21,6 +23,7 @@ type Props = {
     };
     filters: Record<string, string | null>;
     counts: Record<string, number>;
+    highlightsCount: number;
     statuses: { value: string; label: string }[];
     sources: { id: number; name: string }[];
     canDecide: boolean;
@@ -46,11 +49,13 @@ export default function NewsIndex({
     news,
     filters,
     counts,
+    highlightsCount,
     statuses,
     sources,
     canCollect,
 }: Props) {
     const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const highlightsOn = !!filters.highlights;
 
     const apply = (patch: Record<string, string | null>) => {
         router.get('/noticias', { ...filters, ...patch }, { preserveState: true, replace: true });
@@ -95,16 +100,23 @@ export default function NewsIndex({
                 {/* Filtros */}
                 <div className="flex flex-wrap items-center gap-3 border-b border-border pb-3">
                     <button
-                        onClick={() => apply({ status: null, unanalyzed: null })}
-                        className={`text-sm font-semibold ${!filters.status ? 'text-primary' : 'text-muted-foreground'}`}
+                        onClick={() => apply({ status: null, unanalyzed: null, highlights: null })}
+                        className={`text-sm font-semibold ${!filters.status && !highlightsOn ? 'text-primary' : 'text-muted-foreground'}`}
                     >
                         Todas <span className="text-muted-foreground">{total}</span>
+                    </button>
+                    <button
+                        onClick={() => apply({ highlights: highlightsOn ? null : '1', status: null, unanalyzed: null })}
+                        className={`inline-flex items-center gap-1 text-sm font-semibold ${highlightsOn ? 'text-[#9a7017]' : 'text-muted-foreground'}`}
+                    >
+                        <Star className={`size-3.5 ${highlightsOn ? 'fill-[#9a7017]' : ''}`} />
+                        Melhores <span className="font-normal">{highlightsCount}</span>
                     </button>
                     {statuses.map((s) => (
                         <button
                             key={s.value}
-                            onClick={() => apply({ status: s.value, unanalyzed: null })}
-                            className={`text-sm font-semibold ${filters.status === s.value ? 'text-primary' : 'text-muted-foreground'}`}
+                            onClick={() => apply({ status: s.value, unanalyzed: null, highlights: null })}
+                            className={`text-sm font-semibold ${filters.status === s.value && !highlightsOn ? 'text-primary' : 'text-muted-foreground'}`}
                         >
                             {s.label}{' '}
                             <span className="font-normal">{counts[s.value] ?? 0}</span>
@@ -152,12 +164,20 @@ export default function NewsIndex({
                             {news.data.map((n) => (
                                 <tr key={n.id} className="border-b border-border last:border-0">
                                     <td className="px-5 py-3">
-                                        <Link
-                                            href={`/noticias/${n.id}`}
-                                            className="font-medium hover:text-primary"
-                                        >
-                                            {n.title}
-                                        </Link>
+                                        <div className="flex items-center gap-2">
+                                            {n.highlight && (
+                                                <Star
+                                                    className="size-3.5 shrink-0 fill-[#9a7017] text-[#9a7017]"
+                                                    aria-label={`Destaque (relevância ${n.score})`}
+                                                />
+                                            )}
+                                            <Link
+                                                href={`/noticias/${n.id}`}
+                                                className="font-medium hover:text-primary"
+                                            >
+                                                {n.title}
+                                            </Link>
+                                        </div>
                                     </td>
                                     <td className="px-5 py-3 text-muted-foreground">
                                         {n.source_name ?? n.source ?? '—'}

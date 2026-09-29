@@ -13,6 +13,9 @@ type Item = {
     fetched_at: string;
     status: string;
     statusLabel: string;
+    score: number;
+    highlight: boolean;
+    terms: string[];
     notes: { id: number; note: string; author: string; at: string }[];
     articles: { title: string; slug: string; status: string }[];
 };
@@ -156,6 +159,41 @@ export default function NewsShow({ item, canDecide, canConvert }: Props) {
                                     <FileText className="size-4" />
                                     Criar rascunho de artigo
                                 </button>
+                            )}
+                        </div>
+
+                        <div className="rounded-xl border border-border bg-card p-5">
+                            <div className="mb-1 flex items-center justify-between">
+                                <span className="text-xs uppercase tracking-wide text-muted-foreground">
+                                    Relevância editorial
+                                </span>
+                                {item.highlight && (
+                                    <span className="rounded-full bg-[#f4ead6] px-2 py-0.5 text-xs font-semibold text-[#7a5a12]">
+                                        Melhor
+                                    </span>
+                                )}
+                            </div>
+                            <div className="font-serif text-2xl font-bold">{item.score}</div>
+                            {item.terms.length > 0 ? (
+                                <div className="mt-3">
+                                    <div className="mb-1 text-xs text-muted-foreground">
+                                        Alinhamento com a linha editorial:
+                                    </div>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {item.terms.map((t) => (
+                                            <span
+                                                key={t}
+                                                className="rounded border border-border px-2 py-0.5 text-xs text-muted-foreground"
+                                            >
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                <p className="mt-2 text-xs text-muted-foreground">
+                                    Sem termos da linha editorial detectados.
+                                </p>
                             )}
                         </div>
 
