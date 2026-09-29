@@ -41,6 +41,7 @@ class ArticleController extends Controller
                 'updated' => $a->updated_at->diffForHumans(),
                 'canEdit' => $request->user()->can('update', $a),
                 'canPublish' => $request->user()->can('publish', $a),
+                'canDelete' => $request->user()->can('delete', $a),
             ]);
 
         $counts = Article::selectRaw('status, count(*) as total')->groupBy('status')->pluck('total', 'status');

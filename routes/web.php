@@ -59,6 +59,8 @@ Route::middleware(['auth', 'verified', 'can:access-backoffice'])->group(function
         Route::delete('/{media}', [\App\Http\Controllers\Admin\MediaController::class, 'destroy'])->name('destroy');
     });
 
+    Route::get('estatisticas', [\App\Http\Controllers\Admin\StatsController::class, 'index'])->name('admin.stats');
+
     Route::prefix('utilizadores')->name('admin.users.')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
         Route::post('/', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('store');

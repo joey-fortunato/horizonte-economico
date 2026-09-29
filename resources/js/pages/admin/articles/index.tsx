@@ -1,5 +1,5 @@
 import { Head, Link, router } from '@inertiajs/react';
-import { Pencil, Plus } from 'lucide-react';
+import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 type Row = {
@@ -14,6 +14,7 @@ type Row = {
     updated: string;
     canEdit: boolean;
     canPublish: boolean;
+    canDelete: boolean;
 };
 
 type Props = {
@@ -151,16 +152,39 @@ export default function ArticlesIndex({
                                     <td className="px-5 py-3 text-muted-foreground">
                                         {a.updated}
                                     </td>
-                                    <td className="px-5 py-3 text-right">
-                                        {a.canEdit && (
-                                            <Link
-                                                href={`/artigos/${a.slug}/editar`}
-                                                className="inline-flex items-center gap-1 text-sm font-semibold text-primary"
-                                            >
-                                                <Pencil className="size-3.5" />
-                                                Editar
-                                            </Link>
-                                        )}
+                                    <td className="px-5 py-3">
+                                        <div className="flex items-center justify-end gap-4">
+                                            {a.canEdit && (
+                                                <Link
+                                                    href={`/artigos/${a.slug}/editar`}
+                                                    className="inline-flex items-center gap-1 text-sm font-semibold text-primary"
+                                                >
+                                                    <Pencil className="size-3.5" />
+                                                    Editar
+                                                </Link>
+                                            )}
+                                            {a.canDelete && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        if (
+                                                            confirm(
+                                                                `Eliminar "${a.title}"? Esta acção não pode ser anulada.`,
+                                                            )
+                                                        ) {
+                                                            router.delete(
+                                                                `/artigos/${a.slug}`,
+                                                                { preserveScroll: true },
+                                                            );
+                                                        }
+                                                    }}
+                                                    className="inline-flex items-center gap-1 text-sm text-destructive"
+                                                    aria-label="Eliminar"
+                                                >
+                                                    <Trash2 className="size-3.5" />
+                                                </button>
+                                            )}
+                                        </div>
                                     </td>
                                 </tr>
                             ))}

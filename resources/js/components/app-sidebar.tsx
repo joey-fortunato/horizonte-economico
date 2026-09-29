@@ -30,7 +30,7 @@ const mainNavItems: NavItem[] = [
     { title: 'Categorias', href: '/categorias', icon: Tags },
     { title: 'Media', href: '/media', icon: ImageIcon },
     { title: 'Utilizadores', href: '/utilizadores', icon: Users },
-    { title: 'Estatísticas', href: '#', icon: BarChart3 },
+    { title: 'Estatísticas', href: '/estatisticas', icon: BarChart3 },
 ];
 
 const footerNavItems: NavItem[] = [

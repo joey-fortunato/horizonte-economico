@@ -86,4 +86,26 @@ class ArticleManagementTest extends TestCase
         $editor = User::factory()->create(['role' => 'editor']);
         $this->actingAs($editor)->get(route('admin.articles.index'))->assertOk();
     }
+
+    public function test_admin_can_delete_article(): void
+    {
+        $admin = User::factory()->create(['role' => 'administrador']);
+        $article = Article::create([
+            'author_id' => $admin->id,
+            'category_id' => $this->category()->id,
+            'title' => 'Para eliminar',
+            'slug' => 'para-eliminar',
+            'status' => ArticleStatus::Published->value,
+            'published_at' => now(),
+        ]);
+
+        $this->actingAs($admin)->delete(route('admin.articles.destroy', $article))->assertRedirect();
+        $this->assertDatabaseMissing('articles', ['id' => $article->id]);
+    }
+
+    public function test_stats_page_loads(): void
+    {
+        $editor = User::factory()->create(['role' => 'editor']);
+        $this->actingAs($editor)->get(route('admin.stats'))->assertOk();
+    }
 }
